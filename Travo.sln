@@ -1,0 +1,48 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.24720.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Travo.WebAPI", "Travo.WebAPI\Travo.WebAPI.csproj", "{840F0FD1-8A0A-4DA2-A0DA-FBB388E052A4}"
+EndProject
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "Travo.FrontEnd", "Travo.FrontEnd\", "{4094A1D6-E6A9-43A7-8431-F4F722439FB7}"
+	ProjectSection(WebsiteProperties) = preProject
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.5.2"
+		Debug.AspNetCompiler.VirtualPath = "/localhost_50631"
+		Debug.AspNetCompiler.PhysicalPath = "Travo.FrontEnd\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_50631\"
+		Debug.AspNetCompiler.Updateable = "true"
+		Debug.AspNetCompiler.ForceOverwrite = "true"
+		Debug.AspNetCompiler.FixedNames = "false"
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.VirtualPath = "/localhost_50631"
+		Release.AspNetCompiler.PhysicalPath = "Travo.FrontEnd\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_50631\"
+		Release.AspNetCompiler.Updateable = "true"
+		Release.AspNetCompiler.ForceOverwrite = "true"
+		Release.AspNetCompiler.FixedNames = "false"
+		Release.AspNetCompiler.Debug = "False"
+		VWDPort = "50631"
+		SlnRelativePath = "Travo.FrontEnd\"
+		DefaultWebSiteLanguage = "Visual C#"
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{840F0FD1-8A0A-4DA2-A0DA-FBB388E052A4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{840F0FD1-8A0A-4DA2-A0DA-FBB388E052A4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{840F0FD1-8A0A-4DA2-A0DA-FBB388E052A4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{840F0FD1-8A0A-4DA2-A0DA-FBB388E052A4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4094A1D6-E6A9-43A7-8431-F4F722439FB7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4094A1D6-E6A9-43A7-8431-F4F722439FB7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4094A1D6-E6A9-43A7-8431-F4F722439FB7}.Release|Any CPU.ActiveCfg = Debug|Any CPU
+		{4094A1D6-E6A9-43A7-8431-F4F722439FB7}.Release|Any CPU.Build.0 = Debug|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

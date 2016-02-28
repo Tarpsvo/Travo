@@ -1,0 +1,90 @@
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,600);
+html, body {
+  margin: 0;
+  padding: 0;
+  background-color: #f3f7fa; }
+
+#header-wrap {
+  width: 100%;
+  height: 40px;
+  background: #444554; }
+
+#header {
+  width: 960px;
+  height: 40px;
+  line-height: 40px;
+  margin: 0 auto; }
+
+.trv-header-icon-text-btn {
+  display: inline-block;
+  border-radius: 2px;
+  height: 32px;
+  line-height: 32px;
+  color: #FFF;
+  padding: 0 10px 0 10px; }
+  .trv-header-icon-text-btn:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    cursor: pointer; }
+  .trv-header-icon-text-btn span {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 600; }
+  .trv-header-icon-text-btn i {
+    color: #FFF;
+    font-size: 16px; }
+
+.trv-nav-dropdown {
+  line-height: 20px;
+  font-size: 14px;
+  border-radius: 3px;
+  padding: 2px;
+  background-color: #FFF;
+  -webkit-box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.4);
+  -moz-box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.4);
+  box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.4); }
+  .trv-nav-dropdown.trv-left-dd {
+    margin: -2px 0 0 -15px;
+    width: 120px; }
+    .trv-nav-dropdown.trv-left-dd:after, .trv-nav-dropdown.trv-left-dd:before {
+      left: 30px; }
+  .trv-nav-dropdown.trv-right-dd {
+    margin: -2px 0 0 20px;
+    width: 100px; }
+    .trv-nav-dropdown.trv-right-dd:after, .trv-nav-dropdown.trv-right-dd:before {
+      right: 30px; }
+  .trv-nav-dropdown.uk-dropdown .uk-nav {
+    margin: 0; }
+  .trv-nav-dropdown:after, .trv-nav-dropdown:before {
+    bottom: 100%;
+    border: solid transparent;
+    content: " ";
+    height: 0;
+    width: 0;
+    position: absolute;
+    pointer-events: none; }
+  .trv-nav-dropdown:after {
+    border-color: none;
+    border-bottom-color: #FFF;
+    border-width: 5px;
+    margin-left: -5px; }
+  .trv-nav-dropdown:before {
+    border-color: none;
+    border-width: 6px;
+    margin-left: -6px; }
+
+#trv-nav-tt-bar {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.1);
+  height: 32px;
+  line-height: 32px;
+  border-radius: 2px;
+  margin-top: 4px; }
+  #trv-nav-tt-bar span {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 13px;
+    color: #BBB;
+    padding: 0 10px 0 10px; }
+  #trv-nav-tt-bar button {
+    float: right;
+    height: 32px;
+    display: none; }

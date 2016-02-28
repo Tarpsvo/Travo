@@ -1,0 +1,13 @@
+{
+  "name": "Travo.FrontEnd",
+  "version": "0.0.1",
+  "private": true,
+  "author": "Tarvo R.",
+  "devDependencies": {
+    "grunt": "~0.4.5",
+    "grunt-contrib-uglify": "^0.11.1",
+    "grunt-contrib-watch": "^0.6.1",
+    "grunt-sass": "^1.1.0",
+    "load-grunt-tasks": "^3.4.0"
+  }
+}
