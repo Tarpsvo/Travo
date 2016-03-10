@@ -2,24 +2,26 @@ var gulp = require('gulp');
 var runSequence = require('run-sequence');
 var changed = require('gulp-changed');
 var plumber = require('gulp-plumber');
-var to5 = require('gulp-babel');
 var sourcemaps = require('gulp-sourcemaps');
 var sass = require('gulp-sass');
 var browserSync = require('browser-sync');
+var ts = require('gulp-typescript');
+var flatten = require('gulp-flatten');
 
+var tsProject = ts.createProject('tsconfig.json');
 var paths = require('../paths');
-var compilerOptions = require('../babel-options');
 var assign = Object.assign || require('object.assign');
 
 // Transpiles changed ES6 files to SystemJS format
 // Plumber() prevents the pipe from breaking
+var tsCompiler = tsCompiler || null;
 gulp.task('build-system', function () {
-    return gulp.src(paths.js)
+    return gulp.src(paths.dtsSrc.concat(paths.ts))
         .pipe(plumber())
-        .pipe(changed(paths.output, { extension: '.js' }))
         .pipe(sourcemaps.init({ loadMaps: true }))
-        .pipe(to5(assign({}, compilerOptions, { modules: "system" })))
-        .pipe(sourcemaps.write({ includeContent: true }))
+        .pipe(ts(tsProject))
+        .pipe(sourcemaps.write({ includeContent: false, sourceRoot: '/src' }))
+        .pipe(flatten())
         .pipe(gulp.dest(paths.output));
 });
 
@@ -27,6 +29,7 @@ gulp.task('build-system', function () {
 gulp.task('build-html', function () {
     return gulp.src(paths.html)
         .pipe(changed(paths.output, { extension: '.html' }))
+        .pipe(flatten())
         .pipe(gulp.dest(paths.output));
 });
 
@@ -37,6 +40,7 @@ gulp.task('build-scss', function () {
         .pipe(sourcemaps.init({ loadMaps: true }))
         .pipe(sass({ outputStyle: 'compressed' }))
         .pipe(sourcemaps.write({ includeContent: true }))
+        .pipe(flatten())
         .pipe(gulp.dest(paths.output));
 });
 

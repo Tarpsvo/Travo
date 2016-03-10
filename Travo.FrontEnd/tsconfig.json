@@ -1,0 +1,22 @@
+﻿{
+  "compilerOptions": {
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "noImplicitAny": false,
+    "noEmitOnError": true,
+    "removeComments": true,
+    "noExternalResolve": false,
+    "declarationFiles": true,
+    "target": "es5",
+    "module": "amd",
+    "sourceMap": true,
+    "outDir": "dist/"
+  },
+  "filesGlob": [
+    "./src/**/*.ts",
+    "./pages/**/*.ts",
+    "./components/**./*.ts",
+    "./typings/browser.d.ts",
+    "./jspm_packages/**/*.d.ts"
+  ]
+}
