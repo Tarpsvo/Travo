@@ -9,7 +9,7 @@ function reportChange(event) {
 
 // Watches changes to JS, HTML and CSS files and call the reportChange method
 gulp.task('watch', ['serve'], function() {
-  gulp.watch(paths.ts, ['build-system', browserSync.reload]).on('change', reportChange);
-  gulp.watch(paths.html, ['build-html', browserSync.reload]).on('change', reportChange);
-  gulp.watch(paths.scss, ['build-scss', browserSync.reload]).on('change', reportChange);
+    gulp.watch(paths.ts, ['build-system', browserSync.reload]).on('change', reportChange);
+    gulp.watch(paths.html, ['build-html', browserSync.reload]).on('change', reportChange);
+    gulp.watch(paths.scss, ['build-scss', browserSync.reload]).on('change', reportChange);
 });

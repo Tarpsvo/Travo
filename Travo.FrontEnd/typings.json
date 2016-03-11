@@ -1,7 +1,7 @@
 {
-  "name": "travo-frontend",
-  "version": false,
-  "ambientDependencies": {
-    "core-js": "github:DefinitelyTyped/DefinitelyTyped/core-js/core-js.d.ts"
-  }
+    "name": "travo-frontend",
+    "version": false,
+    "ambientDependencies": {
+        "core-js": "github:DefinitelyTyped/DefinitelyTyped/core-js/core-js.d.ts"
+    }
 }
