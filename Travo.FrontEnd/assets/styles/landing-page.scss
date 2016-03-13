@@ -1,0 +1,241 @@
+// Color definitions
+$textContentWidth: 800px;
+$primaryColor: #49ba9c;
+$secondaryColor: #304153;
+$lightColor: #ddd;
+
+// General
+.trv-lp-big-btn {
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    transition: all 0.2s ease-in-out;
+
+    &:hover {
+        cursor: pointer;
+        box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+    }
+}
+
+// Specific styling
+#trv-lp-top-wrapper {
+    height: 600px;
+    width: 100%;
+    position: relative;
+
+    background: -moz-radial-gradient(center, ellipse cover, rgba(75,88,94,1) 0%, rgba(48,65,83,1) 100%); /* ff3.6+ */
+    background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%, rgba(75,88,94,1)), color-stop(100%, rgba(48,65,83,1))); /* safari4+,chrome */
+    background:-webkit-radial-gradient(center, ellipse cover, rgba(75,88,94,1) 0%, rgba(48,65,83,1) 100%); /* safari5.1+,chrome10+ */
+    background: -o-radial-gradient(center, ellipse cover, rgba(75,88,94,1) 0%, rgba(48,65,83,1) 100%); /* opera 11.10+ */
+    background: -ms-radial-gradient(center, ellipse cover, rgba(75,88,94,1) 0%, rgba(48,65,83,1) 100%); /* ie10+ */
+    background:radial-gradient(ellipse at center, rgba(75,88,94,1) 0%, rgba(48,65,83,1) 100%); /* w3c */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#4b585e', endColorstr='#304153',GradientType=1 ); /* ie6-9 */
+
+    #trv-top-text {
+        max-width: $textContentWidth;
+        margin: 0 auto;
+        height: 50%;
+        padding-top: 40px;
+        box-sizing: border-box;
+
+        h1 {
+            color: #FFF;
+            font-family: 'Open Sans', sans-serif;
+            font-weight: 600;
+            font-size: 36px;
+            text-align: center;
+            margin: 0 0 15px 0;
+        }
+
+        p {
+            margin: 5px 0 35px 0;
+            color: $lightColor;
+            text-align: center;
+        }
+
+        #trv-signup-btn {
+            width: 200px;
+            margin: 0 auto;
+            background-color: $primaryColor;
+            height: 50px;
+            border-radius: 2px;
+
+            i {
+                height: 30px;
+                width: 30px;
+                margin: 10px;
+                font-size: 30px;
+                float: left;
+                color: $secondaryColor;
+            }
+
+            p {
+                margin: 0;
+                font-family: 'Open Sans', sans-serif;
+                font-weight: 600;
+                font-size: 22px;
+                line-height: 50px;
+                color: $secondaryColor;
+            }
+        }
+
+        #trv-existing-user-text {
+            font-size: 12px;
+            color: $lightColor;
+            margin: 18px 0 0 0;
+        }
+
+        #trv-login-btn {
+            display: block;
+            margin: 0 auto;
+            text-align: center;
+
+            width: 130px;
+            background-color: $primaryColor;
+            height: 28px;
+            border-radius: 2px;
+
+            font-size: 14px;
+            line-height: 28px;
+            color: $secondaryColor;
+
+            text-decoration: none;
+        }
+    }
+
+    #trv-top-img {
+        position: absolute;
+        background: url('lp-top-cover.png') no-repeat center bottom;
+        background-size: contain;
+        width: 100%;
+        height: 50%;
+        bottom: 0;
+    }
+}
+
+#trv-lp-content-wrapper {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 20px 0 20px;
+
+    #trv-features {
+        h2 {
+            text-align: center;
+            font-size: 32px;
+            margin: 40px 0 20px 0;
+            color: $secondaryColor;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+
+            li {
+                box-sizing: border-box;
+                margin: 0;
+                display: inline-block;
+                width: 25%;
+                position: relative;
+                background-color: $secondaryColor;
+                transition: all 0.2s ease-in-out;
+
+                &:after {
+                    content: "";
+                    display: block;
+                    padding-bottom: 100%;
+                }
+
+                .trv-features-content {
+                    position: absolute;
+                    height: 70px;
+                    width: 100%;
+                    text-align: center;
+                    margin: auto;
+                    top: 0; right: 0; bottom: 0; left: 0;
+
+                    i {
+                        color: $primaryColor;
+                        font-size: 50px;
+                    }
+
+                    h4 {
+                        margin: 14px 0 0 0;
+                        font-size: 16px;
+                        font-weight: 600;
+                        color: #FFF;
+                        white-space: nowrap;
+                    }
+                }
+
+                &:hover {
+                    background-color: $primaryColor;
+                    transform: scale(1.04);
+                    z-index: 1;
+
+                    i { color: $secondaryColor; }
+                    p { color: $secondaryColor; }
+
+                    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+                }
+            }
+        }
+    }
+
+    #trv-about {
+        margin: 40px 0 40px 0;
+        min-height: 150px;
+        overflow: hidden;
+
+        #trv-about-content {
+            float: left;
+            width: 75%;
+
+            p {
+                text-align: justify;
+            }
+        }
+
+        #trv-about-img {
+            float: right;
+            min-height: 150px;
+            width: 20%;
+            background: url('lp-about.png') no-repeat center center;
+            background-size: contain;
+        }
+    }
+}
+
+#trv-footer {
+    width: 100%;
+    height: 60px;
+    background: $secondaryColor;
+
+    p {
+        color: $lightColor;
+        text-align: center;
+        line-height: 60px;
+        font-size: 11px;
+        margin: 0;
+        padding: 0;
+
+        a {
+            color: $primaryColor;
+        }
+    }
+}
+
+#trv-login-modal, #trv-signup-modal {
+    .uk-modal-dialog {
+        width: 300px;
+    }
+
+    input {
+        width: 100%;
+        border-radius: 2px;
+    }
+
+    button {
+        width: 100%;
+        border-radius: 2px;
+        margin: 10px 0 0 0;
+        background-color: $primaryColor;
+    }
+}

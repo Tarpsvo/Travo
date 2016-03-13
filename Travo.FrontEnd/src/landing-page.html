@@ -1,6 +1,105 @@
 <template>
-    WELCOME TO LANDING PAGE!!!!
-    <div class="container">
-        <router-view></router-view>
+    <div id="trv-lp-top-wrapper">
+        <div id="trv-top-text">
+            <h1>Travo</h1>
+            <p>Travo is a free task and time management tool that combines the best features from Toggl, Trello and Todoist.</p>
+            <div id="trv-signup-btn" class="trv-lp-big-btn" data-uk-modal="{target:'#trv-signup-modal'}">
+                <i class="uk-icon-rocket"></i>
+                <p>REGISTER</p>
+            </div>
+
+            <p id="trv-existing-user-text">Existing user?</p>
+
+            <a id="trv-login-btn" href="#trv-login-modal" class="trv-lp-big-btn" data-uk-modal>Log in</a>
+        </div>
+
+        <div id="trv-top-img"></div>
+    </div>
+
+    <div id="trv-lp-content-wrapper">
+        <div id="trv-features">
+            <h2>TRAVO FEATURES</h2>
+
+            <ul>
+                <li>
+                    <div class="trv-features-content">
+                        <i class="uk-icon-calendar-check-o"></i>
+                        <h4>Manage tasks</h4>
+                    </div>
+                </li><li>
+                    <div class="trv-features-content">
+                        <i class="uk-icon-hourglass-o"></i>
+                        <h4>Track time</h4>
+                    </div>
+                </li><li>
+                    <div class="trv-features-content">
+                        <i class="uk-icon-book"></i>
+                        <h4>See statistics</h4>
+                    </div>
+                </li><li>
+                    <div class="trv-features-content">
+                        <i class="uk-icon-users"></i>
+                        <h4>Work in a team</h4>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <div id="trv-about">
+            <div id="trv-about-content">
+                <h3>About Travo</h3>
+                <p>Travo is a task and time management tool created as a school project. It combines the best features from Toggl, Trello and Todoist.
+                The application specification is bound to be changed according to user feedback: existing features may change for the better and new features
+                will be added.</p>
+            </div>
+            <div id="trv-about-img"></div>
+        </div>
+    </div>
+
+    <div id="trv-footer">
+        <p>Copyright (c) 2016 Tarvo Reinpalu | All Rights Reserved. | Developed and designed by <a href="http://tarvo.ee" target="_blank">Tarvo Reinpalu</a>.</p>
+    </div>
+
+    <!-- Modals -->
+    <div id="trv-login-modal" class="uk-modal">
+        <div class="uk-modal-dialog">
+            <a class="uk-modal-close uk-close"></a>
+            <form class="uk-form">
+                <fieldset>
+                    <legend>Log in</legend>
+                    <div class="uk-form-row">
+                        <input type="email" placeholder="Email">
+                    </div>
+                    <div class="uk-form-row">
+                        <input type="password" placeholder="Password">
+                    </div>
+                    <button class="uk-button">Log in</button>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+
+    <div id="trv-signup-modal" class="uk-modal">
+        <div class="uk-modal-dialog">
+            <a class="uk-modal-close uk-close"></a>
+            <form class="uk-form">
+                <fieldset>
+                    <legend>Register</legend>
+                    <div class="uk-form-row">
+                        <input type="text" placeholder="Email">
+                    </div>
+                    <div class="uk-form-row">
+                        <input type="text" placeholder="Display name">
+                    </div>
+                    <div class="uk-form-row">
+                        <input type="password" placeholder="Password">
+                    </div>
+                    <div class="uk-form-row">
+                        <input type="password" placeholder="Confirm password">
+                    </div>
+                    <button class="uk-button">Register</button>
+                </fieldset>
+            </form>
+        </div>
     </div>
 </template>
