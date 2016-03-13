@@ -33,22 +33,32 @@ gulp.task('build-html', function () {
         .pipe(gulp.dest(paths.output));
 });
 
+// Copies images to dist directory
+gulp.task('copy-images', function () {
+    return gulp.src(paths.img)
+        .pipe(changed(paths.output))
+        .pipe(flatten())
+        .pipe(gulp.dest(paths.output));
+});
+
 // Compiles SCSS files and copies them to output directory
 gulp.task('build-scss', function () {
     return gulp.src(paths.scss)
+        .pipe(plumber())
         .pipe(changed(paths.output, { extension: '.css' }))
         .pipe(sourcemaps.init({ loadMaps: true }))
-        .pipe(sass({ outputStyle: 'compressed' }))
+        .pipe(sass.sync({ outputStyle: 'compressed' }))
         .pipe(sourcemaps.write({ includeContent: true }))
         .pipe(flatten())
-        .pipe(gulp.dest(paths.output));
+        .pipe(gulp.dest(paths.output))
+        .pipe(browserSync.stream({match: '**/*.css'}));
 });
 
 // Calls the clean task and then runs builds in parallel
 gulp.task('build', function (callback) {
     return runSequence(
         'clean',
-        ['build-system', 'build-html', 'build-scss'],
+        ['build-system', 'copy-images', 'build-html', 'build-scss'],
         callback
     );
 });
