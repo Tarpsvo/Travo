@@ -1,35 +1,35 @@
 {
-    "name": "travo-frontend",
-    "version": "0.0.1",
-    "private": true,
-    "author": "Tarvo R.",
-    "devDependencies": {
-        "browser-sync": "^2.11.1",
-        "del": "^2.2.0",
-        "gulp": "^3.9.1",
-        "gulp-changed": "^1.3.0",
-        "gulp-flatten": "^0.2.0",
-        "gulp-plumber": "^1.1.0",
-        "gulp-sass": "^2.2.0",
-        "gulp-sourcemaps": "^1.6.0",
-        "gulp-typescript": "^2.12.1",
-        "jspm": "^0.16.30",
-        "object-assign": "^4.0.1",
-        "require-dir": "^0.3.0",
-        "run-sequence": "^1.1.5",
-        "typings": "^0.7.7",
-        "vinyl-paths": "^2.1.0"
+  "name": "travo-frontend",
+  "version": "0.0.1",
+  "private": true,
+  "author": "Tarvo R.",
+  "devDependencies": {
+    "browser-sync": "^2.11.1",
+    "del": "^2.2.0",
+    "gulp": "^3.9.1",
+    "gulp-changed": "^1.3.0",
+    "gulp-plumber": "^1.1.0",
+    "gulp-sass": "^2.2.0",
+    "gulp-sourcemaps": "^1.6.0",
+    "gulp-typescript": "^2.12.1",
+    "jspm": "^0.16.30",
+    "object-assign": "^4.0.1",
+    "require-dir": "^0.3.0",
+    "run-sequence": "^1.1.5",
+    "typings": "^0.7.7",
+    "vinyl-paths": "^2.1.0"
+  },
+  "jspm": {
+    "dependencies": {
+      "aurelia-bootstrapper": "npm:aurelia-bootstrapper@^1.0.0-beta.1.1.4",
+      "aurelia-fetch-client": "npm:aurelia-fetch-client@^1.0.0-beta.1.1.1",
+      "aurelia-framework": "npm:aurelia-framework@^1.0.0-beta.1.1.4",
+      "aurelia-http-client": "npm:aurelia-http-client@^1.0.0-beta.1.1.2"
     },
-    "jspm": {
-        "dependencies": {
-            "aurelia-bootstrapper": "npm:aurelia-bootstrapper@^1.0.0-beta.1.1.4",
-            "aurelia-framework": "npm:aurelia-framework@^1.0.0-beta.1.1.4",
-            "aurelia-http-client": "npm:aurelia-http-client@^1.0.0-beta.1.1.2"
-        },
-        "devDependencies": {
-            "babel": "npm:babel-core@^5.8.24",
-            "babel-runtime": "npm:babel-runtime@^5.8.24",
-            "core-js": "npm:core-js@^1.1.4"
-        }
+    "devDependencies": {
+      "babel": "npm:babel-core@^5.8.24",
+      "babel-runtime": "npm:babel-runtime@^5.8.24",
+      "core-js": "npm:core-js@^1.1.4"
     }
+  }
 }

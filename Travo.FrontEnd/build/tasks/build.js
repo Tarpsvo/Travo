@@ -6,7 +6,6 @@ var sourcemaps = require('gulp-sourcemaps');
 var sass = require('gulp-sass');
 var browserSync = require('browser-sync');
 var ts = require('gulp-typescript');
-var flatten = require('gulp-flatten');
 
 var tsProject = ts.createProject('tsconfig.json');
 var paths = require('../paths');
@@ -21,15 +20,13 @@ gulp.task('build-system', function () {
         .pipe(sourcemaps.init({ loadMaps: true }))
         .pipe(ts(tsProject))
         .pipe(sourcemaps.write({ includeContent: false, sourceRoot: '/src' }))
-        .pipe(flatten())
         .pipe(gulp.dest(paths.output));
 });
 
-// Copies changed HTML files to the output directory
-gulp.task('build-html', function () {
+// Copies changed HTML, image and library files to the output directory
+gulp.task('copy-html', function () {
     return gulp.src(paths.html)
         .pipe(changed(paths.output, { extension: '.html' }))
-        .pipe(flatten())
         .pipe(gulp.dest(paths.output));
 });
 
@@ -37,8 +34,14 @@ gulp.task('build-html', function () {
 gulp.task('copy-images', function () {
     return gulp.src(paths.img)
         .pipe(changed(paths.output))
-        .pipe(flatten())
         .pipe(gulp.dest(paths.output));
+});
+
+// Copies lib files to dist directory
+gulp.task('copy-libraries', function () {
+    return gulp.src(paths.lib)
+        .pipe(changed(paths.output))
+        .pipe(gulp.dest(paths.output + 'lib'));
 });
 
 // Compiles SCSS files and copies them to output directory
@@ -49,16 +52,18 @@ gulp.task('build-scss', function () {
         .pipe(sourcemaps.init({ loadMaps: true }))
         .pipe(sass.sync({ outputStyle: 'compressed' }))
         .pipe(sourcemaps.write({ includeContent: true }))
-        .pipe(flatten())
         .pipe(gulp.dest(paths.output))
         .pipe(browserSync.stream({match: '**/*.css'}));
 });
+
+// Gathers general build tasks
+gulp.task('build-general', ['copy-html', 'copy-images', 'copy-libraries']);
 
 // Calls the clean task and then runs builds in parallel
 gulp.task('build', function (callback) {
     return runSequence(
         'clean',
-        ['build-system', 'copy-images', 'build-html', 'build-scss'],
+        ['build-system', 'build-general', 'build-scss'],
         callback
     );
 });

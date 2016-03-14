@@ -1,5 +1,5 @@
 import {Aurelia, inject} from 'aurelia-framework';
-import {HttpClient} from 'aurelia-http-client';
+import {HttpClient, json} from 'aurelia-fetch-client';
 import config from 'travo-config';
 
 // SRC: https://github.com/Foursails/sentry/blob/master/src/AuthService.js
@@ -11,10 +11,6 @@ export default class AuthService {
     session = null;
 
     constructor(aurelia: Aurelia, httpClient: HttpClient) {
-        httpClient.configure(http => {
-            http.withBaseUrl(config.baseUrl);
-        });
-
         this.http = httpClient;
         this.app = aurelia;
 
@@ -22,17 +18,29 @@ export default class AuthService {
         this.session = JSON.parse(localStorage[config.tokenName] || null);
     }
 
-    login(username: string, password: string) {
-        this.http
-            .post(config.loginUrl, { username, password })
-            .then((response) => response.content)
-            .then((session) => {
+    login(email: string, password: string) {
+        let loginVM = {
+            email: email,
+            password: password
+        };
 
-            // Save to localStorage and session
+        return this.http
+            .fetch(config.router.login, {
+                method: 'POST',
+                body: json(loginVM)
+            })
+            .then(response => response.json())
+            .then(anything => console.log(anything))
+            .catch(error => {
+                console.log(error);
+            });
+
+            /* TODO
+            Save token to localStorage and session
             localStorage[config.tokenName] = JSON.stringify(session);
             this.session = session;
             this.app.setRoot('app');
-        });
+            */
     }
 
     logout() {

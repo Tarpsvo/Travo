@@ -64,16 +64,16 @@
     <div id="trv-login-modal" class="uk-modal">
         <div class="uk-modal-dialog">
             <a class="uk-modal-close uk-close"></a>
-            <form class="uk-form">
+            <form role="form" class="uk-form" submit.delegate="login()">
                 <fieldset>
                     <legend>Log in</legend>
                     <div class="uk-form-row">
-                        <input type="email" placeholder="Email">
+                        <input type="email" value.bind="loginEmail" placeholder="Email">
                     </div>
                     <div class="uk-form-row">
-                        <input type="password" placeholder="Password">
+                        <input type="password" value.bind="loginPassword" placeholder="Password">
                     </div>
-                    <button class="uk-button">Log in</button>
+                    <button type="submit" class="uk-button">Log in</button>
                 </fieldset>
             </form>
         </div>
