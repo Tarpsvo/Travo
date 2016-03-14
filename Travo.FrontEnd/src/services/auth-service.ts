@@ -43,6 +43,25 @@ export default class AuthService {
             */
     }
 
+    register(email: string, username: string, password: string) {
+        let registerVM = {
+            email: email,
+            username: username,
+            password: password
+        };
+
+        return this.http
+            .fetch(config.router.register, {
+                method: 'POST',
+                body: json(registerVM)
+            })
+            .then(response => response.json())
+            .then(anything => console.log(anything))
+            .catch(error => {
+                console.log(error);
+            });
+    }
+
     logout() {
         localStorage[config.tokenName] = null;
         this.session = null;

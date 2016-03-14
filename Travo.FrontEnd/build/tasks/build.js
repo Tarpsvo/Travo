@@ -38,7 +38,7 @@ gulp.task('copy-images', function () {
 });
 
 // Copies lib files to dist directory
-gulp.task('copy-libraries', function () {
+gulp.task('copy-lib', function () {
     return gulp.src(paths.lib)
         .pipe(changed(paths.output))
         .pipe(gulp.dest(paths.output + 'lib'));
@@ -57,7 +57,7 @@ gulp.task('build-scss', function () {
 });
 
 // Gathers general build tasks
-gulp.task('build-general', ['copy-html', 'copy-images', 'copy-libraries']);
+gulp.task('build-general', ['copy-html', 'copy-images', 'copy-lib']);
 
 // Calls the clean task and then runs builds in parallel
 gulp.task('build', function (callback) {

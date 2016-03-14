@@ -11,6 +11,9 @@ export class LandingPage {
     // User inputs (bound in viewmodel)
     loginEmail: string = "";
     loginPassword: string = "";
+    registerEmail: string = "";
+    registerUsername: string = "";
+    registerPassword: string = "";
 
     constructor(authService: AuthService, http: HttpClient) {
         this.auth = authService;
@@ -29,8 +32,17 @@ export class LandingPage {
     }
 
     login() {
-        console.log("login");
         return this.auth.login(this.loginEmail, this.loginPassword)
+            .then(response => {
+                //console.log(response);
+            })
+            .catch(error => {
+                //console.log(error);
+            })
+    }
+
+    register() {
+        return this.auth.register(this.registerEmail, this.registerUsername, this.registerPassword)
             .then(response => {
                 //console.log(response);
             })

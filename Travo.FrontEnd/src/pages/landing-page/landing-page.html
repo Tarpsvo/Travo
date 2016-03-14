@@ -82,22 +82,22 @@
     <div id="trv-signup-modal" class="uk-modal">
         <div class="uk-modal-dialog">
             <a class="uk-modal-close uk-close"></a>
-            <form class="uk-form">
+            <form role="form" class="uk-form" submit.delegate="register()">
                 <fieldset>
                     <legend>Register</legend>
                     <div class="uk-form-row">
-                        <input type="text" placeholder="Email">
+                        <input type="text" value.bind="registerEmail" placeholder="Email">
                     </div>
                     <div class="uk-form-row">
-                        <input type="text" placeholder="Display name">
+                        <input type="text" value.bind="registerUsername" placeholder="Display name">
                     </div>
                     <div class="uk-form-row">
-                        <input type="password" placeholder="Password">
+                        <input type="password" value.bind="registerPassword" placeholder="Password">
                     </div>
                     <div class="uk-form-row">
                         <input type="password" placeholder="Confirm password">
                     </div>
-                    <button class="uk-button">Register</button>
+                    <button type="submit" class="uk-button">Register</button>
                 </fieldset>
             </form>
         </div>
