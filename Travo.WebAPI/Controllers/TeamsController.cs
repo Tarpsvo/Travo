@@ -1,10 +1,11 @@
 ﻿using System.Web.Http;
+using Travo.Controllers.Main;
 using Travo.ViewModels.Team;
 
 namespace Travo.Controllers
 {
     [RoutePrefix("teams"), Authorize]
-    public class TeamsController: ApiController
+    public class TeamsController: TravoApiController
     {
         [Route(""), HttpGet]
         public IHttpActionResult GetAllUsersTeamsAndBoards()

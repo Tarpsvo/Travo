@@ -1,28 +1,31 @@
 ﻿using System.Web.Http;
+using Travo.Controllers.Main;
 using Travo.ViewModels.Auth;
 
 namespace Travo.Controllers
 {
     [RoutePrefix("auth")]
-    public class AuthController : ApiController
+    public class AuthController : TravoApiController
     {
         [Route("login"), HttpPost]
         public IHttpActionResult Login(LoginVM vm)
         {
-            // TODO: Replace with real auth
-            if (vm == null || !(vm.Email == "test" && vm.Password == "test"))
-            {
-                return Ok(new { success = false, message = "User code or password is incorrect" });
+            if (!ModelState.IsValid) {
+                return Error(ModelState);
             }
 
-            return Ok(new { success = true });
+            return Ok();
         }
 
         [Route("register"), HttpPost]
         public IHttpActionResult Register(RegisterVM vm)
         {
-            // TODO: Replace with real auth
-            return Ok(new { success = false, message = "Register." });
+            if (!ModelState.IsValid)
+            {
+                return Error(ModelState);
+            }
+
+            return Ok();
         }
     }
 }
