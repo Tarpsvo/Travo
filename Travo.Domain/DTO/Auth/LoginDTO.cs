@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Travo.ViewModels.Auth
+namespace Travo.Domain.DTO
 {
     public class LoginDTO
     {

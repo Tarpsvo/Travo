@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
 using System.Web.Http.Cors;
+using Newtonsoft.Json.Serialization;
+using Newtonsoft.Json;
 
 namespace Travo
 {
@@ -22,6 +24,13 @@ namespace Travo
                 routeTemplate: "{controller}/{id}",
                 defaults: new { id = RouteParameter.Optional }
             );
+
+            // Formatters
+            var formatters = config.Formatters;
+            var jsonFormatter = formatters.JsonFormatter;
+            formatters.Remove(formatters.XmlFormatter);
+            jsonFormatter.SerializerSettings.Formatting = Formatting.Indented;
+            jsonFormatter.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
         }
     }
 }

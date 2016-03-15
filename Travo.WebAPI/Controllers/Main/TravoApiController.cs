@@ -1,9 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Web.Http;
 using System.Web.Http.ModelBinding;
-using Travo.ViewModels;
 
-namespace Travo.Controllers.Main
+namespace Travo.Controllers
 {
     public class TravoApiController : ApiController
     {

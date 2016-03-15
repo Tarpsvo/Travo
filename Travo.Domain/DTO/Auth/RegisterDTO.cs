@@ -1,8 +1,8 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Travo.ViewModels.Auth
+namespace Travo.Domain.DTO
 {
-    public class RegisterVM
+    public class RegisterDTO
     {
         [Required]
         public string Email { get; set; }

@@ -1,6 +1,6 @@
-﻿namespace Travo.ViewModels.Team
+﻿namespace Travo.Domain.DTO
 {
-    public class TeamGetVM
+    public class TeamGetDTO
     {
         public int Id { get; set; }
         public string Name { get; set; }

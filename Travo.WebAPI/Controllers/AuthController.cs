@@ -1,6 +1,5 @@
 ﻿using System.Web.Http;
-using Travo.Controllers.Main;
-using Travo.ViewModels.Auth;
+using Travo.Domain.DTO;
 
 namespace Travo.Controllers
 {
@@ -8,7 +7,7 @@ namespace Travo.Controllers
     public class AuthController : TravoApiController
     {
         [Route("login"), HttpPost]
-        public IHttpActionResult Login(LoginVM vm)
+        public IHttpActionResult Login(LoginDTO vm)
         {
             if (!ModelState.IsValid) {
                 return Error(ModelState);
@@ -18,7 +17,7 @@ namespace Travo.Controllers
         }
 
         [Route("register"), HttpPost]
-        public IHttpActionResult Register(RegisterVM vm)
+        public IHttpActionResult Register(RegisterDTO vm)
         {
             if (!ModelState.IsValid)
             {

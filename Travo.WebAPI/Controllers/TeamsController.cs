@@ -1,6 +1,5 @@
 ﻿using System.Web.Http;
-using Travo.Controllers.Main;
-using Travo.ViewModels.Team;
+using Travo.Domain.DTO;
 
 namespace Travo.Controllers
 {
@@ -10,7 +9,7 @@ namespace Travo.Controllers
         [Route(""), HttpGet]
         public IHttpActionResult GetAllUsersTeamsAndBoards()
         {
-            return Ok(new { Teams = new TeamGetVM { Id = 12, Name = "Team", Description = "Desc", Created = 1232133454 } });
+            return Ok(new { Teams = new TeamGetDTO { Id = 12, Name = "Team", Description = "Desc", Created = 1232133454 } });
         }
     }
 }
