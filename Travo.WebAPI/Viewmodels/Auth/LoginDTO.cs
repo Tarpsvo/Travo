@@ -2,7 +2,7 @@
 
 namespace Travo.ViewModels.Auth
 {
-    public class LoginVM
+    public class LoginDTO
     {
         [Required]
         public string Email { get; set; }

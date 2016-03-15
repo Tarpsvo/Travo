@@ -19,7 +19,7 @@ export default class AuthService {
     }
 
     login(email: string, password: string) {
-        let loginVM = {
+        let loginDTO = {
             email: email,
             password: password
         };
@@ -44,7 +44,7 @@ export default class AuthService {
     }
 
     register(email: string, username: string, password: string) {
-        let registerVM = {
+        let registerDTO = {
             email: email,
             username: username,
             password: password
