@@ -1,15 +1,18 @@
-﻿using System.Data.Entity.Migrations;
-
 namespace Travo.DAL.Migrations
 {
-    internal sealed class MigrationConfiguration : DbMigrationsConfiguration<TravoDbContext>
+    using System;
+    using System.Data.Entity;
+    using System.Data.Entity.Migrations;
+    using System.Linq;
+
+    internal sealed class Configuration : DbMigrationsConfiguration<Travo.DAL.TravoDbContext>
     {
-        public MigrationConfiguration()
+        public Configuration()
         {
             AutomaticMigrationsEnabled = false;
         }
 
-        protected override void Seed(TravoDbContext context)
+        protected override void Seed(Travo.DAL.TravoDbContext context)
         {
             //  This method will be called after migrating to the latest version.
 
