@@ -1,5 +1,4 @@
 ﻿using System;
-using System.ComponentModel.DataAnnotations;
 using Travo.Domain.Enums;
 
 namespace Travo.Domain.Models
