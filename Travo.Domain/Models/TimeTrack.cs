@@ -1,6 +1,6 @@
 ﻿namespace Travo.Domain.Models
 {
-    class TimeTrack
+    public class TimeTrack
     {
         public int Id { get; set; }
         public int UserId { get; set; }

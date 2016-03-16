@@ -1,16 +1,15 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.AspNet.Identity.EntityFramework;
+using System;
 
 namespace Travo.Domain.Models
 {
-    class User
+    public class User: IdentityUser
     {
-        public int Id { get; set; }
-        public long Created { get; set; }
-        [StringLength(30, MinimumLength = 1)]
-        public string Username { get; set; }
-        [StringLength(254, MinimumLength = 1)]
-        public string Email { get; set; }
-        [StringLength(128, MinimumLength = 1)]
-        public string PasswordHash { get; set; }
+        public DateTime Created { get; set; }
+
+        public User()
+        {
+            Created = DateTime.UtcNow;
+        }
     }
 }

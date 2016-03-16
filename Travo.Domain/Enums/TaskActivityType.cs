@@ -1,6 +1,6 @@
 ﻿namespace Travo.Domain.Enums
 {
-    enum TaskActivityType: int
+    public enum TaskActivityType: int
     {
         Created = 0,
         Edited = 1,
