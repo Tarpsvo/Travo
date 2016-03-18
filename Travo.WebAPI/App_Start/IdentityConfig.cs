@@ -2,10 +2,6 @@
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using Travo.DAL;
 using Travo.Domain.Models;
 
@@ -13,9 +9,7 @@ namespace Travo.App_Start
 {
     public class TravoUserManager : UserManager<User>
     {
-        public TravoUserManager(IUserStore<User> store) : base(store)
-        {
-        }
+        public TravoUserManager(IUserStore<User> store) : base(store) {}
 
         public static TravoUserManager Create(IdentityFactoryOptions<TravoUserManager> options, IOwinContext context)
         {
@@ -44,6 +38,7 @@ namespace Travo.App_Start
             {
                 manager.UserTokenProvider = new DataProtectorTokenProvider<User>(dataProtectionProvider.Create("ASP.NET Identity"));
             }
+
             return manager;
         }
     }

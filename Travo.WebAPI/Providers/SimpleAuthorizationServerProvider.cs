@@ -19,16 +19,25 @@ namespace Travo.Providers
 
         public override async System.Threading.Tasks.Task GrantResourceOwnerCredentials(OAuthGrantResourceOwnerCredentialsContext context)
         {
-
-            context.OwinContext.Response.Headers.Add("Access-Control-Allow-Origin", new[] { "*" });
-
-            using (AuthRepository _repo = new AuthRepository())
+            using (AccountRepository _repo = new AccountRepository())
             {
+                if (context.UserName == null)
+                {
+                    context.SetError("Invalid data", "Username field was empty.");
+                    return;
+                }
+
+                if (context.UserName == null)
+                {
+                    context.SetError("Invalid data", "Password field was empty.");
+                    return;
+                }
+
                 User user = await _repo.FindUser(context.UserName, context.Password);
 
                 if (user == null)
                 {
-                    context.SetError("invalid_grant", "The user name or password is incorrect.");
+                    context.SetError("Invalid data", "The user name or password is incorrect.");
                     return;
                 }
             }
@@ -38,7 +47,6 @@ namespace Travo.Providers
             identity.AddClaim(new Claim("role", "user"));
 
             context.Validated(identity);
-
         }
     }
 }

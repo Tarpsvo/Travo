@@ -10,11 +10,11 @@ namespace Travo.Controllers
     [RoutePrefix("account")]
     public class AccountController : TravoApiController
     {
-        private AuthRepository _repo = null;
+        private AccountRepository _repo = null;
 
         public AccountController()
         {
-            _repo = new AuthRepository();
+            _repo = new AccountRepository();
         }
 
         [AllowAnonymous]

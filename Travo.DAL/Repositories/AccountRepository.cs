@@ -10,12 +10,12 @@ using Travo.Domain.Models;
 
 namespace Travo.DAL.Repositories
 {
-    public class AuthRepository: IDisposable
+    public class AccountRepository: IDisposable
     {
         private TravoDbContext _ctx;
         private UserManager<User> _userManager;
 
-        public AuthRepository()
+        public AccountRepository()
         {
             _ctx = new TravoDbContext();
             _userManager = new UserManager<User>(new UserStore<User>(_ctx));

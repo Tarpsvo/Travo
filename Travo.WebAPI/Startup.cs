@@ -12,10 +12,10 @@ namespace Travo.WebAPI
     {
         public void Configuration(IAppBuilder app)
         {
-            ConfigureOAuth(app);
-            HttpConfiguration config = new HttpConfiguration();
-            WebApiConfig.Register(config);
             app.UseCors(Microsoft.Owin.Cors.CorsOptions.AllowAll);
+            HttpConfiguration config = new HttpConfiguration();
+            ConfigureOAuth(app);
+            WebApiConfig.Register(config);
             app.UseWebApi(config);
         }
 
@@ -24,7 +24,7 @@ namespace Travo.WebAPI
             OAuthAuthorizationServerOptions OAuthServerOptions = new OAuthAuthorizationServerOptions()
             {
                 AllowInsecureHttp = true,
-                TokenEndpointPath = new PathString("/auth/token"),
+                TokenEndpointPath = new PathString("/account/token"),
                 AccessTokenExpireTimeSpan = TimeSpan.FromDays(1),
                 Provider = new SimpleAuthorizationServerProvider()
             };
@@ -32,7 +32,6 @@ namespace Travo.WebAPI
             // Token Generation
             app.UseOAuthAuthorizationServer(OAuthServerOptions);
             app.UseOAuthBearerAuthentication(new OAuthBearerAuthenticationOptions());
-
         }
     }
 }
