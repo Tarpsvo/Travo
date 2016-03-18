@@ -3,14 +3,14 @@
 export function configure(aurelia) {
     aurelia.use
         .standardConfiguration()
-        .developmentLogging();
-
+        .developmentLogging()
+        .plugin('aurelia-validation');
 
     aurelia
         .start()
         .then(() => {
             var auth = aurelia.container.get(AuthService);
-            let root = auth.isAuthenticated() ? 'pages/travo-app/travo-app' : 'pages/landing-page/landing-page';
+            let root = auth.isAuthenticated() ? './dist/pages/travo-app/travo-app' : './dist/pages/landing-page/landing-page';
             aurelia.setRoot(root);
         });
 }

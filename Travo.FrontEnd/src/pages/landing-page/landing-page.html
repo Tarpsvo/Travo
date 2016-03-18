@@ -61,45 +61,10 @@
     </div>
 
     <!-- Modals -->
-    <div id="trv-login-modal" class="uk-modal">
-        <div class="uk-modal-dialog">
-            <a class="uk-modal-close uk-close"></a>
-            <form role="form" class="uk-form" submit.delegate="login()">
-                <fieldset>
-                    <legend>Log in</legend>
-                    <div class="uk-form-row">
-                        <input type="email" value.bind="loginEmail" placeholder="Email">
-                    </div>
-                    <div class="uk-form-row">
-                        <input type="password" value.bind="loginPassword" placeholder="Password">
-                    </div>
-                    <button type="submit" class="uk-button">Log in</button>
-                </fieldset>
-            </form>
-        </div>
-    </div>
+    <require from="./login-modal/login-modal"></require>
+    <login-modal></login-modal>
 
-    <div id="trv-signup-modal" class="uk-modal">
-        <div class="uk-modal-dialog">
-            <a class="uk-modal-close uk-close"></a>
-            <form role="form" class="uk-form" submit.delegate="register()">
-                <fieldset>
-                    <legend>Register</legend>
-                    <div class="uk-form-row">
-                        <input type="text" value.bind="registerEmail" placeholder="Email">
-                    </div>
-                    <div class="uk-form-row">
-                        <input type="text" value.bind="registerUsername" placeholder="Display name">
-                    </div>
-                    <div class="uk-form-row">
-                        <input type="password" value.bind="registerPassword" placeholder="Password">
-                    </div>
-                    <div class="uk-form-row">
-                        <input type="password" placeholder="Confirm password">
-                    </div>
-                    <button type="submit" class="uk-button">Register</button>
-                </fieldset>
-            </form>
-        </div>
-    </div>
+    <require from="./register-modal/register-modal"></require>
+    <register-modal></register-modal>
+
 </template>

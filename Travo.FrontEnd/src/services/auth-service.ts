@@ -1,3 +1,5 @@
+/// <reference path="../lib/jquery/jquery.d.ts" />
+
 import {Aurelia, inject} from 'aurelia-framework';
 import {HttpClient, json} from 'aurelia-fetch-client';
 import config from 'travo-config';
@@ -20,20 +22,18 @@ export default class AuthService {
 
     login(email: string, password: string) {
         let loginDTO = {
-            email: email,
+            grant_type: 'password',
+            userName: email,
             password: password
         };
 
-        return this.http
-            .fetch(config.router.login, {
-                method: 'POST',
-                body: json(loginVM)
-            })
-            .then(response => response.json())
-            .then(anything => console.log(anything))
-            .catch(error => {
-                console.log(error);
-            });
+        return this.http.fetch(config.router.token, {
+            body: $.param(loginDTO),
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
+            }
+        });
 
             /* TODO
             Save token to localStorage and session
@@ -43,22 +43,17 @@ export default class AuthService {
             */
     }
 
-    register(email: string, username: string, password: string) {
+    register(email: string, displayName: string, password: string) {
         let registerDTO = {
             email: email,
-            username: username,
+            displayName: displayName,
             password: password
         };
 
         return this.http
             .fetch(config.router.register, {
                 method: 'POST',
-                body: json(registerVM)
-            })
-            .then(response => response.json())
-            .then(anything => console.log(anything))
-            .catch(error => {
-                console.log(error);
+                body: json(registerDTO)
             });
     }
 

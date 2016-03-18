@@ -1,0 +1,25 @@
+<template>
+    <div id="trv-signup-modal" class="uk-modal">
+        <div class="uk-modal-dialog">
+            <a class="uk-modal-close uk-close"></a>
+            <form role="form" class="uk-form" submit.delegate="register()" validate.bind="validation">
+                <fieldset>
+                    <legend>Register</legend>
+                    <div class="uk-form-row form-group">
+                        <input type="text" value.bind="email" placeholder="Email" class="form-control">
+                    </div>
+                    <div class="uk-form-row form-group">
+                        <input type="text" value.bind="displayName" placeholder="Display name" class="form-control">
+                    </div>
+                    <div class="uk-form-row form-group">
+                        <input type="password" value.bind="password" placeholder="Password" class="form-control">
+                    </div>
+                    <div class="uk-form-row form-group">
+                        <input type="password" value.bind="confirmPassword" placeholder="Confirm password" class="form-control">
+                    </div>
+                    <button type="submit" class="uk-button trv-form-submit-btn" disabled.bind="!validation.result.isValid">Register</button>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+</template>
