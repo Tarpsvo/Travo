@@ -18,6 +18,7 @@ html, body {
 }
 
 #header-wrap {
+    position: absolute;
     width: 100%;
     height: $headerHeight;
     background: #444554;

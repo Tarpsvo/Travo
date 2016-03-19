@@ -7,17 +7,6 @@ export class LandingPage {
     http: HttpClient;
 
     constructor(http: HttpClient) {
-        http.configure(httpconfig => {
-            httpconfig
-                .rejectErrorResponses()
-                .withBaseUrl(config.baseUrl)
-                .withDefaults({
-                    mode: 'cors',
-                    headers: {
-                        'X-Requested-With': 'Fetch'
-                    }
-                });
-        });
         this.http = http;
     }
 }

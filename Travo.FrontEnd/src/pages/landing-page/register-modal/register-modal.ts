@@ -1,6 +1,7 @@
 import {Aurelia, inject} from 'aurelia-framework';
 import {Validation, ValidationGroup, ensure} from 'aurelia-validation';
 import AuthService from 'services/auth-service';
+import Notify from 'notify-client';
 
 @inject(Aurelia, AuthService, Validation)
 export class RegisterModal {
@@ -29,22 +30,17 @@ export class RegisterModal {
     }
 
     register() {
-        this.validation.validate() //the validate will fulfil when validation is valid, and reject if not
+        this.validation.validate()
             .then( () => {
                 this.isLoading = true;
                 this.auth.register(this.email, this.displayName, this.password)
                     .then(response => {
                         this.isLoading = false;
-                        if (!response.success) {
-                            UIkit.notify({
-                                message : response.message,
-                                status  : 'danger',
-                                timeout : 2000,
-                                pos     : 'top-center'
-                            });
-                        } else {
-                            this.auth.login(this.email, this.password);
-                        }
+                        this.auth.login(this.email, this.password);
+                    })
+                    .catch(response => {
+                        this.isLoading = false;
+                        Notify.showError('Oops, something went wrong.');
                     });
             });
     }

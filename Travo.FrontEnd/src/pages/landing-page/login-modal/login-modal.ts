@@ -3,6 +3,7 @@
 import {inject} from 'aurelia-framework';
 import {Validation, ValidationGroup, ensure} from 'aurelia-validation';
 import AuthService from 'services/auth-service';
+import Notify from 'notify-client';
 import config from 'travo-config';
 
 @inject(AuthService, Validation)
@@ -24,16 +25,11 @@ export class LoginModal {
     login() {
         this.isLoading = true;
         this.auth.login(this.email, this.password)
-            .then(response => {
+            .then(response => this.isLoading = false)
+            .catch(response => {
                 this.isLoading = false;
-                if (!response.success) {
-                    UIkit.notify({
-                        message : response.message,
-                        status  : 'danger',
-                        timeout : 2000,
-                        pos     : 'top-center'
-                    });
-                }
+                if (response.status == 400) Notify.showError("Wrong username or password.");
+                else Notify.showError("Connection error, please try again.");
             });
     }
 }
