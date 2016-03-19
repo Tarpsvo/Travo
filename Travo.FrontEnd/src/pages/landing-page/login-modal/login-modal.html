@@ -2,18 +2,23 @@
     <div id="trv-login-modal" class="uk-modal">
         <div class="uk-modal-dialog">
             <a class="uk-modal-close uk-close"></a>
-            <form role="form" class="uk-form" submit.delegate="login()" validate.bind="validation">
-                <fieldset>
-                    <legend>Log in</legend>
-                    <div class="uk-form-row form-group">
-                        <input type="text" value.bind="email" placeholder="Email" class="form-control">
-                    </div>
-                    <div class="uk-form-row form-group">
-                        <input type="password" value.bind="password" placeholder="Password" class="form-control">
-                    </div>
-                    <button type="submit" class="uk-button trv-form-submit-btn" disabled.bind="!validation.result.isValid">Log in</button>
-                </fieldset>
-            </form>
+
+            <div class="trv-modal-loading" show.bind="isLoading"><div class="trv-progress-bar"><div class="indeterminate"></div></div></div>
+
+            <div class="trv-modal-content">
+                <form role="form" class="uk-form" submit.delegate="login()" validate.bind="validation">
+                    <fieldset>
+                        <legend>Log in</legend>
+                        <div class="uk-form-row form-group">
+                            <input type="text" value.bind="email" placeholder="Email" class="form-control">
+                        </div>
+                        <div class="uk-form-row form-group">
+                            <input type="password" value.bind="password" placeholder="Password" class="form-control">
+                        </div>
+                        <button type="submit" class="uk-button trv-form-submit-btn" disabled.bind="!validation.result.isValid">Log in</button>
+                    </fieldset>
+                </form>
+            </div>
         </div>
     </div>
 </template>

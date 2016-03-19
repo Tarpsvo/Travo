@@ -10,7 +10,8 @@
         "moduleResolution": "classic",
         "sourceMap": true,
         "outDir": "dist/",
-        "compileOnSave": false
+        "compileOnSave": false,
+        "buildOnSave": false
     },
     "filesGlob": [
         "./src/**/*.ts",
@@ -22,6 +23,7 @@
     "files": [
         "./src/components/nav-bar/nav-bar.ts",
         "./src/lib/jquery/jquery.d.ts",
+        "./src/lib/uikit/uikit.d.ts",
         "./src/main.ts",
         "./src/pages/landing-page/landing-page.ts",
         "./src/pages/landing-page/login-modal/login-modal.ts",

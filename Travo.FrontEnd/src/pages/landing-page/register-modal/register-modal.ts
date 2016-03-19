@@ -7,6 +7,7 @@ export class RegisterModal {
     aurelia: Aurelia;
     auth: AuthService;
     validation: ValidationGroup;
+    isLoading = false;
 
     // User inputs (bound in viewmodel)
     @ensure(function(it){ it.isNotEmpty().isEmail() })
@@ -30,27 +31,19 @@ export class RegisterModal {
     register() {
         this.validation.validate() //the validate will fulfil when validation is valid, and reject if not
             .then( () => {
+                this.isLoading = true;
                 this.auth.register(this.email, this.displayName, this.password)
                     .then(response => {
-                        this.auth.login(this.email, this.password)
-                            .then(response => response.json())
-                            .then(response => {
-                                console.log(response);
-                                this.aurelia.setRoot('./dist/pages/travo-app/travo-app');
-                            })
-                            .catch(response => {
-                                if (response.status == 400) {
-                                    response.json().then(error => {
-                                        console.log(error);
-                                    });
-                                }
+                        this.isLoading = false;
+                        if (!response.success) {
+                            UIkit.notify({
+                                message : response.message,
+                                status  : 'danger',
+                                timeout : 2000,
+                                pos     : 'top-center'
                             });
-                    })
-                    .catch(response => {
-                        if (response.status == 400) {
-                            response.json().then(error => {
-                                console.log(error);
-                            });
+                        } else {
+                            this.auth.login(this.email, this.password);
                         }
                     });
             });

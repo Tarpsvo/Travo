@@ -4,19 +4,32 @@
     <meta charset="utf-8">
     <title>Travo</title>
 
+    <!-- UIkit -->
     <link rel="stylesheet" href="dist/lib/uikit/css/uikit.min.css" media="screen" charset="utf-8">
+    <link rel="stylesheet" href="dist/lib/uikit/css/components/notify.min.css" media="screen" charset="utf-8">
+
+    <!-- Travo -->
     <link rel="stylesheet" href="dist/assets/styles/main.css" media="screen" charset="utf-8">
     <link rel="stylesheet" href="dist/assets/styles/landing-page.css" media="screen" charset="utf-8">
+
 </head>
 <body aurelia-app="main">
     <div>
         TODO: Travo splash screen
     </div>
 
+    <!-- Aurelia -->
     <script src="jspm_packages/system.js"></script>
     <script src="config.js"></script>
+
+    <!-- jQuery -->
     <script src="dist/lib/jquery/jquery.min.js"></script>
+
+    <!-- UIkit -->
     <script src="dist/lib/uikit/js/uikit.min.js"></script>
+    <script src="dist/lib/uikit/js/components/notify.min.js"></script>
+
+    <!-- Aurelia -->
     <script>
     System.config({
         "paths": {
@@ -24,6 +37,7 @@
         }
     });
     </script>
+
     <script>
     System.import("aurelia-bootstrapper");
     </script>
