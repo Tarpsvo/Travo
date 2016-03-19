@@ -98,7 +98,7 @@ export default class AuthService {
             });
     }
 
-    logout() {
+    logOut() {
         localStorage[config.tokenName] = null;
         this.token = null;
         this.app.setRoot('./dist/pages/landing-page/landing-page');

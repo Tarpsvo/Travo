@@ -9,7 +9,7 @@ export class TravoApp {
         config.title = 'Travo';
 
         config.map([
-            { route: [''], name: 'travo-main', moduleId: 'travo-main', nav: false, title: 'Travo' }
+            { route: [''], name: 'tasks-page', moduleId: './tasks-page/tasks-page', nav: false, title: 'Travo - Tasks' }
         ]);
 
         this.router = router;

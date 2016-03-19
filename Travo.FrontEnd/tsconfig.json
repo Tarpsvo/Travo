@@ -21,13 +21,14 @@
         "./jspm_packages/**/*.d.ts"
     ],
     "files": [
-        "./src/components/nav-bar/nav-bar.ts",
         "./src/lib/jquery/jquery.d.ts",
         "./src/lib/uikit/uikit.d.ts",
         "./src/main.ts",
         "./src/pages/landing-page/landing-page.ts",
         "./src/pages/landing-page/login-modal/login-modal.ts",
         "./src/pages/landing-page/register-modal/register-modal.ts",
+        "./src/pages/travo-app/nav-bar/nav-bar.ts",
+        "./src/pages/travo-app/tasks-page/tasks-page.ts",
         "./src/pages/travo-app/travo-app.ts",
         "./src/services/auth-service.ts",
         "./src/travo-config.ts",
