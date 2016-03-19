@@ -31,6 +31,10 @@ html, body {
     margin: 0 auto;
 }
 
+.container {
+    padding-top: $headerHeight;
+}
+
 .trv-header-icon-text-btn {
     display: inline-block;
     border-radius: 2px;

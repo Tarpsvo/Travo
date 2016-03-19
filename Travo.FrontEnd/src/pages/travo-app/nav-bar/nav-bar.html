@@ -6,8 +6,8 @@
                     <div class="trv-header-icon-text-btn"><i class="uk-icon-reorder"></i><span style="margin-left: 10px;">Travo</span></div>
                     <div class="uk-dropdown trv-nav-dropdown trv-left-dd">
                         <ul class="uk-nav uk-nav-dropdown">
-                            <li><a href="#">Boards</a></li>
-                            <li><a href="#">Timetracking</a></li>
+                            <li><a route-href="route: boards-view" class="uk-dropdown-close">Boards</a></li>
+                            <li><a route-href="route: timetracking-view" class="uk-dropdown-close">Timetracking</a></li>
                         </ul>
 
                     </div>
@@ -26,8 +26,8 @@
                     <div class="trv-header-icon-text-btn"><span style="margin-right: 10px;">Tarps</span><i class="uk-icon-user"></i></div>
                     <div class="uk-dropdown trv-nav-dropdown trv-right-dd">
                         <ul class="uk-nav uk-nav-dropdown">
-                            <li><a href="#">Settings</a></li>
-                            <li><a click.delegate="logOut()">Log out</a></li>
+                            <li><a route-href="route: settings-view" class="uk-dropdown-close">Settings</a></li>
+                            <li><a click.delegate="logOut()" class="uk-dropdown-close">Log out</a></li>
                         </ul>
 
                     </div>
@@ -35,7 +35,4 @@
             </div>
         </div>
     </nav>
-
-    <script type="text/javascript" src="js/jquery.min.js"></script>
-    <script type="text/javascript" src="uikit/js/uikit.min.js"></script>
 </template>
