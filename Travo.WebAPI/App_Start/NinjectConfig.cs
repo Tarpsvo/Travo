@@ -2,6 +2,7 @@
 using Microsoft.AspNet.Identity.EntityFramework;
 using Ninject;
 using Ninject.Web.Common;
+using Travo.BLL.Services;
 using Travo.DAL;
 using Travo.DAL.Interfaces;
 using Travo.DAL.Repositories;
@@ -22,6 +23,11 @@ namespace Travo
 
             // Repositories
             kernel.Bind<IAccountRepository>().To<AccountRepository>();
+            kernel.Bind<ITeamRepository>().To<TeamRepository>();
+            kernel.Bind<IBoardRepository>().To<BoardRepository>();
+
+            // Services
+            kernel.Bind<IAccountServices>().To<AccountServices>();
         }
     }
 }

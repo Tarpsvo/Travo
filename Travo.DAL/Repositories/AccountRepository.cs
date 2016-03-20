@@ -1,9 +1,7 @@
 ﻿using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.EntityFramework;
 using System;
 using System.Threading.Tasks;
 using Travo.DAL.Interfaces;
-using Travo.Domain.DTO;
 using Travo.Domain.Models;
 
 namespace Travo.DAL.Repositories
@@ -19,17 +17,17 @@ namespace Travo.DAL.Repositories
             _userManager = userManager;
         }
 
-        public async Task<IdentityResult> RegisterUser(RegisterDTO RegisterDTO)
+        public async Task<bool> RegisterUser(string email, string displayName, string password)
         {
             User user = new User
             {
-                UserName = RegisterDTO.Email,
-                Email = RegisterDTO.Email,
-                DisplayName = RegisterDTO.DisplayName
+                UserName = email,
+                Email = email,
+                DisplayName = displayName
             };
 
-            var result = await _userManager.CreateAsync(user, RegisterDTO.Password);
-            var registeredUser = await FindUser(RegisterDTO.Email, RegisterDTO.Password);
+            var result = await _userManager.CreateAsync(user, password);
+            var registeredUser = await FindUser(email, password);
 
             var defaultTeam = new Team
             {
@@ -64,13 +62,12 @@ namespace Travo.DAL.Repositories
 
             _dbContext.SaveChanges();
 
-            return result;
+            return result.Succeeded;
         }
 
         public async Task<User> FindUser(string email, string password)
         {
-            var user = await _userManager.FindAsync(email, password);
-            return user;
+            return await _userManager.FindAsync(email, password);
         }
 
         public void Dispose()

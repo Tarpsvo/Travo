@@ -189,7 +189,6 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\TeamsController.cs" />
     <Compile Include="Controllers\TravoApiController.cs" />
-    <Compile Include="Filters\ValidateModelAttribute.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Providers\AuthorizationServerProvider.cs" />
     <Compile Include="Startup.cs" />
@@ -207,6 +206,10 @@
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Travo.BLL\Travo.BLL.csproj">
+      <Project>{004f48a8-4b84-4ef5-981e-d3c632a2c032}</Project>
+      <Name>Travo.BLL</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Travo.DAL\Travo.DAL.csproj">
       <Project>{8a6a7a01-038a-46f3-be7a-9fb402d22341}</Project>
       <Name>Travo.DAL</Name>

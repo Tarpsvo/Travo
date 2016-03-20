@@ -8,7 +8,7 @@ using Travo.Domain.Models;
 
 namespace Travo.DAL.Repositories
 {
-    class BoardRepository: EFRepository<Board>, IBoardRepository
+    public class BoardRepository: EFRepository<Board>, IBoardRepository
     {
         public BoardRepository(TravoDbContext dbContext) : base(dbContext) {}
     }

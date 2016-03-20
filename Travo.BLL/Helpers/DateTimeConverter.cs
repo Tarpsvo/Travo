@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Travo.Domain
+namespace Travo.BLL.Helpers
 {
     public class DateTimeConverter
     {

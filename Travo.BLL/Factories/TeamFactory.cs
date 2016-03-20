@@ -1,13 +1,14 @@
-﻿using Travo.Domain.DTO;
+﻿using Travo.BLL.DTO;
+using Travo.BLL.Helpers;
 using Travo.Domain.Models;
 
-namespace Travo.Domain.Factories
+namespace Travo.BLL.Factories
 {
     class TeamFactory
     {
-        public TeamGetDTO createBasicDTO(Team Team)
+        public TeamDTO createBasicDTO(Team Team)
         {
-            return new TeamGetDTO
+            return new TeamDTO
             {
                 Id = Team.Id,
                 Name = Team.Name,

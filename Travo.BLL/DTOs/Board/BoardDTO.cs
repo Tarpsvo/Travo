@@ -1,6 +1,6 @@
-﻿namespace Travo.Domain.DTO
+﻿namespace Travo.BLL.DTO
 {
-    public class TeamGetDTO
+    public class BoardDTO
     {
         public int Id { get; set; }
         public string Name { get; set; }
