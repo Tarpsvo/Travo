@@ -1,24 +1,22 @@
 ﻿using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
+using Travo.DAL.Interfaces;
 using Travo.Domain.DTO;
 using Travo.Domain.Models;
 
 namespace Travo.DAL.Repositories
 {
-    public class AccountRepository: IDisposable
+    public class AccountRepository : IAccountRepository, IDisposable
     {
-        private TravoDbContext _ctx;
+        private TravoDbContext _dbContext;
         private UserManager<User> _userManager;
 
-        public AccountRepository()
+        public AccountRepository(TravoDbContext dbContext, UserManager<User> userManager)
         {
-            _ctx = new TravoDbContext();
-            _userManager = new UserManager<User>(new UserStore<User>(_ctx));
+            _dbContext = dbContext;
+            _userManager = userManager;
         }
 
         public async Task<IdentityResult> RegisterUser(RegisterDTO RegisterDTO)
@@ -40,7 +38,7 @@ namespace Travo.DAL.Repositories
                 isDefault = true,
                 Name = "My Boards"
             };
-            var team = _ctx.Teams.Add(defaultTeam);
+            var team = _dbContext.Teams.Add(defaultTeam);
 
             var userInTeam = new UserInTeam
             {
@@ -48,23 +46,23 @@ namespace Travo.DAL.Repositories
                 TeamId = team.Id,
                 UserId = registeredUser.Id
             };
-            _ctx.UserInTeams.Add(userInTeam);
+            _dbContext.UserInTeams.Add(userInTeam);
 
             var welcomeBoard = new Board
             {
                 CreatedByUserId = registeredUser.Id,
                 Name = "Welcome Board"
             };
-           var board = _ctx.Boards.Add(welcomeBoard);
+           var board = _dbContext.Boards.Add(welcomeBoard);
 
             var boardInTeam = new BoardInTeam
             {
                 BoardId = board.Id,
                 TeamId = team.Id
             };
-            _ctx.BoardInTeams.Add(boardInTeam);
+            _dbContext.BoardInTeams.Add(boardInTeam);
 
-            _ctx.SaveChanges();
+            _dbContext.SaveChanges();
 
             return result;
         }
@@ -77,9 +75,8 @@ namespace Travo.DAL.Repositories
 
         public void Dispose()
         {
-            _ctx.Dispose();
+            _dbContext.Dispose();
             _userManager.Dispose();
-
         }
     }
 }

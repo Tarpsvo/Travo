@@ -7,11 +7,10 @@ using Travo.Domain.Models;
 
 namespace Travo.DAL
 {
-    public class TravoDbContext : IdentityDbContext, IDbContext
+    public class TravoDbContext : IdentityDbContext
     {
         public TravoDbContext() : base("LocalDbConnectionString")
         {
-            Database.SetInitializer(new MigrateDatabaseToLatestVersion<TravoDbContext, Configuration>());
             #if DEBUG
                 Database.Log = s => Trace.Write(s);
             #endif

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Travo.DAL.Interfaces
 {
-    public interface IDbContext
+    public interface IBoardRepository
     {
     }
 }

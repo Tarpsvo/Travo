@@ -9,7 +9,7 @@ namespace Travo.DAL.Migrations
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = false;
+            AutomaticMigrationsEnabled = true;
         }
 
         protected override void Seed(Travo.DAL.TravoDbContext context)
