@@ -31,6 +31,41 @@ namespace Travo.DAL.Repositories
             };
 
             var result = await _userManager.CreateAsync(user, RegisterDTO.Password);
+            var registeredUser = await FindUser(RegisterDTO.Email, RegisterDTO.Password);
+
+            var defaultTeam = new Team
+            {
+                CreatedByUserId = registeredUser.Id,
+                Description = "",
+                isDefault = true,
+                Name = "My Boards"
+            };
+            var team = _ctx.Teams.Add(defaultTeam);
+
+            var userInTeam = new UserInTeam
+            {
+                Role = Domain.Enums.UserRoleInTeam.Normal,
+                TeamId = team.Id,
+                UserId = registeredUser.Id
+            };
+            _ctx.UserInTeams.Add(userInTeam);
+
+            var welcomeBoard = new Board
+            {
+                CreatedByUserId = registeredUser.Id,
+                Name = "Welcome Board"
+            };
+           var board = _ctx.Boards.Add(welcomeBoard);
+
+            var boardInTeam = new BoardInTeam
+            {
+                BoardId = board.Id,
+                TeamId = team.Id
+            };
+            _ctx.BoardInTeams.Add(boardInTeam);
+
+            _ctx.SaveChanges();
+
             return result;
         }
 

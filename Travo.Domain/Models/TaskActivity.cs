@@ -11,7 +11,7 @@ namespace Travo.Domain.Models
         public virtual Task Task { get; set; }
         public TaskActivityType Type { get; set; }
         public DateTime Time { get; set; }
-        public int ByUserId { get; set; }
+        public string ByUserId { get; set; }
         public virtual User ByUser { get; set; }
         [StringLength(3000, MinimumLength = 1)]
         public string NewValue { get; set; }
