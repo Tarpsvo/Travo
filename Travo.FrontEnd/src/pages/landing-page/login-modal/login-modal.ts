@@ -1,13 +1,14 @@
 /// <reference path="../../../lib/uikit/uikit.d.ts" />
 
-import {inject} from 'aurelia-framework';
+import {Aurelia, inject} from 'aurelia-framework';
 import {Validation, ValidationGroup, ensure} from 'aurelia-validation';
 import AuthService from 'services/auth-service';
 import Notify from 'notify-client';
 import config from 'travo-config';
 
-@inject(AuthService, Validation)
+@inject(Aurelia, AuthService, Validation)
 export class LoginModal {
+    app: Aurelia;
     auth: AuthService;
     validation: ValidationGroup;
     isLoading = false;
@@ -17,7 +18,8 @@ export class LoginModal {
     @ensure(function(it){ it.isNotEmpty().hasLengthBetween(6,100) })
     password: string = "";
 
-    constructor(authService: AuthService, validation: Validation) {
+    constructor(aurelia: Aurelia, authService: AuthService, validation: Validation) {
+        this.app = aurelia;
         this.auth = authService;
         this.validation = validation.on(this);
     }
@@ -25,7 +27,17 @@ export class LoginModal {
     login() {
         this.isLoading = true;
         this.auth.login(this.email, this.password)
-            .then(response => this.isLoading = false)
+            .then(response => {
+                // Hide UIkit modal to remove classes set by it
+                // Then redirect to to travo-app
+                UIkit.modal('.uk-modal').hide();
+                let appl = this.app;
+                jQuery('.uk-modal').on({
+                    'hide.uk.modal': function(){
+                        appl.setRoot('./dist/pages/travo-app/travo-app');
+                    }
+                });
+            })
             .catch(response => {
                 this.isLoading = false;
                 if (response.status == 400) Notify.showError("Wrong username or password.");

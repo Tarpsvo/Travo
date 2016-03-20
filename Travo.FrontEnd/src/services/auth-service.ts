@@ -1,4 +1,5 @@
 /// <reference path="../lib/jquery/jquery.d.ts" />
+/// <reference path="../lib/uikit/uikit.d.ts" />
 
 import {Aurelia, inject} from 'aurelia-framework';
 import {RestClient, Router} from 'rest-client';
@@ -28,10 +29,14 @@ export default class AuthService {
         return this.rest.postForm(Router.RequestToken, loginDTO)
                 .then(response => {
                     let token = response.access_token;
-                    localStorage[config.tokenName] = JSON.stringify(token);
-                    this.token = token;
-                    this.app.setRoot('./dist/pages/travo-app/travo-app');
-                    return null;
+
+                    if (token != null) {
+                        localStorage[config.tokenName] = JSON.stringify(token);
+                        this.token = token;
+                        return null;
+                    }
+
+                    throw response;
                 });
     }
 
@@ -55,3 +60,4 @@ export default class AuthService {
         return this.token !== null;
     }
 }
+ {}

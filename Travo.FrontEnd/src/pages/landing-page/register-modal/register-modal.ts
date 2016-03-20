@@ -1,3 +1,5 @@
+/// <reference path="../../../lib/uikit/uikit.d.ts" />
+
 import {Aurelia, inject} from 'aurelia-framework';
 import {Validation, ValidationGroup, ensure} from 'aurelia-validation';
 import AuthService from 'services/auth-service';
@@ -5,7 +7,7 @@ import Notify from 'notify-client';
 
 @inject(Aurelia, AuthService, Validation)
 export class RegisterModal {
-    aurelia: Aurelia;
+    app: Aurelia;
     auth: AuthService;
     validation: ValidationGroup;
     isLoading = false;
@@ -20,7 +22,7 @@ export class RegisterModal {
     confirmPassword: string = "";
 
     constructor(aurelia: Aurelia, authService: AuthService, validation: Validation) {
-        this.aurelia = aurelia;
+        this.app = aurelia;
         this.auth = authService;
         this.validation = validation.on(this)
             .ensure('confirmPassword', (config) => {config.computedFrom(['password'])})
@@ -35,8 +37,17 @@ export class RegisterModal {
                 this.isLoading = true;
                 this.auth.register(this.email, this.displayName, this.password)
                     .then(response => {
-                        this.isLoading = false;
-                        this.auth.login(this.email, this.password);
+                        this.auth.login(this.email, this.password).then(response => {
+                            // Hide UIkit modal to remove classes set by it
+                            // Then redirect to to travo-app
+                            UIkit.modal('.uk-modal').hide();
+                            let appl = this.app;
+                            jQuery('.uk-modal').on({
+                                'hide.uk.modal': function() {
+                                    appl.setRoot('./dist/pages/travo-app/travo-app');
+                                }
+                            });
+                        });
                     })
                     .catch(response => {
                         this.isLoading = false;

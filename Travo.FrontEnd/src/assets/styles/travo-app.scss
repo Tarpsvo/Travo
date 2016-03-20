@@ -18,21 +18,16 @@ html, body {
 }
 
 #header-wrap {
-    position: absolute;
     width: 100%;
     height: $headerHeight;
     background: #444554;
 }
 
 #header {
-    width: $headerWidth;
+    max-width: $headerWidth;
     height: $headerHeight;
     line-height: $headerHeight;
     margin: 0 auto;
-}
-
-.container {
-    padding-top: $headerHeight;
 }
 
 .trv-header-icon-text-btn {
