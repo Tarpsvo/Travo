@@ -84,6 +84,8 @@ html, body {
     // Right nav
     &.trv-right-dd {
         margin: -2px 0 0 20px;
+        right: 0;
+        left:inherit !important;
         width: 100px;
 
         &:after, &:before {
