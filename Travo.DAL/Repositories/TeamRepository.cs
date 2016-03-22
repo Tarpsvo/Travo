@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Travo.DAL.Interfaces;
 using Travo.Domain.Models;
 
@@ -9,6 +10,11 @@ namespace Travo.DAL.Repositories
         public TeamRepository(TravoDbContext dbContext) : base(dbContext) { }
 
         public System.Threading.Tasks.Task AddUserToTeam(string UserId, int TeamId)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<Team> GetUserTeams(string userId)
         {
             throw new NotImplementedException();
         }

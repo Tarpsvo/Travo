@@ -22,12 +22,12 @@ namespace Travo
 
 
             // Repositories
-            kernel.Bind<IAccountRepository>().To<AccountRepository>();
+            kernel.Bind<IUserRepository>().To<UserRepository>();
             kernel.Bind<ITeamRepository>().To<TeamRepository>();
             kernel.Bind<IBoardRepository>().To<BoardRepository>();
 
             // Services
-            kernel.Bind<IAccountServices>().To<AccountServices>();
+            kernel.Bind<IUserServices>().To<UserServices>();
         }
     }
 }

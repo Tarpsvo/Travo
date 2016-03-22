@@ -3,7 +3,7 @@ using Travo.BLL.DTO;
 
 namespace Travo.BLL.Services
 {
-    public interface IAccountServices
+    public interface IUserServices
     {
         Task<bool> Register(UserDTO userDTO);
         bool Login(UserDTO userDTO);

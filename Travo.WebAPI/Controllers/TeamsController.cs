@@ -7,7 +7,7 @@ namespace Travo.Controllers
     public class TeamsController: TravoApiController
     {
         [Route(""), HttpGet]
-        public IHttpActionResult GetAllUsersTeamsAndBoards()
+        public IHttpActionResult GetTeamsWithBoards()
         {
             return Ok(new { Teams = new TeamDTO { Id = 12, Name = "Team", Description = "Desc", Created = 1232133454 } });
         }

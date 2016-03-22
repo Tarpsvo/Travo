@@ -42,9 +42,9 @@ namespace Travo.WebAPI
             OAuthAuthorizationServerOptions OAuthServerOptions = new OAuthAuthorizationServerOptions()
             {
                 AllowInsecureHttp = true,
-                TokenEndpointPath = new PathString("/account/token"),
+                TokenEndpointPath = new PathString("/user/token"),
                 AccessTokenExpireTimeSpan = TimeSpan.FromDays(1),
-                Provider = new AuthorizationServerProvider(kernel.Get<IAccountRepository>())
+                Provider = new AuthorizationServerProvider(kernel.Get<IUserRepository>())
             };
 
             // Token Generation

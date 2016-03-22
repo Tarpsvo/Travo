@@ -5,6 +5,6 @@ namespace Travo.BLL.Services
 {
     public interface ITeamServices
     {
-        List<TeamWithBoardsDTO> GetTeamsWithBoards();
+        List<TeamWithBoardsDTO> GetTeamsWithBoardsForUser(string userId);
     }
 }

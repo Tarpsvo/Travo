@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Linq;
 using Travo.DAL.Interfaces;
 
 namespace Travo.DAL.Repositories
@@ -16,39 +17,36 @@ namespace Travo.DAL.Repositories
             this.DbSet = dbContext.Set<T>();
         }
 
-        public void Add(T entity)
+        public virtual T GetById(object id)
         {
-            throw new NotImplementedException();
+            return DbSet.Find(id);
         }
 
-        public void Delete(object id)
+        public virtual void Add(T entity)
         {
-            throw new NotImplementedException();
+            DbSet.Add(entity);
         }
 
-        public void Delete(T entity)
+        public virtual void Delete(object id)
         {
-            throw new NotImplementedException();
+            var entityToDelete = DbSet.Find(id);
+            Delete(entityToDelete);
         }
 
-        public void Dispose()
+        public virtual void Delete(T entity)
         {
-            throw new NotImplementedException();
+            if (DbContext.Entry(entity).State == EntityState.Detached)
+            {
+                DbSet.Attach(entity);
+            }
+            DbSet.Remove(entity);
         }
 
-        public List<T> GetAll()
+        public virtual void Update(T entity)
         {
-            throw new NotImplementedException();
+            DbSet.Attach(entity);
+            DbContext.Entry(entity).State = EntityState.Modified;
         }
 
-        public T GetById(object id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Update(T entity)
-        {
-            throw new NotImplementedException();
-        }
     }
 }

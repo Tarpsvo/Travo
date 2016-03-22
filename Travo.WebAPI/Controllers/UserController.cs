@@ -6,20 +6,20 @@ using Travo.BLL.Services;
 namespace Travo.Controllers
 {
     [RoutePrefix("account")]
-    public class AccountController : TravoApiController
+    public class UserController : TravoApiController
     {
-        private IAccountServices _accountServices;
+        private IUserServices _userServices;
 
-        public AccountController(IAccountServices accountServices)
+        public UserController(IUserServices userServices)
         {
-            _accountServices = accountServices;
+            _userServices = userServices;
         }
 
         [AllowAnonymous]
         [Route("register"), HttpPost]
         public async Task<IHttpActionResult> Register(UserDTO userDTO)
         {
-            var result = await _accountServices.Register(userDTO);
+            var result = await _userServices.Register(userDTO);
             if (result) return Ok();
             else return BadRequest();
         }

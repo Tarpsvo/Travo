@@ -6,12 +6,12 @@ using Travo.Domain.Models;
 
 namespace Travo.DAL.Repositories
 {
-    public class AccountRepository : IAccountRepository, IDisposable
+    public class UserRepository : IUserRepository, IDisposable
     {
         private TravoDbContext _dbContext;
         private UserManager<User> _userManager;
 
-        public AccountRepository(TravoDbContext dbContext, UserManager<User> userManager)
+        public UserRepository(TravoDbContext dbContext, UserManager<User> userManager)
         {
             _dbContext = dbContext;
             _userManager = userManager;

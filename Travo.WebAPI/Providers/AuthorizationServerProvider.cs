@@ -1,23 +1,18 @@
 ﻿using Microsoft.Owin.Security.OAuth;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Security.Claims;
-using System.Threading.Tasks;
-using System.Web;
-using Travo.DAL.Interfaces;
-using Travo.DAL.Repositories;
+using Travo.BLL.DTO;
+using Travo.BLL.Services;
 using Travo.Domain.Models;
 
 namespace Travo.Providers
 {
     public class AuthorizationServerProvider : OAuthAuthorizationServerProvider
     {
-        private IAccountRepository _accountRepository;
+        private IUserServices _userServices;
 
-        public AuthorizationServerProvider(IAccountRepository accountRepository)
+        public AuthorizationServerProvider(IUserServices userServices)
         {
-            _accountRepository = accountRepository;
+            _userServices = userServices;
         }
 
         public override async System.Threading.Tasks.Task ValidateClientAuthentication(OAuthValidateClientAuthenticationContext context)
@@ -39,9 +34,7 @@ namespace Travo.Providers
                 return;
             }
 
-            User user = await _accountRepository.FindUser(context.UserName, context.Password);
-
-            if (user == null)
+            if (_userServices.Login(new UserDTO { Email = context.UserName, Password = context.Password }))
             {
                 context.SetError("Invalid data", "The user name or password is incorrect.");
                 return;

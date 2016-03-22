@@ -16,7 +16,7 @@ namespace Travo.BLL.Services
             _teamRepository = teamRepository;
         }
 
-        public List<TeamWithBoardsDTO> GetTeamsWithBoards()
+        public List<TeamWithBoardsDTO> GetTeamsWithBoards(string userId)
         {
             throw new NotImplementedException();
         }
