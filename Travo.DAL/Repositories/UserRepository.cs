@@ -20,6 +20,8 @@ namespace Travo.DAL.Repositories
 
         public async Task<bool> RegisterUser(string email, string displayName, string password)
         {
+            // TODO Fix validation
+
             User user = new User
             {
                 UserName = email,
@@ -38,6 +40,7 @@ namespace Travo.DAL.Repositories
                 Name = "My Boards"
             };
             var team = _dbContext.Teams.Add(defaultTeam);
+            _dbContext.SaveChanges();
 
             var userInTeam = new UserInTeam
             {
@@ -53,6 +56,7 @@ namespace Travo.DAL.Repositories
                 Name = "Welcome Board"
             };
            var board = _dbContext.Boards.Add(welcomeBoard);
+            _dbContext.SaveChanges();
 
             var boardInTeam = new BoardInTeam
             {
@@ -60,7 +64,6 @@ namespace Travo.DAL.Repositories
                 TeamId = team.Id
             };
             _dbContext.BoardInTeams.Add(boardInTeam);
-
             _dbContext.SaveChanges();
 
             return result.Succeeded;
