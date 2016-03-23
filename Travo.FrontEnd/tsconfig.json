@@ -21,6 +21,7 @@
         "./jspm_packages/**/*.d.ts"
     ],
     "files": [
+        "./src/auth-client.ts",
         "./src/lib/jquery/jquery.d.ts",
         "./src/lib/uikit/uikit.d.ts",
         "./src/main.ts",
@@ -35,7 +36,8 @@
         "./src/pages/travo-app/timetracking-view/timetracking-view.ts",
         "./src/pages/travo-app/travo-app.ts",
         "./src/rest-client.ts",
-        "./src/services/auth-service.ts",
+        "./src/services/auth-services.ts",
+        "./src/services/team-services.ts",
         "./src/travo-config.ts",
         "./typings/browser.d.ts",
         "./jspm_packages/npm/aurelia-binding@1.0.0-beta.1.2.2/aurelia-binding.d.ts",

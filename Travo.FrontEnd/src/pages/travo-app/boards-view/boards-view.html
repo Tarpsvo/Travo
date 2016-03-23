@@ -1,3 +1,12 @@
 <template>
-    <div style="text-align: center; margin-top: 50px;"><h1>Boards TODO</h1></div>
+    <ul>
+        <li repeat.for="teamWithBoards of teamsWithBoards">
+            <h1>${teamWithBoards.Team.Name}</h1>
+            <ul>
+                <li repeat.for="board of teamWithBoards.Boards">
+                    <h4>${board.Name}</h4>
+                </li>
+            </ul>
+        </li>
+    </ul>
 </template>

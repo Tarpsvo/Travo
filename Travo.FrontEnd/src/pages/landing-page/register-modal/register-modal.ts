@@ -2,13 +2,13 @@
 
 import {Aurelia, inject} from 'aurelia-framework';
 import {Validation, ValidationGroup, ensure} from 'aurelia-validation';
-import AuthService from 'services/auth-service';
+import AuthServices from 'services/auth-services';
 import Notify from 'notify-client';
 
-@inject(Aurelia, AuthService, Validation)
+@inject(Aurelia, AuthServices, Validation)
 export class RegisterModal {
     app: Aurelia;
-    auth: AuthService;
+    auth: AuthServices;
     validation: ValidationGroup;
     isLoading = false;
 
@@ -21,9 +21,9 @@ export class RegisterModal {
     password: string = "";
     confirmPassword: string = "";
 
-    constructor(aurelia: Aurelia, authService: AuthService, validation: Validation) {
+    constructor(aurelia: Aurelia, authServices: AuthServices, validation: Validation) {
         this.app = aurelia;
-        this.auth = authService;
+        this.auth = authServices;
         this.validation = validation.on(this)
             .ensure('confirmPassword', (config) => {config.computedFrom(['password'])})
                 .isNotEmpty()

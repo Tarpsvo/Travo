@@ -3,20 +3,19 @@
 
 import {Aurelia, inject} from 'aurelia-framework';
 import {RestClient, Router} from 'rest-client';
+import AuthClient from 'auth-client';
 import config from 'travo-config';
 
-@inject(Aurelia, RestClient)
-export default class AuthService {
+@inject(Aurelia, RestClient, AuthClient)
+export default class AuthServices {
     app: Aurelia;
     rest: RestClient;
-    token: string = null;
+    authClient: AuthClient;
 
-    constructor(aurelia: Aurelia, restClient: RestClient) {
+    constructor(aurelia: Aurelia, restClient: RestClient, authClient: AuthClient) {
         this.app = aurelia;
         this.rest = restClient;
-
-        // Get token from localStorage
-        this.token = JSON.parse(localStorage[config.tokenName] || null);
+        this.authClient = authClient;
     }
 
     login(email: string, password: string) {
@@ -26,13 +25,12 @@ export default class AuthService {
             password: password
         };
 
-        return this.rest.postForm(Router.RequestToken, loginDTO)
+        return this.rest.postForm(Router.Token, loginDTO)
                 .then(response => {
                     let token = response.access_token;
 
                     if (token != null) {
-                        localStorage[config.tokenName] = JSON.stringify(token);
-                        this.token = token;
+                        this.authClient.setAccessToken(token);
                         return null;
                     }
 
@@ -51,13 +49,8 @@ export default class AuthService {
     }
 
     logOut() {
-        localStorage[config.tokenName] = null;
-        this.token = null;
+        this.authClient.deleteAccessToken();
         this.app.setRoot('./dist/pages/landing-page/landing-page');
-    }
-
-    isAuthenticated() {
-        return this.token !== null;
     }
 }
  {}

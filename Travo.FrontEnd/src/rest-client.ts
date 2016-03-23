@@ -2,13 +2,17 @@
 
 import {inject} from 'aurelia-framework';
 import {HttpClient, json} from 'aurelia-fetch-client';
+import AuthClient from 'auth-client';
 import config from 'travo-config';
 
-@inject(HttpClient)
+@inject(HttpClient, AuthClient)
 export class RestClient {
     http: HttpClient;
+    authClient: AuthClient;
 
-    constructor(httpClient: HttpClient) {
+    constructor(httpClient: HttpClient, authClient: AuthClient) {
+        this.authClient = authClient;
+
         httpClient.configure(httpconfig => {
             httpconfig
                 .withBaseUrl(config.baseUrl)
@@ -22,12 +26,12 @@ export class RestClient {
         this.http = httpClient;
     }
 
-    get(endpoint: Endpoint) {
-        return this.request(endpoint.method, endpoint.path);
+    get(path: string) {
+        return this.request('GET', path);
     }
 
-    post(endpoint: Endpoint, body: Object) {
-        return this.request(endpoint.method, endpoint.path, body);
+    post(path: string, body: Object) {
+        return this.request('POST', path, body);
     }
 
     request(method: string, path: string, body?: Object) {
@@ -38,6 +42,10 @@ export class RestClient {
                 'Content-Type': 'application/json'
             },
             body: {}
+        }
+
+        if (this.authClient.isAuthenticated()) {
+            requestOptions.headers['Authorization'] = "Bearer " + this.authClient.getAccessToken();
         }
 
         if (typeof body === 'object') {
@@ -58,9 +66,9 @@ export class RestClient {
     }
 
     // Custom handler for x-www-form-url-encoded
-    postForm(endpoint: Endpoint, body: Object) {
+    postForm(path: string, body: Object) {
         let requestOptions = {
-            method: endpoint.method,
+            method: 'POST',
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded'
             },
@@ -71,7 +79,7 @@ export class RestClient {
             requestOptions.body = jQuery.param(body);
         }
 
-        return this.http.fetch(endpoint.path, requestOptions).then(response => {
+        return this.http.fetch(path, requestOptions).then(response => {
             if (response.status >= 200 && response.status < 400) {
                 return response.json().catch(error => null);
             }
@@ -85,17 +93,8 @@ export class RestClient {
     }
 }
 
-class Endpoint {
-    method: string;
-    path: string;
-
-    constructor(method: string, path: string) {
-        this.method = method;
-        this.path = path;
-    }
-}
-
 export class Router {
-    public static Register = new Endpoint('POST', 'user/register');
-    public static RequestToken = new Endpoint('POST', 'user/token');
+    public static Register = 'user/register';
+    public static Token ='user/token';
+    public static TeamsWithBoards = 'teams/withBoards';
 }

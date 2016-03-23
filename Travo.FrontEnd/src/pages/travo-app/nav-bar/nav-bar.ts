@@ -1,12 +1,12 @@
 import {inject} from 'aurelia-framework';
-import AuthService from 'services/auth-service';
+import AuthServices from 'services/auth-services';
 
-@inject(AuthService)
+@inject(AuthServices)
 export class NavBar {
-    auth: AuthService;
+    auth: AuthServices;
 
-    constructor(authService: AuthService) {
-        this.auth = authService;
+    constructor(authServices: AuthServices) {
+        this.auth = authServices;
     }
 
     logOut() {
