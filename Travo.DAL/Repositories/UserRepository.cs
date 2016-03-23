@@ -3,6 +3,7 @@ using System;
 using System.Threading.Tasks;
 using Travo.DAL.Interfaces;
 using Travo.Domain.Models;
+using System.Linq;
 
 namespace Travo.DAL.Repositories
 {
@@ -74,6 +75,47 @@ namespace Travo.DAL.Repositories
         {
             _dbContext.Dispose();
             _userManager.Dispose();
+        }
+
+        public bool UserHasAccessToTask(string userId, int taskId)
+        {
+            var count =
+                (from tk in _dbContext.Tasks
+                 from tg in _dbContext.Tags
+                 from bt in _dbContext.BoardInTeams
+                 from ut in _dbContext.UserInTeams
+                 where
+                     tk.Id == taskId &&
+                     tg.Id == tk.TagId &&
+                     bt.BoardId == tg.BoardId &&
+                     ut.TeamId == bt.TeamId &&
+                     ut.UserId == userId
+                 select ut.Id).Count();
+            return (count == 1);
+        }
+
+        public bool UserHasAccessToTag(string userId, int tagId)
+        {
+            // TODO
+            throw new NotImplementedException();
+        }
+
+        public bool UserHasAccessToBoard(string userId, int boardId)
+        {
+            // TODO
+            throw new NotImplementedException();
+        }
+
+        public bool UserHasReadAccessToTeam(string userId, int teamId)
+        {
+            // TODO
+            throw new NotImplementedException();
+        }
+
+        public bool UserHasWriteAccessToTeam(string userId, int teamId)
+        {
+            // TODO
+            throw new NotImplementedException();
         }
     }
 }

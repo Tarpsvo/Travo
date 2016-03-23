@@ -13,10 +13,10 @@ namespace Travo.BLL.Services
             _userRepository = userRepository;
         }
 
-        public bool Login(UserDTO userDTO)
+        public async System.Threading.Tasks.Task<string> Login(UserDTO userDTO)
         {
-            var user = _userRepository.FindUser(userDTO.Email, userDTO.Password);
-            return (user != null);
+            var user = await _userRepository.FindUser(userDTO.Email, userDTO.Password);
+            return (user != null) ? user.Id : null;
         }
 
         public async System.Threading.Tasks.Task<bool> Register(UserDTO userDTO)

@@ -19,6 +19,7 @@ namespace Travo
             kernel.Bind<IUserStore<User>>()
                 .To<UserStore<User>>()
                 .WithConstructorArgument("context", context => kernel.Get<TravoDbContext>());
+            kernel.Bind<UserManager<User>>().ToSelf();
 
 
             // Repositories
@@ -28,6 +29,7 @@ namespace Travo
 
             // Services
             kernel.Bind<IUserServices>().To<UserServices>();
+            kernel.Bind<ITeamServices>().To<TeamServices>();
         }
     }
 }

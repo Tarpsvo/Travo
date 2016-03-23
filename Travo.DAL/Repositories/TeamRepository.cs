@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Travo.DAL.Interfaces;
 using Travo.Domain.Models;
+using System.Linq;
 
 namespace Travo.DAL.Repositories
 {
@@ -9,19 +10,16 @@ namespace Travo.DAL.Repositories
     {
         public TeamRepository(TravoDbContext dbContext) : base(dbContext) { }
 
-        public System.Threading.Tasks.Task AddUserToTeam(string UserId, int TeamId)
-        {
-            throw new NotImplementedException();
-        }
-
         public List<Team> GetUserTeams(string userId)
         {
-            throw new NotImplementedException();
-        }
-
-        public System.Threading.Tasks.Task RemoveUserFromTeam(string UserId, int TeamId)
-        {
-            throw new NotImplementedException();
+            var teams =
+                from ut in DbContext.UserInTeams
+                from tm in DbContext.Teams
+                where
+                    ut.UserId == userId &&
+                    tm.Id == ut.TeamId
+                select tm;
+            return teams.ToList();
         }
     }
 }

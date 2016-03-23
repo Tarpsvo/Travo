@@ -4,6 +4,7 @@ using System.Diagnostics;
 using Travo.DAL.Interfaces;
 using Travo.DAL.Migrations;
 using Travo.Domain.Models;
+using System;
 
 namespace Travo.DAL
 {
@@ -11,9 +12,12 @@ namespace Travo.DAL
     {
         public TravoDbContext() : base("LocalDbConnectionString")
         {
-            #if DEBUG
-                Database.Log = s => Trace.Write(s);
-            #endif
+#if DEBUG
+            Database.Log = s => Trace.Write(s);
+#endif
+
+            Configuration.ProxyCreationEnabled = false;
+            Configuration.LazyLoadingEnabled = false;
         }
 
         public DbSet<Board> Boards { get; set; }

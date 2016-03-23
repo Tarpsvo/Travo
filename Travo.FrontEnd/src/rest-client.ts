@@ -96,6 +96,6 @@ class Endpoint {
 }
 
 export class Router {
-    public static Register = new Endpoint('POST', 'account/register');
-    public static RequestToken = new Endpoint('POST', 'account/token');
+    public static Register = new Endpoint('POST', 'user/register');
+    public static RequestToken = new Endpoint('POST', 'user/token');
 }

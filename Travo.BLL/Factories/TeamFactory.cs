@@ -4,9 +4,9 @@ using Travo.Domain.Models;
 
 namespace Travo.BLL.Factories
 {
-    class TeamFactory
+    public static class TeamFactory
     {
-        public TeamDTO createBasicDTO(Team Team)
+        public static TeamDTO createBasicDTO(Team Team)
         {
             return new TeamDTO
             {

@@ -34,15 +34,17 @@ namespace Travo.Providers
                 return;
             }
 
-            if (_userServices.Login(new UserDTO { Email = context.UserName, Password = context.Password }))
+            var userId = await _userServices.Login(new UserDTO { Email = context.UserName, Password = context.Password });
+
+            if (userId == null)
             {
                 context.SetError("Invalid data", "The user name or password is incorrect.");
                 return;
             }
 
             var identity = new ClaimsIdentity(context.Options.AuthenticationType);
-            identity.AddClaim(new Claim("sub", context.UserName));
-            identity.AddClaim(new Claim("role", "user"));
+            identity.AddClaim(new Claim(ClaimTypes.Name, context.UserName));
+            identity.AddClaim(new Claim(ClaimTypes.NameIdentifier, userId));
 
             context.Validated(identity);
         }

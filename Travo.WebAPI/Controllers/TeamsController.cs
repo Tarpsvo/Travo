@@ -1,15 +1,26 @@
-﻿using System.Web.Http;
+﻿using Microsoft.AspNet.Identity;
+using System.Web;
+using System.Web.Http;
 using Travo.BLL.DTO;
+using Travo.BLL.Services;
 
 namespace Travo.Controllers
 {
     [RoutePrefix("teams"), Authorize]
     public class TeamsController: TravoApiController
     {
-        [Route(""), HttpGet]
+        private ITeamServices _teamServices;
+
+        public TeamsController(ITeamServices teamServices)
+        {
+            _teamServices = teamServices;
+        }
+
+        [Route("withBoards"), HttpGet]
         public IHttpActionResult GetTeamsWithBoards()
         {
-            return Ok(new { Teams = new TeamDTO { Id = 12, Name = "Team", Description = "Desc", Created = 1232133454 } });
+            var teamsWithBoards = _teamServices.GetTeamsWithBoardsForUser(UserId);
+            return Json(teamsWithBoards);
         }
     }
 }

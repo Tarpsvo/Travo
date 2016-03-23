@@ -1,18 +1,16 @@
 ﻿using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.Owin;
 using Microsoft.Owin.Security.OAuth;
 using Ninject;
-using Ninject.Web.Common;
 using Ninject.Web.Common.OwinHost;
 using Ninject.Web.WebApi.OwinHost;
 using Owin;
 using System;
 using System.Reflection;
 using System.Web.Http;
+using Travo.App_Start;
+using Travo.BLL.Services;
 using Travo.DAL;
-using Travo.DAL.Interfaces;
-using Travo.DAL.Repositories;
 using Travo.Domain.Models;
 using Travo.Providers;
 
@@ -44,7 +42,7 @@ namespace Travo.WebAPI
                 AllowInsecureHttp = true,
                 TokenEndpointPath = new PathString("/user/token"),
                 AccessTokenExpireTimeSpan = TimeSpan.FromDays(1),
-                Provider = new AuthorizationServerProvider(kernel.Get<IUserRepository>())
+                Provider = new AuthorizationServerProvider(kernel.Get<IUserServices>())
             };
 
             // Token Generation

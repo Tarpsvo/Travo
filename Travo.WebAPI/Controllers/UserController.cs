@@ -5,7 +5,7 @@ using Travo.BLL.Services;
 
 namespace Travo.Controllers
 {
-    [RoutePrefix("account")]
+    [RoutePrefix("user")]
     public class UserController : TravoApiController
     {
         private IUserServices _userServices;
