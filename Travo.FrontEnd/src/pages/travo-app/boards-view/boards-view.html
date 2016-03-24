@@ -1,12 +1,28 @@
 <template>
-    <ul>
-        <li repeat.for="teamWithBoards of teamsWithBoards">
-            <h1>${teamWithBoards.Team.Name}</h1>
-            <ul>
-                <li repeat.for="board of teamWithBoards.Boards">
-                    <h4>${board.Name}</h4>
-                </li>
-            </ul>
-        </li>
-    </ul>
+    <div id="trv-boards-view-wrap">
+        <ul class="trv-teams">
+            <li repeat.for="teamWithBoards of teamsWithBoards" class="trv-team">
+                <h3><i class="uk-icon-user"></i> ${teamWithBoards.Team.Name}</h3>
+                <ul class="trv-boards uk-grid uk-grid-small">
+                    <li repeat.for="board of teamWithBoards.Boards" class="uk-width-1-4">
+                        <a  class="trv-board"
+                            route-href="route: board-view; params.bind:{id:board.Id}">
+                            ${board.Name}
+                        </a>
+                    </li>
+
+                    <li class="uk-width-1-4">
+                        <div class="trv-board trv-create-board">
+                            <p>Create a new board</p>
+                        </div>
+                    </li>
+                </ul>
+            </li>
+
+            <li>
+                <a href="#">Create a new team</a>
+            </li>
+        </ul>
+
+    </div>
 </template>

@@ -1,0 +1,136 @@
+// Variable definitions
+$headerBackground: #819dd0;
+$headerWidth: 960px;
+$headerHeight: 40px;
+$headerContentHeight: 32px;
+
+#header-wrap {
+    width: 100%;
+    height: $headerHeight;
+    background: -moz-linear-gradient(32deg, rgba(128,158,208,1) 0%, rgba(97,178,203,1) 100%); /* ff3.6+ */
+    background: -webkit-gradient(linear, left bottom, right top, color-stop(0%, rgba(128,158,208,1)), color-stop(100%, rgba(97,178,203,1))); /* safari4+,chrome */
+    background: -webkit-linear-gradient(32deg, rgba(128,158,208,1) 0%, rgba(97,178,203,1) 100%); /* safari5.1+,chrome10+ */
+    background: -o-linear-gradient(32deg, rgba(128,158,208,1) 0%, rgba(97,178,203,1) 100%); /* opera 11.10+ */
+    background: -ms-linear-gradient(32deg, rgba(128,158,208,1) 0%, rgba(97,178,203,1) 100%); /* ie10+ */
+    background: linear-gradient(58deg, rgba(128,158,208,1) 0%, rgba(97,178,203,1) 100%); /* w3c */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#809ed0', endColorstr='#61b2cb',GradientType=1 ); /* ie6-9 */
+
+-webkit-box-shadow: 0px 1px 2px 0px rgba(0,0,0,0.25);
+-moz-box-shadow: 0px 1px 2px 0px rgba(0,0,0,0.25);
+box-shadow: 0px 1px 2px 0px rgba(0,0,0,0.25);
+}
+
+#header {
+    max-width: $headerWidth;
+    height: $headerHeight;
+    line-height: $headerHeight;
+    margin: 0 auto;
+}
+
+.trv-header-icon-text-btn {
+    display: inline-block;
+    border-radius: 2px;
+    height: $headerContentHeight;
+    line-height: $headerContentHeight;
+    color: #FFF;
+    padding: 0 10px 0 10px;
+
+    &:hover {
+        background-color: rgba(255, 255, 255, 0.1);
+        cursor: pointer;
+    }
+
+    span {
+        font-family: 'Open Sans', sans-serif;
+        font-size: 14px;
+        font-weight: 600;
+    }
+
+    i {
+        color: #FFF;
+        font-size: 16px;
+    }
+}
+
+.trv-nav-dropdown {
+    line-height: 20px;
+    font-size: 14px;
+    border-radius: 3px;
+    padding: 2px;
+    background-color: #FFF;
+
+    -webkit-box-shadow: 0px 1px 5px 0px rgba(0,0,0,0.4);
+    -moz-box-shadow: 0px 1px 5px 0px rgba(0,0,0,0.4);
+    box-shadow: 0px 1px 5px 0px rgba(0,0,0,0.4);
+
+    // Left nav
+    &.trv-left-dd {
+        margin: -2px 0 0 -15px;
+        width: 120px;
+
+        &:after, &:before {
+            left: 30px;
+        }
+    }
+
+    // Right nav
+    &.trv-right-dd {
+        margin: -2px 0 0 20px;
+        right: 0;
+        left:inherit !important;
+        width: 100px;
+
+        &:after, &:before {
+            right: 30px;
+        }
+    }
+
+    &.uk-dropdown .uk-nav {
+        margin: 0;
+    }
+
+    &:after, &:before {
+    	bottom: 100%;
+    	border: solid transparent;
+    	content: " ";
+    	height: 0;
+    	width: 0;
+    	position: absolute;
+    	pointer-events: none;
+    }
+
+    &:after {
+    	border-color: none;
+    	border-bottom-color: #FFF;
+    	border-width: 5px;
+    	margin-left: -5px;
+    }
+
+    &:before {
+    	border-color: none;
+    	border-width: 6px;
+    	margin-left: -6px;
+    }
+}
+
+#trv-nav-tt-bar {
+    width: 100%;
+    background: rgba(255, 255, 255, 0.1);
+    height: $headerContentHeight;
+    line-height: $headerContentHeight;
+    border-radius: 2px;
+    margin-top: ($headerHeight - $headerContentHeight)/2;
+
+    span {
+        font-family: 'Open Sans', sans-serif;
+        font-size: 13px;
+        color: #EEE;
+        padding: 0 10px 0 10px;
+    }
+
+    button {
+        float: right;
+        height: $headerContentHeight;
+        display: none;
+    }
+}

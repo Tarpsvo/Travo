@@ -2,138 +2,19 @@
 @import url(https://fonts.googleapis.com/css?family=Open+Sans:400,600);
 
 // Variable definitions
-$backgroundColor: #f3f7fa;
-$headerBottomBorder: #999;
-$headerBackground: #ECDD7B;
-$headerWidth: 960px;
-$headerHeight: 40px;
-$headerContentHeight: 32px;
+$backgroundColor: #ebedef;
 
 // Style
 html, body {
+    height: 100%;
+    width: 100%;
     margin: 0;
     padding: 0;
     background-color: $backgroundColor;
     font-family: 'Open Sans', sans-serif;
 }
 
-#header-wrap {
+.container {
+    height: 100%;
     width: 100%;
-    height: $headerHeight;
-    background: #444554;
-}
-
-#header {
-    max-width: $headerWidth;
-    height: $headerHeight;
-    line-height: $headerHeight;
-    margin: 0 auto;
-}
-
-.trv-header-icon-text-btn {
-    display: inline-block;
-    border-radius: 2px;
-    height: $headerContentHeight;
-    line-height: $headerContentHeight;
-    color: #FFF;
-    padding: 0 10px 0 10px;
-
-    &:hover {
-        background-color: rgba(255, 255, 255, 0.1);
-        cursor: pointer;
-    }
-
-    span {
-        font-family: 'Open Sans', sans-serif;
-        font-size: 14px;
-        font-weight: 600;
-    }
-
-    i {
-        color: #FFF;
-        font-size: 16px;
-    }
-}
-
-.trv-nav-dropdown {
-    line-height: 20px;
-    font-size: 14px;
-    border-radius: 3px;
-    padding: 2px;
-    background-color: #FFF;
-
-    -webkit-box-shadow: 0px 1px 5px 0px rgba(0,0,0,0.4);
-    -moz-box-shadow: 0px 1px 5px 0px rgba(0,0,0,0.4);
-    box-shadow: 0px 1px 5px 0px rgba(0,0,0,0.4);
-
-    // Left nav
-    &.trv-left-dd {
-        margin: -2px 0 0 -15px;
-        width: 120px;
-
-        &:after, &:before {
-            left: 30px;
-        }
-    }
-
-    // Right nav
-    &.trv-right-dd {
-        margin: -2px 0 0 20px;
-        right: 0;
-        left:inherit !important;
-        width: 100px;
-
-        &:after, &:before {
-            right: 30px;
-        }
-    }
-
-    &.uk-dropdown .uk-nav {
-        margin: 0;
-    }
-
-    &:after, &:before {
-    	bottom: 100%;
-    	border: solid transparent;
-    	content: " ";
-    	height: 0;
-    	width: 0;
-    	position: absolute;
-    	pointer-events: none;
-    }
-
-    &:after {
-    	border-color: none;
-    	border-bottom-color: #FFF;
-    	border-width: 5px;
-    	margin-left: -5px;
-    }
-
-    &:before {
-    	border-color: none;
-    	border-width: 6px;
-    	margin-left: -6px;
-    }
-}
-
-#trv-nav-tt-bar {
-    width: 100%;
-    background: rgba(255, 255, 255, 0.1);
-    height: $headerContentHeight;
-    line-height: $headerContentHeight;
-    border-radius: 2px;
-    margin-top: ($headerHeight - $headerContentHeight)/2;
-
-    span {
-        font-family: 'Open Sans', sans-serif;
-        font-size: 13px;
-        color: #BBB;
-        padding: 0 10px 0 10px;
-    }
-
-    button {
-        float: right;
-        height: $headerContentHeight;
-        display: none;
-    }
 }
