@@ -15,6 +15,10 @@ export class BoardsView {
         this.getTeamsWithBoards();
     }
 
+    activate(params) {
+        this.getTeamsWithBoards();
+    }
+
     getTeamsWithBoards() {
         console.log("Getting teams with boards.");
         this.teamServices.getTeamsWithBoards()

@@ -1,3 +1,27 @@
 <template>
-    <div style="text-align: center; margin-top: 50px;"><h1>Board TODO</h1></div>
+    <div id="trv-sub-nav-bar">
+        <h2>Welcome board</h2>
+    </div>
+
+    <div id="trv-tags-wrap-view">
+        <ul class="trv-tags">
+            <li repeat.for="tagWithTasks of tagsWithTasks" class="trv-tag">
+                <h3>${tagWithTasks.Tag.Name}</h3>
+                <ul class="trv-tasks">
+                    <li repeat.for="task of tagWithTasks.Tasks">
+                        <div class="trv-task">
+                            ${task.Description}
+                        </div>
+                    </li>
+
+                    <li>
+                        <div class="trv-task trv-create-task">
+                            <p>ADD NEW CARD</p>
+                        </div>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+
+    </div>
 </template>
