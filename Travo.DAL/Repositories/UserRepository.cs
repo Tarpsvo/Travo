@@ -7,7 +7,7 @@ using System.Linq;
 
 namespace Travo.DAL.Repositories
 {
-    public class UserRepository : IUserRepository, IDisposable
+    public class UserRepository : IUserRepository
     {
         private TravoDbContext _dbContext;
         private UserManager<User> _userManager;
@@ -62,6 +62,31 @@ namespace Travo.DAL.Repositories
                 TeamId = team.Id
             };
             _dbContext.BoardInTeams.Add(boardInTeam);
+
+            var tag = new Tag
+            {
+                BoardId = board.Id,
+                Name = "Getting started",
+                CreatedByUserId = registeredUser.Id
+            };
+            _dbContext.Tags.Add(tag);
+
+            var task1 = new Domain.Models.Task
+            {
+                CreatedByUserId = registeredUser.Id,
+                Description = "Edit this board with tags that fit you",
+                TagId = tag.Id
+            };
+            _dbContext.Tasks.Add(task1);
+
+            var task21 = new Domain.Models.Task
+            {
+                CreatedByUserId = registeredUser.Id,
+                Description = "Create to-do tasks of tasks you need to get done",
+                TagId = tag.Id
+            };
+            _dbContext.Tasks.Add(task21);
+
             _dbContext.SaveChanges();
 
             return result.Succeeded;
@@ -72,10 +97,10 @@ namespace Travo.DAL.Repositories
             return await _userManager.FindAsync(email, password);
         }
 
-        public void Dispose()
+        public async Task<bool> UserExists(string email)
         {
-            _dbContext.Dispose();
-            _userManager.Dispose();
+            var user = await _userManager.FindByEmailAsync(email);
+            return (user != null);
         }
 
         public bool UserHasAccessToTask(string userId, int taskId)
@@ -103,8 +128,15 @@ namespace Travo.DAL.Repositories
 
         public bool UserHasAccessToBoard(string userId, int boardId)
         {
-            // TODO
-            throw new NotImplementedException();
+            var count =
+                (from bt in _dbContext.BoardInTeams
+                from ut in _dbContext.UserInTeams
+                where
+                    bt.BoardId == boardId &&
+                    ut.TeamId == bt.BoardId &&
+                    ut.UserId == userId
+                select ut.Id).Count();
+            return (count == 1);
         }
 
         public bool UserHasReadAccessToTeam(string userId, int teamId)

@@ -26,10 +26,13 @@ namespace Travo
             kernel.Bind<IUserRepository>().To<UserRepository>();
             kernel.Bind<ITeamRepository>().To<TeamRepository>();
             kernel.Bind<IBoardRepository>().To<BoardRepository>();
+            kernel.Bind<ITagRepository>().To<TagRepository>();
+            kernel.Bind<ITaskRepository>().To<TaskRepository>();
 
             // Services
             kernel.Bind<IUserServices>().To<UserServices>();
             kernel.Bind<ITeamServices>().To<TeamServices>();
+            kernel.Bind<IBoardServices>().To<BoardServices>();
         }
     }
 }

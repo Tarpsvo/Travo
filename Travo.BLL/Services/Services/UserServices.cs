@@ -21,6 +21,10 @@ namespace Travo.BLL.Services
 
         public async System.Threading.Tasks.Task<bool> Register(UserDTO userDTO)
         {
+            if (await _userRepository.UserExists(userDTO.Email))
+            {
+                throw new Exception("Email already registered.");
+            }
             return await _userRepository.RegisterUser(userDTO.Email, userDTO.DisplayName, userDTO.Password);
         }
     }

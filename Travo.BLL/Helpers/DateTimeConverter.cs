@@ -2,7 +2,7 @@
 
 namespace Travo.BLL.Helpers
 {
-    public class DateTimeConverter
+    public static class DateTimeConverter
     {
         public static long ConvertToUnixTimestamp(DateTime date)
         {

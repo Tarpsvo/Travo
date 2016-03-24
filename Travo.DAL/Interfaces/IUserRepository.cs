@@ -5,10 +5,11 @@ using Travo.Domain.Models;
 
 namespace Travo.DAL.Interfaces
 {
-    public interface IUserRepository : IDisposable
+    public interface IUserRepository
     {
         Task<bool> RegisterUser(string email, string displayName, string password);
         Task<User> FindUser(string email, string password);
+        Task<bool> UserExists(string email);
 
         bool UserHasAccessToTask(string userId, int taskId);
         bool UserHasAccessToTag(string userId, int tagId);

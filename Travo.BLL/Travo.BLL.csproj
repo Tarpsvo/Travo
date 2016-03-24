@@ -8,7 +8,7 @@
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>BLL</RootNamespace>
-    <AssemblyName>BLL</AssemblyName>
+    <AssemblyName>Travo.BLL</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -58,16 +58,23 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DTOs\Board\BoardDTO.cs" />
+    <Compile Include="DTOs\Tag\TagDTO.cs" />
+    <Compile Include="DTOs\Tag\TagWithTasksDTO.cs" />
+    <Compile Include="DTOs\Task\TaskDTO.cs" />
     <Compile Include="DTOs\Team\TeamDTO.cs" />
     <Compile Include="DTOs\Team\TeamWithBoardsDTO.cs" />
     <Compile Include="DTOs\Account\UserDTO.cs" />
     <Compile Include="Factories\BoardFactory.cs" />
+    <Compile Include="Factories\TaskFactory.cs" />
+    <Compile Include="Factories\TagFactory.cs" />
     <Compile Include="Factories\TeamFactory.cs" />
     <Compile Include="Factories\UserFactory.cs" />
     <Compile Include="Helpers\DateTimeConverter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\Interfaces\IBoardServices.cs" />
     <Compile Include="Services\Interfaces\IUserServices.cs" />
     <Compile Include="Services\Interfaces\ITeamServices.cs" />
+    <Compile Include="Services\Services\BoardServices.cs" />
     <Compile Include="Services\Services\UserServices.cs" />
     <Compile Include="Services\Services\TeamServices.cs" />
   </ItemGroup>

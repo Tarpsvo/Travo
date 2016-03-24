@@ -1,11 +1,11 @@
 ﻿using Travo.BLL.DTO;
 using Travo.Domain.Models;
 
-namespace BLL.Factories
+namespace Travo.BLL.Factories
 {
-    class UserFactory
+    public static class UserFactory
     {
-        public UserDTO createBasicDTO(User user)
+        public static UserDTO createBasicDTO(User user)
         {
             return new UserDTO
             {
