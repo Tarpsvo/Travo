@@ -6,6 +6,7 @@ var sourcemaps = require('gulp-sourcemaps');
 var sass = require('gulp-sass');
 var browserSync = require('browser-sync');
 var ts = require('gulp-typescript');
+var concat = require('gulp-concat');
 
 var tsProject = ts.createProject('tsconfig.json');
 var paths = require('../paths');
@@ -48,11 +49,11 @@ gulp.task('copy-lib', function () {
 gulp.task('build-scss', function () {
     return gulp.src(paths.scss)
         .pipe(plumber())
-        .pipe(changed(paths.output, { extension: '.css' }))
+        .pipe(concat('travo.min.css'))
         .pipe(sourcemaps.init({ loadMaps: true }))
         .pipe(sass.sync({ outputStyle: 'compressed' }))
         .pipe(sourcemaps.write({ includeContent: true }))
-        .pipe(gulp.dest(paths.output))
+        .pipe(gulp.dest(paths.output + '/assets/styles/'))
         .pipe(browserSync.stream({match: '**/*.css'}));
 });
 
