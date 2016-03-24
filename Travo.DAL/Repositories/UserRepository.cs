@@ -40,7 +40,6 @@ namespace Travo.DAL.Repositories
                 Name = "My Boards"
             };
             var team = _dbContext.Teams.Add(defaultTeam);
-            _dbContext.SaveChanges();
 
             var userInTeam = new UserInTeam
             {
@@ -56,7 +55,6 @@ namespace Travo.DAL.Repositories
                 Name = "Welcome Board"
             };
            var board = _dbContext.Boards.Add(welcomeBoard);
-            _dbContext.SaveChanges();
 
             var boardInTeam = new BoardInTeam
             {

@@ -101,6 +101,10 @@
     <Compile Include="Migrations\201603200000203_UserIdEdit.Designer.cs">
       <DependentUpon>201603200000203_UserIdEdit.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201603232258274_IndexedBoardId.cs" />
+    <Compile Include="Migrations\201603232258274_IndexedBoardId.Designer.cs">
+      <DependentUpon>201603232258274_IndexedBoardId.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\UserRepository.cs" />
@@ -125,6 +129,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201603200000203_UserIdEdit.resx">
       <DependentUpon>201603200000203_UserIdEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201603232258274_IndexedBoardId.resx">
+      <DependentUpon>201603232258274_IndexedBoardId.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
