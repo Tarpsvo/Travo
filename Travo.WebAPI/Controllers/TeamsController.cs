@@ -1,7 +1,5 @@
-﻿using Microsoft.AspNet.Identity;
-using System.Web;
+﻿using System.Net.Http;
 using System.Web.Http;
-using Travo.BLL.DTO;
 using Travo.BLL.Services;
 
 namespace Travo.Controllers
@@ -17,10 +15,10 @@ namespace Travo.Controllers
         }
 
         [Route("withBoards"), HttpGet]
-        public IHttpActionResult GetTeamsWithBoards()
+        public HttpResponseMessage GetTeamsWithBoards()
         {
             var teamsWithBoards = _teamServices.GetTeamsWithBoardsForUser(UserId);
-            return Json(teamsWithBoards);
+            return TravoOk(teamsWithBoards);
         }
     }
 }

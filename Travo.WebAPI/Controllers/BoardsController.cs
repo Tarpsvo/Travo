@@ -1,4 +1,6 @@
-﻿using System.Web.Http;
+﻿using System.Net;
+using System.Net.Http;
+using System.Web.Http;
 using Travo.BLL.Services;
 
 namespace Travo.Controllers
@@ -14,10 +16,10 @@ namespace Travo.Controllers
         }
 
         [Route("{boardId:int}/withTagsAndTasks"), HttpGet]
-        public IHttpActionResult GetBoardTagsWithTasks(int boardId)
+        public HttpResponseMessage GetBoardTagsWithTasks(int boardId)
         {
             var tagsWithTasks = _boardServices.GetTagsWithTasksForBoard(UserId, boardId);
-            return Json(tagsWithTasks);
+            return TravoOk(tagsWithTasks);
         }
     }
 }
