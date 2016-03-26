@@ -5,7 +5,6 @@
     }
 
     .trv-tags {
-        margin-top: 20px;
 
         .trv-tag {
             display: inline-block;
@@ -32,13 +31,15 @@
     }
 
     .trv-task {
-        margin: 5px;
+        width: 240px;
+        margin: 0 5px 5px 5px;
         background-color: #FFF;
         padding: 10px;
         border-radius: 2px;
         border: 1px solid #e5e8ea;
+        box-sizing: border-box;
 
-        &.trv-create-task {
+        &.trv-ct-btn {
             background-color: #f7f8f8;
             text-align: center;
             font-weight: 600;
@@ -55,4 +56,55 @@
         }
     }
 
+    .trv-ct-form {
+        margin: 5px;
+
+        .trv-add-btn {
+            color: #FFF;
+            font-size: 14px;
+            font-weight: 600;
+            background-color: #5DBF69;
+
+            -webkit-box-shadow: 0px 1px 0px 0px rgba(50, 50, 50, 0.45);
+            -moz-box-shadow:    0px 1px 0px 0px rgba(50, 50, 50, 0.45);
+            box-shadow:         0px 1px 0px 0px rgba(50, 50, 50, 0.45);
+
+            height: 28px;
+            line-height: 28px;
+            width: 80px;
+            border: none;
+            border-radius: 3px;
+
+            transition: all 0.2s ease-in-out;
+
+            &:hover {
+                cursor: pointer;
+                background-color: #69c474;
+            }
+        }
+
+        .trv-cancel-btn {
+            display: inline-block;
+            line-height: 28px;
+            font-size: 18px;
+            margin-left: 4px;
+            padding: 0 9px 0 9px;
+            border-radius: 3px;
+            color: #999;
+
+            transition: all 0.2s ease-in-out;
+
+            &:hover {
+                cursor: pointer;
+                background-color: rgba(0, 0, 0, 0.1);
+            }
+        }
+
+        textarea {
+            width: 240px;
+            border: 1px solid #e5e8ea;
+            box-sizing: border-box;
+            resize: none;
+        }
+    }
 }

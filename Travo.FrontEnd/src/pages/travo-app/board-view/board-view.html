@@ -15,8 +15,22 @@
                     </li>
 
                     <li>
-                        <div class="trv-task trv-create-task">
-                            <p>ADD NEW CARD</p>
+                        <button class="trv-task trv-ct-btn ${'trv-ct-toggle-'+$index}"
+                                data-uk-toggle="{target:'${'.trv-ct-toggle-'+$index}'}"
+                                click.delegate="userOpenedTaskForm($index)">ADD A NEW CARD</button>
+
+                        <div id="${'trv-ct-form-'+$index}" class="trv-ct-form ${'trv-ct-toggle-'+$index} uk-hidden">
+                            <textarea
+                                rows="4"
+                                cols="40"
+                                value=""></textarea>
+                            <button
+                                class="trv-add-btn"
+                                click.delegate="addNewTask($index)">
+                                    Add</button><i
+                                class="trv-cancel-btn uk-icon-times"
+                                data-uk-toggle="{target:'${'.trv-ct-toggle-'+$index}'}">
+                            </i>
                         </div>
                     </li>
                 </ul>
