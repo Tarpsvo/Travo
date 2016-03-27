@@ -6,11 +6,11 @@
     <div id="trv-tags-wrap-view">
         <ul class="trv-tags">
             <li repeat.for="tagWithTasks of tagsWithTasks" class="trv-tag">
-                <h3>${tagWithTasks.Tag.Name}</h3>
+                <h3>${tagWithTasks.tag.name}</h3>
                 <ul class="trv-tasks">
-                    <li repeat.for="task of tagWithTasks.Tasks">
+                    <li repeat.for="task of tagWithTasks.tasks">
                         <div class="trv-task">
-                            ${task.Description}
+                            ${task.description}
                         </div>
                     </li>
 
