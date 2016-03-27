@@ -41,7 +41,7 @@ namespace Travo.WebAPI
             {
                 AllowInsecureHttp = true,
                 TokenEndpointPath = new PathString("/user/token"),
-                AccessTokenExpireTimeSpan = TimeSpan.FromDays(1),
+                AccessTokenExpireTimeSpan = TimeSpan.FromDays(365),
                 Provider = new AuthorizationServerProvider(kernel.Get<IUserServices>())
             };
 
