@@ -27,6 +27,15 @@ export class BoardView {
         if (!this.autosizeOn) {
             this.autosizeOn = true;
             autosize(textArea);
+
+            // Enable enter press on textarea
+            var that = this;
+            textArea.onkeyup = function(e) {
+                if (e.keyCode === 13 && !e.shiftKey) {
+                    that.addNewTask(index);
+                }
+                return true;
+            }
         }
 
         textArea.focus();
@@ -54,10 +63,10 @@ export class BoardView {
         }
 
         var newTask = {
-            Description: taskText
+            description: taskText
         };
 
-        var taskArray = (<Object[]> this.tagsWithTasks[index]['Tasks']);
+        var taskArray = (<Object[]> this.tagsWithTasks[index]['tasks']);
         taskArray.push(newTask);
         this.closeTextAreaAtIndex(index);
     }
