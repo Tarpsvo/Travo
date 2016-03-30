@@ -13,4 +13,3 @@ export default class TeamServices {
         return this.rest.get(Router.TeamsWithBoards);
     }
 }
- {}

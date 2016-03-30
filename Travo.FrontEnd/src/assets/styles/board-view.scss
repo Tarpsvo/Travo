@@ -39,6 +39,11 @@
         border: 1px solid #e5e8ea;
         box-sizing: border-box;
 
+        &:hover {
+            cursor: pointer;
+            background-color: #e5e8ea;
+        }
+
         &.trv-ct-btn {
             margin-top: 0;
             background-color: #f7f8f8;
@@ -51,8 +56,15 @@
             color: #c6ccd0;
 
             &:hover {
-                cursor: pointer;
                 background-color: #FFF;
+            }
+        }
+
+        &.trv-save-pending {
+            background-color: #f7f8f8;
+
+            &:hover {
+                cursor: default;
             }
         }
     }

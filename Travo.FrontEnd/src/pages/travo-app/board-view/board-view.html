@@ -9,13 +9,18 @@
                 <h3>${tagWithTasks.tag.name}</h3>
                 <ul class="trv-tasks">
                     <li repeat.for="task of tagWithTasks.tasks">
-                        <div class="trv-task">
+                        <div class="
+                            trv-task
+                            ${task.id == null ? 'trv-save-pending' : ''}">
                             ${task.description}
                         </div>
                     </li>
 
                     <li>
-                        <button class="trv-task trv-ct-btn ${'trv-ct-toggle-'+$index}"
+                        <button class="
+                            trv-task
+                            trv-ct-btn
+                            ${'trv-ct-toggle-' + $index}"
                                 data-uk-toggle="{target:'${'.trv-ct-toggle-'+$index}'}"
                                 click.delegate="userOpenedTaskForm($index)">ADD A NEW CARD</button>
 

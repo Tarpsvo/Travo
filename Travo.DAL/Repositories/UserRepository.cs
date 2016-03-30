@@ -122,8 +122,17 @@ namespace Travo.DAL.Repositories
 
         public bool UserHasAccessToTag(string userId, int tagId)
         {
-            // TODO
-            throw new NotImplementedException();
+            var count =
+                    (from tg in _dbContext.Tags
+                    from bt in _dbContext.BoardInTeams
+                    from ut in _dbContext.UserInTeams
+                    where
+                        tg.Id == tagId &&
+                        bt.BoardId == tg.BoardId &&
+                        ut.TeamId == bt.TeamId &&
+                        ut.UserId == userId
+                    select ut.Id).Count();
+            return (count == 1);
         }
 
         public bool UserHasAccessToBoard(string userId, int boardId)

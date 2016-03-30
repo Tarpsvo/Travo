@@ -39,6 +39,7 @@
         "./src/rest-client.ts",
         "./src/services/auth-services.ts",
         "./src/services/board-services.ts",
+        "./src/services/task-services.ts",
         "./src/services/team-services.ts",
         "./src/travo-config.ts",
         "./typings/browser.d.ts",

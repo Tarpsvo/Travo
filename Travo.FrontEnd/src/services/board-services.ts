@@ -13,4 +13,3 @@ export default class BoardServices {
         return this.rest.get(Router.BoardTagsWithTasks(boardId));
     }
 }
- {}

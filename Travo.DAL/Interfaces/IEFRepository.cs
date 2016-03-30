@@ -9,9 +9,10 @@ namespace Travo.DAL.Interfaces
     public interface IEFRepository<T>
     {
         T GetById(object id);
-        void Add(T entity);
+        T Add(T entity);
         void Update(T entity);
         void Delete(T entity);
         void Delete(object id);
+        void Save();
     }
 }

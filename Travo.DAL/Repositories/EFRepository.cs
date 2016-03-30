@@ -22,9 +22,9 @@ namespace Travo.DAL.Repositories
             return DbSet.Find(id);
         }
 
-        public virtual void Add(T entity)
+        public virtual T Add(T entity)
         {
-            DbSet.Add(entity);
+            return DbSet.Add(entity);
         }
 
         public virtual void Delete(object id)
@@ -48,5 +48,9 @@ namespace Travo.DAL.Repositories
             DbContext.Entry(entity).State = EntityState.Modified;
         }
 
+        public virtual void Save()
+        {
+            DbContext.SaveChanges();
+        }
     }
 }

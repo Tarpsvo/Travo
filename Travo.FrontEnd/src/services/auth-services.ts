@@ -53,4 +53,3 @@ export default class AuthServices {
         this.app.setRoot('./dist/pages/landing-page/landing-page');
     }
 }
- {}

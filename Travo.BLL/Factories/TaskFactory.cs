@@ -14,6 +14,18 @@ namespace Travo.BLL.Factories
             {
                 Created = DateTimeConverter.ConvertToUnixTimestamp(task.Created),
                 Description = task.Description,
+                CreatedByUser = UserFactory.createBasicDTO(task.CreatedByUser),
+                Tag = TagFactory.createBasicDTO(task.Tag),
+                Id = task.Id
+            };
+        }
+
+        public static TaskDTO createMinimalDTO(Task task)
+        {
+            return new TaskDTO
+            {
+                Created = DateTimeConverter.ConvertToUnixTimestamp(task.Created),
+                Description = task.Description,
                 Id = task.Id
             };
         }
@@ -21,6 +33,16 @@ namespace Travo.BLL.Factories
         public static List<TaskDTO> createBasicDTOList(List<Task> taskList)
         {
             return taskList.Select(t => createBasicDTO(t)).ToList();
+        }
+
+        public static Task createTaskFromDTO(TaskDTO taskDTO)
+        {
+            return new Task
+            {
+                Id = taskDTO.Id,
+                Description = taskDTO.Description,
+                TagId = taskDTO.TagId ?? 0 // TODO proper error handling?
+            };
         }
     }
 }

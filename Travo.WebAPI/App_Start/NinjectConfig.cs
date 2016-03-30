@@ -33,6 +33,7 @@ namespace Travo
             kernel.Bind<IUserServices>().To<UserServices>();
             kernel.Bind<ITeamServices>().To<TeamServices>();
             kernel.Bind<IBoardServices>().To<BoardServices>();
+            kernel.Bind<ITaskServices>().To<TaskServices>();
         }
     }
 }

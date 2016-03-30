@@ -3,18 +3,21 @@
 import {inject} from 'aurelia-framework';
 import Notify from 'notify-client';
 import BoardServices from 'services/board-services';
+import TaskServices from 'services/task-services';
 import config from 'travo-config';
 
-@inject(BoardServices)
+@inject(BoardServices, TaskServices)
 export class BoardView {
     boardServices: BoardServices;
+    taskServices: TaskServices;
 
     // View values
     autosizeOn = false;
     tagsWithTasks: Object[];
 
-    constructor(boardServices: BoardServices) {
+    constructor(boardServices: BoardServices, taskServices: TaskServices) {
         this.boardServices = boardServices;
+        this.taskServices = taskServices;
     }
 
     activate(params) {
@@ -63,12 +66,26 @@ export class BoardView {
         }
 
         var newTask = {
+            id: null,
+            created: null,
             description: taskText
         };
 
         var taskArray = (<Object[]> this.tagsWithTasks[index]['tasks']);
         taskArray.push(newTask);
         this.closeTextAreaAtIndex(index);
+
+        let tagId = this.tagsWithTasks[index]['tag'].id;
+
+        // Now post it and then edit newTask
+        this.taskServices.addTask(tagId, taskText)
+            .then(response => {
+                newTask.id = response.id,
+                newTask.created = response.created
+            })
+            .catch(error => {
+                console.log("What error");
+            });
     }
 
     closeTextAreaAtIndex(index: number) {
