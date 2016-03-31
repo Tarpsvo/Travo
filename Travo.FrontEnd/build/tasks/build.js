@@ -49,10 +49,10 @@ gulp.task('copy-lib', function () {
 gulp.task('build-scss', function () {
     return gulp.src(paths.scss)
         .pipe(plumber())
-        .pipe(concat('travo.min.css'))
         .pipe(sourcemaps.init({ loadMaps: true }))
-        .pipe(sass.sync({ outputStyle: 'compressed' }))
+        .pipe(sass.sync({ outputStyle: 'compressed', includePaths: ['./node_modules/compass-mixins/lib'] }))
         .pipe(sourcemaps.write({ includeContent: true }))
+        .pipe(concat('travo.min.css'))
         .pipe(gulp.dest(paths.output + '/assets/styles/'))
         .pipe(browserSync.stream({match: '**/*.css'}));
 });
