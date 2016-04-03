@@ -1,3 +1,5 @@
+@import "compass";
+
 // Google fonts
 @import url(https://fonts.googleapis.com/css?family=Open+Sans:400,600);
 
@@ -12,11 +14,10 @@ html, body {
     padding: 0;
     background-color: $backgroundColor;
     font-family: 'Open Sans', sans-serif;
+    @include background(linear-gradient(45deg, #606e80, #39464f));
 }
 
 .container {
-    height: 100%;
-    width: 100%;
     padding: 0 20px;
     box-sizing: border-box;
 }

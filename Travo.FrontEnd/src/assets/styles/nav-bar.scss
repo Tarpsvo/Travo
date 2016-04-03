@@ -9,12 +9,8 @@ $headerContentHeight: 32px;
 #header-wrap {
     width: 100%;
     height: $headerHeight;
-
-    @include background(linear-gradient(30deg, #76778a, #47495b));
-
-    -webkit-box-shadow: 0px 1px 2px 0px rgba(0,0,0,0.25);
-    -moz-box-shadow: 0px 1px 2px 0px rgba(0,0,0,0.25);
-    box-shadow: 0px 1px 2px 0px rgba(0,0,0,0.25);
+    background: rgba(0, 0, 0, 0.2);
+    @include box-shadow(0px 1px 2px 0px rgba(0,0,0,0.25));
 }
 
 #header {
@@ -26,10 +22,15 @@ $headerContentHeight: 32px;
     padding: 0 20px;
 }
 
-.trv-header-icon-text-btn {
+// Common
+.trv-nav-dropdown-wrap {
+    position: relative;
     display: inline-block;
-    border-radius: 2px;
-    height: $headerContentHeight;
+}
+
+.trv-nav-icon-btn {
+    display: block;
+    border-radius: 1px;
     line-height: $headerContentHeight;
     color: #FFF;
     padding: 0 10px 0 10px;
@@ -38,29 +39,98 @@ $headerContentHeight: 32px;
         background-color: rgba(255, 255, 255, 0.1);
         cursor: pointer;
     }
+}
 
-    span {
-        font-family: 'Open Sans', sans-serif;
-        font-size: 14px;
-        font-weight: 600;
-    }
+.trv-nav-link {
+    display: inline-block;
+    font-size: 12px;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.6);
 
-    i {
+    &:hover {
         color: #FFF;
-        font-size: 16px;
+        cursor: pointer;
+        text-decoration: none;
     }
 }
 
+// Left hand content
+#trv-nav-left {
+    border-right: 2px solid rgba(255, 255, 255, 0.2);
+    padding-right: 10px;
+    float: left;
+}
+
+#trv-nav-right {
+    border-left: 2px solid rgba(255, 255, 255, 0.2);
+    padding-left: 10px;
+    float: right;
+}
+
+// Location
+#trv-nav-location {
+    display: inline-block;
+    font-size: 12px;
+    font-weight: 600;
+    color: #FFF;
+    border-right: 2px solid rgba(255, 255, 255, 0.2);
+    padding: 0 10px;
+    text-transform: uppercase;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// Right hand content (timetracking bar)
+#trv-nav-tt-bar {
+    background: rgba(255, 255, 255, 0.1);
+    height: $headerContentHeight;
+    line-height: $headerContentHeight;
+    border-radius: 1px;
+    margin-top: ($headerHeight - $headerContentHeight)/2;
+    float: right;
+
+    span {
+        font-family: 'Open Sans', sans-serif;
+        font-size: 13px;
+        color: #EEE;
+        padding: 0 10px 0 10px;
+    }
+
+    button {
+        float: right;
+        height: $headerContentHeight;
+        display: none;
+    }
+}
+
+
+// Dropdown stylings
 .trv-nav-dropdown {
     line-height: 20px;
     font-size: 14px;
-    border-radius: 3px;
-    padding: 2px;
+    border-radius: 2px;
+    padding: 1px;
     background-color: #FFF;
 
-    -webkit-box-shadow: 0px 1px 5px 0px rgba(0,0,0,0.4);
-    -moz-box-shadow: 0px 1px 5px 0px rgba(0,0,0,0.4);
-    box-shadow: 0px 1px 5px 0px rgba(0,0,0,0.4);
+    @include box-shadow(0px 1px 3px 1px rgba(0,0,0,0.15));
+
+    .uk-nav-dropdown>li>a:hover {
+        background: #38454e;
+        color: #FFF;
+    }
 
     // Left nav
     &.trv-left-dd {
@@ -75,7 +145,7 @@ $headerContentHeight: 32px;
     // Right nav
     &.trv-right-dd {
         margin: -2px 0 0 20px;
-        right: 0;
+        right: -18px;
         left:inherit !important;
         width: 100px;
 
@@ -109,27 +179,5 @@ $headerContentHeight: 32px;
     	border-color: none;
     	border-width: 6px;
     	margin-left: -6px;
-    }
-}
-
-#trv-nav-tt-bar {
-    width: 100%;
-    background: rgba(255, 255, 255, 0.1);
-    height: $headerContentHeight;
-    line-height: $headerContentHeight;
-    border-radius: 2px;
-    margin-top: ($headerHeight - $headerContentHeight)/2;
-
-    span {
-        font-family: 'Open Sans', sans-serif;
-        font-size: 13px;
-        color: #EEE;
-        padding: 0 10px 0 10px;
-    }
-
-    button {
-        float: right;
-        height: $headerContentHeight;
-        display: none;
     }
 }

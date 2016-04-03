@@ -2,7 +2,7 @@
     <div id="trv-boards-view-wrap">
         <ul class="trv-teams">
             <li repeat.for="teamWithBoards of teamsWithBoards" class="trv-team">
-                <h3><i class="uk-icon-user"></i> ${teamWithBoards.team.name}</h3>
+                <h3>${teamWithBoards.team.name}</h3>
                 <ul class="trv-boards uk-grid uk-grid-small">
                     <li repeat.for="board of teamWithBoards.boards" class="uk-width-1-4">
                         <a  class="trv-board"
@@ -18,11 +18,6 @@
                     </li>
                 </ul>
             </li>
-
-            <li>
-                <a href="#">Create a new team</a>
-            </li>
         </ul>
-
     </div>
 </template>

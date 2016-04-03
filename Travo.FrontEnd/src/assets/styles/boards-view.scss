@@ -1,3 +1,5 @@
+@import "compass";
+
 #trv-boards-view-wrap {
     max-width: 960px;
     margin: 0 auto;
@@ -10,19 +12,20 @@
 
     .trv-team {
         width: 100%;
-        border-radius: 3px;
         margin-bottom: 30px;
 
         h3 {
+
             display: block;
-            font-family: 'Open Sans', sans-serif;
-            font-size: 16px;
+            font-size: 14px;
             font-weight: 600;
             line-height: 40px;
+            border-radius: 2px;
 
-            color: #555;
+            color: #4e6473;
             border: 1px solid #DDD;
             background-color: #FFF;
+            text-transform: uppercase;
 
             padding: 0 10px 0 10px;
             box-sizing: border-box;
@@ -32,11 +35,11 @@
 
     .trv-board {
         display: block;
-        background: rgba(254,185,118,1);
+        background: #80bd15;
         padding: 10px 15px;
         height: 80px;
         box-sizing: border-box;
-        border-radius: 3px;
+        border-radius: 2px;
         opacity: 0.9;
         color: #FFF;
         font-size: 16px;
@@ -48,7 +51,7 @@
         box-shadow: 0px 1px 2px 0px rgba(0,0,0,0.2);
 
         &.trv-create-board {
-            background: #DDD;
+            background: rgba(255, 255, 255, 0.15);
         }
 
         &:hover {

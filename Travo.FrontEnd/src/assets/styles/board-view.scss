@@ -1,3 +1,5 @@
+@import "compass";
+
 #trv-tags-wrap-view {
     ul {
         list-style: none;
@@ -7,25 +9,47 @@
     .trv-tags {
 
         .trv-tag {
-            display: inline-block;
+            float: left;
             width: 250px;
             background-color: #f7f8f8;
             border-radius: 3px;
             margin-left: 40px;
 
-            -webkit-box-shadow: 0px 1px 2px 0px rgba(0,0,0,0.2);
-            -moz-box-shadow: 0px 1px 2px 0px rgba(0,0,0,0.2);
-            box-shadow: 0px 1px 2px 0px rgba(0,0,0,0.2);
+            @include box-shadow(0px 1px 3px 0px rgba(0, 0, 0, 0.15));
 
             h3 {
+                font-family: 'Open Sans', sans-serif;
                 line-height: 40px;
                 text-align: center;
                 background: #FFF;
                 border-radius: 3px 3px 0 0;
                 text-transform: uppercase;
-                font-weight: 600;
+                font-weight: 500;
                 font-size: 14px;
                 margin: 0;
+                color: #404649;
+                border-bottom: 1px solid #e5e8ea;
+            }
+        }
+
+        .trv-add-tag {
+            margin-left: 40px;
+            float: left;
+
+            button {
+                width: 250px;
+                height: 40px;
+                background-color: rgba(0, 0, 0, 0.12);
+                border: none;
+                border-radius: 3px;
+                text-align: left;
+                font-size: 14px;
+                color: rgba(255, 255, 255, 0.7);
+
+                &:hover {
+                    cursor: pointer;
+                    background-color: rgba(0, 0, 0, 0.14);
+                }
             }
         }
     }
@@ -41,7 +65,7 @@
 
         &:hover {
             cursor: pointer;
-            background-color: #e5e8ea;
+            background-color: rgba(255, 255, 255, 0.8);
         }
 
         &.trv-ct-btn {
@@ -56,7 +80,7 @@
             color: #c6ccd0;
 
             &:hover {
-                background-color: #FFF;
+                background-color: rgba(255, 255, 255, 0.6);
             }
         }
 
@@ -77,18 +101,14 @@
             font-size: 14px;
             font-weight: 600;
             background-color: #5DBF69;
-
-            -webkit-box-shadow: 0px 1px 0px 0px rgba(50, 50, 50, 0.45);
-            -moz-box-shadow:    0px 1px 0px 0px rgba(50, 50, 50, 0.45);
-            box-shadow:         0px 1px 0px 0px rgba(50, 50, 50, 0.45);
-
             height: 28px;
             line-height: 28px;
             width: 80px;
             border: none;
             border-radius: 3px;
 
-            transition: all 0.2s ease-in-out;
+            @include box-shadow(0px 1px 0px 0px rgba(0, 0, 0, 0.45));
+            @include transition(all 0.2s ease-in-out);
 
             &:hover {
                 cursor: pointer;
@@ -105,7 +125,7 @@
             border-radius: 3px;
             color: #999;
 
-            transition: all 0.2s ease-in-out;
+            @include transition(all 0.2s ease-in-out);
 
             &:hover {
                 cursor: pointer;

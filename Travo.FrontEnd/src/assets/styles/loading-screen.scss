@@ -6,7 +6,7 @@ body, html, #trv-loading-wrap {
 }
 
 #trv-loading-wrap {
-    @include background(linear-gradient(30deg, #76778a, #47495b));
+    @include background(linear-gradient(45deg, #5d6e7d, #3b4852));
     @include user-select(none);
     @include box-sizing(border-box);
 
@@ -43,7 +43,7 @@ body, html, #trv-loading-wrap {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: #FFF;
+    background-color: #3fc4c3;
     -webkit-animation: sk-foldCubeAngle 2.4s infinite linear both;
             animation: sk-foldCubeAngle 2.4s infinite linear both;
     @include transform-origin(100%, 100%);
