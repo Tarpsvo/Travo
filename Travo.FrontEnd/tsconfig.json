@@ -9,10 +9,9 @@
         "module": "amd",
         "moduleResolution": "classic",
         "sourceMap": true,
-        "outDir": "dist/",
-        "compileOnSave": false,
-        "buildOnSave": false
+        "outDir": "dist/"
     },
+    "compileOnSave": false,
     "filesGlob": [
         "./src/**/*.ts",
         "./pages/**/*.ts",
