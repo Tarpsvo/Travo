@@ -46,6 +46,7 @@ $headerContentHeight: 32px;
     font-size: 12px;
     font-weight: 600;
     color: rgba(255, 255, 255, 0.6);
+    text-transform: uppercase;
 
     &:hover {
         color: #FFF;
@@ -77,45 +78,6 @@ $headerContentHeight: 32px;
     padding: 0 10px;
     text-transform: uppercase;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// Right hand content (timetracking bar)
-#trv-nav-tt-bar {
-    background: rgba(255, 255, 255, 0.1);
-    height: $headerContentHeight;
-    line-height: $headerContentHeight;
-    border-radius: 1px;
-    margin-top: ($headerHeight - $headerContentHeight)/2;
-    float: right;
-
-    span {
-        font-family: 'Open Sans', sans-serif;
-        font-size: 13px;
-        color: #EEE;
-        padding: 0 10px 0 10px;
-    }
-
-    button {
-        float: right;
-        height: $headerContentHeight;
-        display: none;
-    }
-}
-
 
 // Dropdown stylings
 .trv-nav-dropdown {

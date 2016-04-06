@@ -1,6 +1,6 @@
 import {inject} from 'aurelia-framework';
-import Notify from 'notify-client';
-import TeamServices from 'services/team-services';
+import Notify from 'services/notify-client';
+import TeamServices from 'services/api/team-services';
 import config from 'travo-config';
 
 @inject(TeamServices)

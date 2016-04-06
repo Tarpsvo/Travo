@@ -20,7 +20,11 @@ namespace Travo.DAL.Repositories
 
         public async Task<bool> RegisterUser(string email, string displayName, string password)
         {
-            // TODO Fix validation
+            if (displayName == null || displayName.Length > 30)
+            {
+                // TODO Add proper exception
+                throw new InvalidOperationException();
+            }
 
             User user = new User
             {
@@ -158,6 +162,11 @@ namespace Travo.DAL.Repositories
         {
             // TODO
             throw new NotImplementedException();
+        }
+
+        public Task<User> GetUser(string userId)
+        {
+            return _userManager.FindByIdAsync(userId);
         }
     }
 }

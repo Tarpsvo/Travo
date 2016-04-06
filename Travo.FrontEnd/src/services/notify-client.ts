@@ -1,4 +1,4 @@
-/// <reference path="./lib/uikit/uikit.d.ts" />
+/// <reference path="../lib/uikit/uikit.d.ts" />
 
 export default class Notify {
     private static notificationDisplayTimeInMs = 1500

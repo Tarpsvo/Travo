@@ -1,9 +1,9 @@
 /// <reference path="../../../lib/autosize/jquery.autosize.d.ts" />
 
 import {inject} from 'aurelia-framework';
-import Notify from 'notify-client';
-import BoardServices from 'services/board-services';
-import TaskServices from 'services/task-services';
+import Notify from 'services/notify-client';
+import BoardServices from 'services/api/board-services';
+import TaskServices from 'services/api/task-services';
 import config from 'travo-config';
 
 @inject(BoardServices, TaskServices)

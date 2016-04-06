@@ -1,21 +1,17 @@
-/// <reference path="../lib/jquery/jquery.d.ts" />
-/// <reference path="../lib/uikit/uikit.d.ts" />
+/// <reference path="../../lib/jquery/jquery.d.ts" />
+/// <reference path="../../lib/uikit/uikit.d.ts" />
 
 import {Aurelia, inject} from 'aurelia-framework';
-import {RestClient, Router} from 'rest-client';
-import AuthClient from 'auth-client';
-import config from 'travo-config';
+import {RestClient, Router} from 'services/rest-client';
 
-@inject(Aurelia, RestClient, AuthClient)
+@inject(Aurelia, RestClient)
 export default class AuthServices {
     app: Aurelia;
     rest: RestClient;
-    authClient: AuthClient;
 
-    constructor(aurelia: Aurelia, restClient: RestClient, authClient: AuthClient) {
+    constructor(aurelia: Aurelia, restClient: RestClient) {
         this.app = aurelia;
         this.rest = restClient;
-        this.authClient = authClient;
     }
 
     login(email: string, password: string) {
@@ -30,8 +26,7 @@ export default class AuthServices {
                     let token = response.access_token;
 
                     if (token != null) {
-                        this.authClient.setAccessToken(token);
-                        return null;
+                        return token;
                     }
 
                     throw response;
@@ -46,10 +41,5 @@ export default class AuthServices {
         };
 
         return this.rest.post(Router.Register, registerDTO);
-    }
-
-    logOut() {
-        this.authClient.deleteAccessToken();
-        this.app.setRoot('./dist/pages/landing-page/landing-page');
     }
 }

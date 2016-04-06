@@ -10,6 +10,7 @@ namespace Travo.DAL.Interfaces
         Task<bool> RegisterUser(string email, string displayName, string password);
         Task<User> FindUser(string email, string password);
         Task<bool> UserExists(string email);
+        Task<User> GetUser(string userId);
 
         bool UserHasAccessToTask(string userId, int taskId);
         bool UserHasAccessToTag(string userId, int tagId);

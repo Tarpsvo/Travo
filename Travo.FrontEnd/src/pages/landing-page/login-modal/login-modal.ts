@@ -2,14 +2,14 @@
 
 import {Aurelia, inject} from 'aurelia-framework';
 import {Validation, ValidationGroup, ensure} from 'aurelia-validation';
-import AuthServices from 'services/auth-services';
-import Notify from 'notify-client';
+import SessionManager from 'services/managers/session-manager';
+import Notify from 'services/notify-client';
 import config from 'travo-config';
 
-@inject(Aurelia, AuthServices, Validation)
+@inject(Aurelia, SessionManager, Validation)
 export class LoginModal {
     app: Aurelia;
-    auth: AuthServices;
+    sessionMgr: SessionManager;
     validation: ValidationGroup;
     isLoading = false;
 
@@ -18,15 +18,15 @@ export class LoginModal {
     @ensure(function(it){ it.isNotEmpty().hasLengthBetween(6,100) })
     password: string = "";
 
-    constructor(aurelia: Aurelia, authServices: AuthServices, validation: Validation) {
+    constructor(aurelia: Aurelia, sessionMgr: SessionManager, validation: Validation) {
         this.app = aurelia;
-        this.auth = authServices;
+        this.sessionMgr = sessionMgr;
         this.validation = validation.on(this);
     }
 
     login() {
         this.isLoading = true;
-        this.auth.login(this.email, this.password)
+        this.sessionMgr.login(this.email, this.password)
             .then(response => {
                 // Hide UIkit modal to remove classes set by it
                 // Then redirect to to travo-app

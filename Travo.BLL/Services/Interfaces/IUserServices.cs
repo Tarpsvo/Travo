@@ -7,5 +7,7 @@ namespace Travo.BLL.Services
     {
         Task<bool> Register(UserDTO userDTO);
         Task<string> Login(UserDTO userDTO);
+        Task<UserDTO> GetUser(string userId);
+        Task<UserDTO> GetMe(string userId);
     }
 }

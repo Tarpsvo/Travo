@@ -24,5 +24,13 @@ namespace Travo.Controllers
             if (result) return TravoOk();
             else return TravoBadRequest();
         }
+
+        [Authorize]
+        [Route("~/me"), HttpGet]
+        public async Task<HttpResponseMessage> GetMe()
+        {
+            var user = await _userServices.GetMe(UserId);
+            return TravoOk(user);
+        }
     }
 }

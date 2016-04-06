@@ -2,8 +2,8 @@
 
 import {Aurelia, inject} from 'aurelia-framework';
 import {Validation, ValidationGroup, ensure} from 'aurelia-validation';
-import AuthServices from 'services/auth-services';
-import Notify from 'notify-client';
+import AuthServices from 'services/api/auth-services';
+import Notify from 'services/notify-client';
 
 @inject(Aurelia, AuthServices, Validation)
 export class RegisterModal {

@@ -1,16 +1,24 @@
 import {inject, bindable} from 'aurelia-framework';
-import AuthServices from 'services/auth-services';
+import SessionManager from 'services/managers/session-manager';
 
-@inject(AuthServices)
+@inject(SessionManager)
 export class NavBar {
-    auth: AuthServices;
     @bindable router = null;
+    sessionMgr: SessionManager;
 
-    constructor(authServices: AuthServices) {
-        this.auth = authServices;
+    constructor(sessionMgr: SessionManager) {
+        this.sessionMgr = sessionMgr;
+    }
+
+    get currentUserName() {
+        if (this.sessionMgr.getCurrentUser() != null && this.sessionMgr.getCurrentUser()['displayName'] != null) {
+            return this.sessionMgr.getCurrentUser()['displayName'];
+        } else {
+            return null;
+        }
     }
 
     logOut() {
-        this.auth.logOut()
+        this.sessionMgr.logOut()
     }
 }

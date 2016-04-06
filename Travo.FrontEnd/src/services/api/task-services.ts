@@ -1,5 +1,5 @@
 import {Aurelia, inject} from 'aurelia-framework';
-import {RestClient, Router} from 'rest-client';
+import {RestClient, Router} from 'services/rest-client';
 
 @inject(RestClient)
 export default class TaskServices {

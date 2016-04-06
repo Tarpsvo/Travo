@@ -1,4 +1,4 @@
-﻿import AuthClient from 'auth-client';
+﻿import SessionManager from 'services/managers/session-manager';
 
 export function configure(aurelia) {
     aurelia.use
@@ -9,8 +9,7 @@ export function configure(aurelia) {
     aurelia
         .start()
         .then(() => {
-            var authClient = aurelia.container.get(AuthClient);
-            let root = authClient.isAuthenticated() ? './dist/pages/travo-app/travo-app' : './dist/pages/landing-page/landing-page';
+            let root = SessionManager.isAuthenticated ? './dist/pages/travo-app/travo-app' : './dist/pages/landing-page/landing-page';
             aurelia.setRoot(root);
         });
 }

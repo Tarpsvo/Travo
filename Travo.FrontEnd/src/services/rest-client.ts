@@ -1,18 +1,15 @@
-/// <reference path="./lib/jquery/jquery.d.ts" />
+/// <reference path="../lib/jquery/jquery.d.ts" />
 
 import {inject} from 'aurelia-framework';
 import {HttpClient, json} from 'aurelia-fetch-client';
-import AuthClient from 'auth-client';
+import SessionManager from 'services/managers/session-manager';
 import config from 'travo-config';
 
-@inject(HttpClient, AuthClient)
+@inject(HttpClient)
 export class RestClient {
     http: HttpClient;
-    authClient: AuthClient;
 
-    constructor(httpClient: HttpClient, authClient: AuthClient) {
-        this.authClient = authClient;
-
+    constructor(httpClient: HttpClient) {
         httpClient.configure(httpconfig => {
             httpconfig
                 .withBaseUrl(config.baseUrl)
@@ -44,8 +41,8 @@ export class RestClient {
             body: {}
         }
 
-        if (this.authClient.isAuthenticated()) {
-            requestOptions.headers['Authorization'] = "Bearer " + this.authClient.getAccessToken();
+        if (SessionManager.isAuthenticated) {
+            requestOptions.headers['Authorization'] = "Bearer " + SessionManager.accessToken;
         }
 
         if (typeof body === 'object') {
@@ -99,4 +96,5 @@ export class Router {
     public static TeamsWithBoards = 'teams/withBoards';
     public static BoardTagsWithTasks(boardId: number) { return "boards/" + boardId + "/withTagsAndTasks"; }
     public static AddTask = 'tasks';
+    public static Me = 'me';
 }

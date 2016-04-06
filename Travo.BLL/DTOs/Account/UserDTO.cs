@@ -4,6 +4,7 @@
     {
         public string Id { get; set; }
         public string Email { get; set; }
+        public long Created { get; set; }
         public string DisplayName { get; set; }
         public string Password { get; set; }
     }
