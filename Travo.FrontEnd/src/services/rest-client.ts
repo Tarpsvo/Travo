@@ -94,7 +94,8 @@ export class Router {
     public static Register = 'user/register';
     public static Token ='user/token';
     public static TeamsWithBoards = 'teams/withBoards';
-    public static BoardTagsWithTasks(boardId: number) { return "boards/" + boardId + "/withTagsAndTasks"; }
+    public static BoardTagsWithTasks(boardId: number) { return 'boards/' + boardId + '/withTagsAndTasks'; }
     public static AddTask = 'tasks';
     public static Me = 'me';
+    public static AddNewTag(boardId: number) { return 'boards/' + boardId + '/tags'; }
 }

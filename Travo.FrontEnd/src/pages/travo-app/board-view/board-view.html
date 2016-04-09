@@ -1,44 +1,60 @@
 <template>
     <div id="trv-tags-wrap-view">
         <ul class="trv-tags">
-            <li repeat.for="tagWithTasks of tagsWithTasks" class="trv-tag">
-                <h3>${tagWithTasks.tag.name}</h3>
-                <ul class="trv-tasks">
-                    <li repeat.for="task of tagWithTasks.tasks">
-                        <div class="
-                            trv-task
-                            ${task.id == null ? 'trv-save-pending' : ''}">
-                            ${task.description}
-                        </div>
-                    </li>
+            <li repeat.for="tagWithTasks of tagsWithTasks"
+                class="trv-tag-wrap">
+                <div class="trv-tag ${tag.id == null ? 'trv-save-pending' : ''}">
+                    <h3>${tagWithTasks.tag.name}</h3>
+                    <ul class="trv-tasks">
+                        <li repeat.for="task of tagWithTasks.tasks">
+                            <div class="
+                                trv-task
+                                ${task.id == null ? 'trv-save-pending' : ''}">
+                                ${task.description}
+                            </div>
+                        </li>
 
-                    <li>
-                        <button class="
-                            trv-task
-                            trv-ct-btn
-                            ${'trv-ct-toggle-' + $index}"
-                                data-uk-toggle="{target:'${'.trv-ct-toggle-'+$index}'}"
-                                click.delegate="userOpenedTaskForm($index)">ADD A NEW CARD</button>
+                        <li>
+                            <button class="
+                                trv-task
+                                trv-ct-btn
+                                ${'trv-ct-toggle-' + $index}"
+                                    data-uk-toggle="{target:'${'.trv-ct-toggle-'+$index}'}"
+                                    click.delegate="userOpenedTaskForm($index)">ADD A NEW CARD</button>
 
-                        <div id="${'trv-ct-form-'+$index}" class="trv-ct-form ${'trv-ct-toggle-'+$index} uk-hidden">
-                            <textarea
-                                rows="4"
-                                cols="40"
-                                value=""></textarea>
-                            <button
-                                class="trv-add-btn"
-                                click.delegate="addNewTask($index)">
-                                    Add</button><i
-                                class="trv-cancel-btn uk-icon-times"
-                                data-uk-toggle="{target:'${'.trv-ct-toggle-'+$index}'}">
-                            </i>
-                        </div>
-                    </li>
-                </ul>
+                            <div id="${'trv-ct-form-'+$index}" class="trv-ct-form ${'trv-ct-toggle-'+$index} uk-hidden">
+                                <textarea
+                                    rows="4"
+                                    cols="40"
+                                    value=""></textarea>
+                                <button
+                                    class="trv-add-btn"
+                                    click.delegate="addNewTask($index)">
+                                        Add</button><i
+                                    class="trv-cancel-btn uk-icon-times"
+                                    data-uk-toggle="{target:'${'.trv-ct-toggle-'+$index}'}">
+                                </i>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
             </li>
 
             <li class="trv-add-tag">
-                <button type="button" name="button">Add new tag</button>
+                <button id="trv-ctag-btn" class="trv-ctag-toggle"
+                        data-uk-toggle="{target: '.trv-ctag-toggle'}"
+                        click.delegate="userOpenedTagForm()">ADD A NEW TAG</button>
+
+                <div id="trv-ctag-form" class="uk-hidden trv-ctag-toggle">
+                    <input type="text" maxlength="30" />
+                    <button
+                        class="trv-add-btn"
+                        click.delegate="addNewTag()">
+                            Add</button><i
+                        class="trv-cancel-btn uk-icon-times"
+                        data-uk-toggle="{target: '.trv-ctag-toggle'}">
+                    </i>
+                </div>
             </li>
         </ul>
 

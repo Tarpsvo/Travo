@@ -12,7 +12,7 @@ export class BoardView {
     taskServices: TaskServices;
 
     // View values
-    autosizeOn = false;
+    boardId: number;
     tagsWithTasks: Object[];
 
     constructor(boardServices: BoardServices, taskServices: TaskServices) {
@@ -22,23 +22,20 @@ export class BoardView {
 
     activate(params) {
         this.getTagsWithTasks(params.id);
+        this.boardId = params.id;
     }
 
     userOpenedTaskForm(index: number) {
-        var textArea = this.getTextAreaFromIndex(index);
+        var textArea = this.getTaskFormTextAreaForIndex(index);
+        autosize(textArea);
 
-        if (!this.autosizeOn) {
-            this.autosizeOn = true;
-            autosize(textArea);
-
-            // Enable enter press on textarea
-            var that = this;
-            textArea.onkeyup = function(e) {
-                if (e.keyCode === 13 && !e.shiftKey) {
-                    that.addNewTask(index);
-                }
-                return true;
+        // Enable enter press on textarea
+        var that = this;
+        textArea.onkeyup = function(e) {
+            if (e.keyCode === 13 && !e.shiftKey) {
+                that.addNewTask(index);
             }
+            return true;
         }
 
         textArea.focus();
@@ -58,7 +55,7 @@ export class BoardView {
     }
 
     addNewTask(index: number) {
-        var textArea = this.getTextAreaFromIndex(index);
+        var textArea = this.getTaskFormTextAreaForIndex(index);
         var taskText = textArea.value;
 
         if (!taskText || taskText.trim().length == 0) {
@@ -73,7 +70,7 @@ export class BoardView {
 
         var taskArray = (<Object[]> this.tagsWithTasks[index]['tasks']);
         taskArray.push(newTask);
-        this.closeTextAreaAtIndex(index);
+        this.closeTaskFormTextAreaAtIndex(index);
 
         let tagId = this.tagsWithTasks[index]['tag'].id;
 
@@ -88,7 +85,7 @@ export class BoardView {
             });
     }
 
-    closeTextAreaAtIndex(index: number) {
+    closeTaskFormTextAreaAtIndex(index: number) {
         let wrapperId = 'trv-ct-form-' + index;
         let closeAnchor = document.getElementById(wrapperId).getElementsByClassName('trv-cancel-btn')[0];
         var evt = document.createEvent("HTMLEvents");
@@ -96,9 +93,74 @@ export class BoardView {
         closeAnchor.dispatchEvent(evt);
     }
 
-    getTextAreaFromIndex(index: number) {
+    getTaskFormTextAreaForIndex(index: number) {
         let wrapperId = 'trv-ct-form-' + index;
         let textArea = (<HTMLInputElement> document.getElementById(wrapperId).querySelector('textarea'));
         return textArea;
+    }
+
+    get tagFormInput() {
+        let formId = "trv-ctag-form";
+        let input = (<HTMLInputElement> document.getElementById(formId).querySelector('input'));
+        return input;
+    }
+
+    userOpenedTagForm() {
+        var input = this.tagFormInput;
+
+        // Enable enter press on textarea
+        var that = this;
+        input.onkeyup = function(e) {
+            if (e.keyCode === 13 && !e.shiftKey) {
+                that.addNewTag();
+            }
+            return true;
+        }
+
+        input.focus();
+        input.value = "";
+    }
+
+    closeTagForm() {
+        let wrapperId = 'trv-ctag-form';
+        let closeAnchor = document.getElementById(wrapperId).getElementsByClassName('trv-cancel-btn')[0];
+        var evt = document.createEvent("HTMLEvents");
+        evt.initEvent("click", true, true);
+        closeAnchor.dispatchEvent(evt);
+    }
+
+    addNewTag() {
+        let input = this.tagFormInput;
+        let tagTitle = input.value;
+
+        if (!tagTitle || tagTitle.trim().length == 0) {
+            return;
+        }
+
+        var newTag = {
+            id: null,
+            created: null,
+            name: tagTitle,
+            color: null // TODO Colors
+        };
+
+        var tagWithTasksObject = {
+            tag: newTag,
+            tasks: []
+        };
+
+        this.tagsWithTasks.push(tagWithTasksObject);
+        this.closeTagForm();
+
+        console.log(this.tagsWithTasks);
+
+        this.boardServices.addNewTag(this.boardId, newTag)
+        .then(response => {
+            newTag.id = response.id,
+            newTag.created = response.created
+        })
+        .catch(error => {
+            console.log("What error");
+        });
     }
 }

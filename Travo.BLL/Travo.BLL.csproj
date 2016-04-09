@@ -73,10 +73,12 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\Interfaces\IBoardServices.cs" />
     <Compile Include="Services\Interfaces\ITaskServices.cs" />
+    <Compile Include="Services\Interfaces\ITagServices.cs" />
     <Compile Include="Services\Interfaces\IUserServices.cs" />
     <Compile Include="Services\Interfaces\ITeamServices.cs" />
     <Compile Include="Services\Services\BoardServices.cs" />
     <Compile Include="Services\Services\TaskServices.cs" />
+    <Compile Include="Services\Services\TagServices.cs" />
     <Compile Include="Services\Services\UserServices.cs" />
     <Compile Include="Services\Services\TeamServices.cs" />
   </ItemGroup>

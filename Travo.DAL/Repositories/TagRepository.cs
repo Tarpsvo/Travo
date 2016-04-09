@@ -6,7 +6,7 @@ using System.Linq;
 
 namespace Travo.DAL.Repositories
 {
-    public class TagRepository : EFRepository<Team>, ITagRepository
+    public class TagRepository : EFRepository<Tag>, ITagRepository
     {
         public TagRepository(TravoDbContext dbContext) : base(dbContext) { }
 

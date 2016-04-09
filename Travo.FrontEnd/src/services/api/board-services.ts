@@ -12,4 +12,8 @@ export default class BoardServices {
     getTagsWithTasks(boardId: number) {
         return this.rest.get(Router.BoardTagsWithTasks(boardId));
     }
+
+    addNewTag(boardId: number, tag: Object) {
+        return this.rest.post(Router.AddNewTag(boardId), tag);
+    }
 }

@@ -15,9 +15,5 @@ html, body {
     background-color: $backgroundColor;
     font-family: 'Open Sans', sans-serif;
     @include background(linear-gradient(45deg, #606e80, #39464f));
-}
-
-.container {
-    padding: 0 20px;
-    box-sizing: border-box;
+    overflow: hidden;
 }
