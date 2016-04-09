@@ -98,4 +98,5 @@ export class Router {
     public static AddTask = 'tasks';
     public static Me = 'me';
     public static AddNewTag(boardId: number) { return 'boards/' + boardId + '/tags'; }
+    public static Status = 'status';
 }

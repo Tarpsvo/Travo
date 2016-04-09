@@ -5,27 +5,25 @@ export default class Notify {
     private static notificationPosition = 'bottom-center'
 
     static showInfo(message: string) {
-        UIkit.notify({
-            message : message,
-            status  : 'info',
-            timeout : this.notificationDisplayTimeInMs,
-            pos     : this.notificationPosition
-        });
+        this.showNotification(message, 'info');
+    }
+
+    static showWarning(message: string) {
+        this.showNotification(message, 'warning');
     }
 
     static showSuccess(message: string) {
-        UIkit.notify({
-            message : message,
-            status  : 'success',
-            timeout : this.notificationDisplayTimeInMs,
-            pos     : this.notificationPosition
-        });
+        this.showNotification(message, 'success');
     }
 
     static showError(message: string) {
+        this.showNotification(message, 'danger');
+    }
+
+    private static showNotification(message: string, status: string) {
         UIkit.notify({
             message : message,
-            status  : 'danger',
+            status  : status,
             timeout : this.notificationDisplayTimeInMs,
             pos     : this.notificationPosition
         });

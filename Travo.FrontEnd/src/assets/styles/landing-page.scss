@@ -274,27 +274,6 @@ $lightColor: #ddd;
     }
 }
 
-.uk-notify-message {
-    padding: 0 15px 0 15px;
-    height: 35px;
-    line-height: 35px;
-    border-radius: 2px;
-    font-size: 14px;
-    color: #FFF;
-
-    a {
-        line-height: 35px;
-    }
-
-    &.uk-notify-message-danger {
-        background-color: #FF9B71;
-    }
-
-    &.uk-notify-message-info {
-
-    }
-}
-
 .trv-modal-loading {
     position: absolute;
     height: 100%;

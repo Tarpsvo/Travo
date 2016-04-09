@@ -4,7 +4,7 @@ module.exports = {
     ts:'src/**/*.ts',
     html: 'src/**/*.html',
     scss: ['src/**/travo-app.scss', 'src/**/!(travo-app)*.scss'],
-    img: ['src/**/*.png'],
+    img: ['src/**/*.png', 'src/**/*.svg'],
     lib: 'src/lib/**/*.*',
     output: 'dist/',
     dtsSrc: [

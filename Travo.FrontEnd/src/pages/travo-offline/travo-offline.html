@@ -1,0 +1,14 @@
+<template>
+    <div id="trv-offline-center">
+        <div class="trv-left">
+            <h1>OH<span>NOES!</span></h1>
+            <h2>Travo server seems to be <span class="trv-offline" id="trv-server-status">offline</span>.</h2>
+            <button id="trv-update-status-btn" type="button" name="button" click.delegate="updateStatus()">CHECK SERVER STATUS</button>
+        </div>
+
+        <div class="trv-right">
+            <h1>T<span>RAVO</span></h1>
+            <object data="./dist/assets/images/op-toggle-btn.svg" type="image/svg+xml"></object>
+        </div>
+    </div>
+</template>
