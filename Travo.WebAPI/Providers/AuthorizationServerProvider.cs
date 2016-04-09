@@ -15,10 +15,12 @@ namespace Travo.Providers
             _userServices = userServices;
         }
 
+#pragma warning disable CS1998 // Async method lacks 'await' operators and will run synchronously
         public override async System.Threading.Tasks.Task ValidateClientAuthentication(OAuthValidateClientAuthenticationContext context)
         {
             context.Validated();
         }
+#pragma warning restore CS1998 // Async method lacks 'await' operators and will run synchronously
 
         public override async System.Threading.Tasks.Task GrantResourceOwnerCredentials(OAuthGrantResourceOwnerCredentialsContext context)
         {
