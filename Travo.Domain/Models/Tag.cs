@@ -7,6 +7,8 @@ namespace Travo.Domain.Models
     {
         public int Id { get; set; }
         public int BoardId { get; set; }
+        [RegularExpression("^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$")]
+        public string Color { get; set; }
         [StringLength(30, MinimumLength = 1)]
         public string Name { get; set; }
         public DateTime Created { get; set; }

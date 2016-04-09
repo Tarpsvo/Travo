@@ -93,6 +93,10 @@
     <Compile Include="Interfaces\ITagRepository.cs" />
     <Compile Include="Interfaces\ITaskRepository.cs" />
     <Compile Include="Interfaces\IUserRepository.cs" />
+    <Compile Include="Migrations\201604090746321_TagEdit.cs" />
+    <Compile Include="Migrations\201604090746321_TagEdit.Designer.cs">
+      <DependentUpon>201604090746321_TagEdit.cs</DependentUpon>
+    </Compile>
     <Compile Include="Interfaces\IBoardRepository.cs" />
     <Compile Include="Interfaces\ITeamRepository.cs" />
     <Compile Include="Migrations\201603162102343_InitialCreate.cs" />
@@ -136,6 +140,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201603232258274_IndexedBoardId.resx">
       <DependentUpon>201603232258274_IndexedBoardId.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201604090746321_TagEdit.resx">
+      <DependentUpon>201604090746321_TagEdit.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

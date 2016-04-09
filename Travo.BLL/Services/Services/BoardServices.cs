@@ -35,7 +35,7 @@ namespace Travo.BLL.Services
                 var tasks = _taskRepository.GetTasksForTag(tag.Id);
                 var tagWithTasks = new TagWithTasksDTO
                 {
-                    Tag = TagFactory.createBasicDTO(tag),
+                    Tag = TagFactory.createReturnDTO(tag),
                     Tasks = TaskFactory.createBasicDTOList(tasks)
                 };
                 tagWithTasksList.Add(tagWithTasks);

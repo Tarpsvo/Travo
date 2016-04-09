@@ -15,7 +15,7 @@ namespace Travo.BLL.Factories
                 Created = DateTimeConverter.ConvertToUnixTimestamp(task.Created),
                 Description = task.Description,
                 CreatedByUser = UserFactory.createBasicDTO(task.CreatedByUser),
-                Tag = TagFactory.createBasicDTO(task.Tag),
+                Tag = TagFactory.createReturnDTO(task.Tag),
                 Id = task.Id
             };
         }
