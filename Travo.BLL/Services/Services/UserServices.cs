@@ -20,13 +20,13 @@ namespace Travo.BLL.Services
         public async Task<UserDTO> GetMe(string userId)
         {
             var user = await _userRepository.GetUser(userId);
-            return UserFactory.createDTO(user);
+            return UserFactory.createReturnAllDTO(user);
         }
 
         public async Task<UserDTO> GetUser(string userId)
         {
             var user = await _userRepository.GetUser(userId);
-            return UserFactory.createBasicDTO(user);
+            return UserFactory.createReturnDTO(user);
         }
 
         public async System.Threading.Tasks.Task<string> Login(UserDTO userDTO)

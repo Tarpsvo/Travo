@@ -26,8 +26,8 @@ namespace Travo.BLL.Services
                 var boards = _boardRepository.GetTeamBoards(team.Id);
                 var teamWithBoards = new TeamWithBoardsDTO
                 {
-                    Team = TeamFactory.createBasicDTO(team),
-                    Boards = BoardFactory.createBasicDTOList(boards)
+                    Team = TeamFactory.createReturnMinimalDTO(team),
+                    Boards = BoardFactory.createReturnDTOList(boards)
                 };
                 teamWithBoardsList.Add(teamWithBoards);
             });

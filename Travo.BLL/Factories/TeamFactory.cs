@@ -6,7 +6,7 @@ namespace Travo.BLL.Factories
 {
     public static class TeamFactory
     {
-        public static TeamDTO createBasicDTO(Team Team)
+        public static TeamDTO createReturnMinimalDTO(Team Team)
         {
             return new TeamDTO
             {

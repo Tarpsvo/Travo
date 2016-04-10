@@ -8,19 +8,29 @@ namespace Travo.BLL.Factories
 {
     public static class BoardFactory
     {
-        public static BoardDTO createBasicDTO(Board board)
+        public static BoardDTO createReturnDTO(Board board)
         {
             return new BoardDTO
             {
                 Id = board.Id,
+                Name = board.Name,
                 Created = DateTimeConverter.ConvertToUnixTimestamp(board.Created),
-                Name = board.Name
+                CreatedByUser = (board.CreatedByUser != null) ? UserFactory.createReturnDTO(board.CreatedByUser) : null
             };
         }
 
-        public static List<BoardDTO> createBasicDTOList(List<Board> boardList)
+        public static List<BoardDTO> createReturnDTOList(List<Board> boardList)
         {
-            return boardList.Select(b => createBasicDTO(b)).ToList();
+            return boardList.Select(b => createReturnDTO(b)).ToList();
+        }
+
+        public static Board createBoardFromDTO(BoardDTO boardDTO)
+        {
+            return new Board
+            {
+                Id = boardDTO.Id,
+                Name = boardDTO.Name
+            };
         }
     }
 }
