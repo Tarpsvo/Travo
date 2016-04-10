@@ -1,17 +1,16 @@
-// Color definitions
-$textContentWidth: 800px;
-$primaryColor: #49ba9c;
-$secondaryColor: #304153;
-$lightColor: #ddd;
+@import "compass";
+
+$primaryColor: #f04b48;
+$textContentWidth: 960px;
 
 // General
 .trv-lp-big-btn {
-    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    @include box-shadow(0 1px 2px rgba(0, 0, 0, 0.12));
     transition: all 0.2s ease-in-out;
 
     &:hover {
         cursor: pointer;
-        box-shadow: 0 5px 10px rgba(0,0,0,0.19), 0 2px 3px rgba(0,0,0,0.23);
+        @include box-shadow(0 2px 3px rgba(0, 0, 0, 0.32));
     }
 }
 
@@ -21,13 +20,7 @@ $lightColor: #ddd;
     width: 100%;
     position: relative;
 
-    background: -moz-radial-gradient(center, ellipse cover, rgba(75,88,94,1) 0%, rgba(48,65,83,1) 100%); /* ff3.6+ */
-    background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%, rgba(75,88,94,1)), color-stop(100%, rgba(48,65,83,1))); /* safari4+,chrome */
-    background:-webkit-radial-gradient(center, ellipse cover, rgba(75,88,94,1) 0%, rgba(48,65,83,1) 100%); /* safari5.1+,chrome10+ */
-    background: -o-radial-gradient(center, ellipse cover, rgba(75,88,94,1) 0%, rgba(48,65,83,1) 100%); /* opera 11.10+ */
-    background: -ms-radial-gradient(center, ellipse cover, rgba(75,88,94,1) 0%, rgba(48,65,83,1) 100%); /* ie10+ */
-    background:radial-gradient(ellipse at center, rgba(75,88,94,1) 0%, rgba(48,65,83,1) 100%); /* w3c */
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#4b585e', endColorstr='#304153',GradientType=1 ); /* ie6-9 */
+    @include background(radial-gradient(bottom center, #3c496c, #2d2d37 100%));
 
     #trv-top-text {
         max-width: $textContentWidth;
@@ -37,17 +30,21 @@ $lightColor: #ddd;
         box-sizing: border-box;
 
         h1 {
-            color: #FFF;
+            color: $primaryColor;
             font-family: 'Open Sans', sans-serif;
             font-weight: 600;
             font-size: 36px;
             text-align: center;
             margin: 0 0 15px 0;
+
+            span {
+                color: #FFF;
+            }
         }
 
         p {
             margin: 5px 0 35px 0;
-            color: $lightColor;
+            color: #EEE;
             text-align: center;
         }
 
@@ -79,7 +76,7 @@ $lightColor: #ddd;
 
         #trv-existing-user-text {
             font-size: 12px;
-            color: $lightColor;
+            color: #EEE;
             margin: 18px 0 0 0;
         }
 
@@ -113,21 +110,28 @@ $lightColor: #ddd;
 }
 
 #trv-lp-content-wrapper {
-    max-width: 800px;
     margin: 0 auto;
-    padding: 0 20px 0 20px;
+    background: #2d2d37;
 
     #trv-features {
+        padding-top: 40px;
         h2 {
+            color: $primaryColor;
             text-align: center;
             font-size: 32px;
-            margin: 40px 0 20px 0;
-            color: $secondaryColor;
+            font-weight: 600;
+            margin-bottom: 20px;
+
+            span {
+                color: #FFF;
+            }
         }
 
         ul {
             list-style: none;
             padding: 0;
+            max-width: 800px;
+            margin: 0 auto;
 
             li {
                 box-sizing: border-box;
@@ -135,7 +139,7 @@ $lightColor: #ddd;
                 display: inline-block;
                 width: 25%;
                 position: relative;
-                background-color: $secondaryColor;
+                background-color: #363640;
                 transition: all 0.2s ease-in-out;
 
                 &:after {
@@ -153,7 +157,7 @@ $lightColor: #ddd;
                     top: 0; right: 0; bottom: 0; left: 0;
 
                     i {
-                        color: $primaryColor;
+                        color: #FFF;
                         font-size: 50px;
                     }
 
@@ -170,27 +174,35 @@ $lightColor: #ddd;
                     background-color: $primaryColor;
                     transform: scale(1.04);
                     z-index: 1;
-
-                    i { color: $secondaryColor; }
-                    p { color: $secondaryColor; }
-
-                    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+                    @include box-shadow(0 2px 3px rgba(0, 0, 0, 0.32));
                 }
             }
         }
     }
 
     #trv-about {
-        margin: 40px 0 40px 0;
         min-height: 150px;
         overflow: hidden;
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 30px 0 30px 0;
 
         #trv-about-content {
             float: left;
             width: 75%;
 
+            h3 {
+                color: #FFF;
+                font-weight: 600;
+
+                span {
+                    color: $primaryColor;
+                }
+            }
+
             p {
                 text-align: justify;
+                color: #FFF;
             }
         }
 
@@ -207,10 +219,10 @@ $lightColor: #ddd;
 #trv-footer {
     width: 100%;
     height: 60px;
-    background: $secondaryColor;
+    background: #363640;
 
     p {
-        color: $lightColor;
+        color: #EEE;
         text-align: center;
         line-height: 60px;
         font-size: 11px;

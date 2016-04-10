@@ -1,5 +1,7 @@
 @import "compass";
 
+$primaryColor: #f04b48;
+
 #trv-offline-center {
     width: 100%;
     height: 170px;
@@ -11,7 +13,7 @@
     h1 {
         font-size: 40px;
         font-weight: 600;
-        color: #f04b48;
+        color: $primaryColor;
         margin: 0;
 
         span {
@@ -33,7 +35,7 @@
 
         h2 {
             .trv-offline {
-                color: #f04b48;
+                color: $primaryColor;
             }
 
             .trv-online {
@@ -46,7 +48,7 @@
             width: 200px;
             height: 40px;
             border: none;
-            background-color: #f04b48;
+            background-color: $primaryColor;
             color: #FFF;
             font-weight: 600;
             font-size: 12px;

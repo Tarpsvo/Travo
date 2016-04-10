@@ -21,7 +21,7 @@ namespace Travo
                 .To<UserStore<User>>()
                 .InRequestScope()
                 .WithConstructorArgument("context", context => kernel.Get<TravoDbContext>());
-            kernel.Bind<TravoUserManager>().ToSelf();
+            kernel.Bind<TravoUserManager>().ToSelf().InRequestScope();
 
             // Repositories
             kernel.Bind<IUserRepository>().To<UserRepository>();
