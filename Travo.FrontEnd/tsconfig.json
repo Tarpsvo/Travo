@@ -21,6 +21,7 @@
     ],
     "files": [
         "./src/lib/autosize/jquery.autosize.d.ts",
+        "./src/lib/iscroll/iscroll-lite.d.ts",
         "./src/lib/jquery/jquery.d.ts",
         "./src/lib/uikit/uikit.d.ts",
         "./src/main.ts",

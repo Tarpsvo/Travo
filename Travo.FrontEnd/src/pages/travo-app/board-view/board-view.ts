@@ -1,4 +1,5 @@
 /// <reference path="../../../lib/autosize/jquery.autosize.d.ts" />
+/// <reference path="../../../lib/iscroll/iscroll.d.ts" />
 
 import {inject} from 'aurelia-framework';
 import Notify from 'services/notify-client';
@@ -15,9 +16,14 @@ export class BoardView {
     boardId: number;
     tagsWithTasks: Object[];
 
+    // Scrollers
+    horizontalScroll: IScroll;
+    verticalScrollers: Array<IScroll>;
+
     constructor(boardServices: BoardServices, taskServices: TaskServices) {
         this.boardServices = boardServices;
         this.taskServices = taskServices;
+        this.verticalScrollers = new Array<IScroll>();
     }
 
     activate(params) {
@@ -43,15 +49,46 @@ export class BoardView {
     }
 
     getTagsWithTasks(boardId: number) {
-        console.log("Getting tags with tasks.");
         this.boardServices.getTagsWithTasks(boardId)
             .then(response => {
                 this.tagsWithTasks = response;
-                console.log(this.tagsWithTasks);
+                this.createScrollers();
             })
             .catch(response => {
                 console.log(response);
             });
+    }
+
+    createScrollers() {
+        let that = this;
+        setTimeout(function() {
+            that.horizontalScroll = new IScroll('#trv-tags-wrap', {
+                scrollbars: true,
+                scrollY: false,
+                scrollX: true
+            });
+
+            let tagDivs = document.getElementsByClassName('trv-tasks-wrap');
+            for(var i = 0; i < tagDivs.length; i++) {
+                let scroller = new IScroll((<HTMLElement> tagDivs[i]), {
+                    scrollbars: true,
+                    scrollY: true,
+                    scrollX: false,
+                    mouseWheel: true
+                });
+                that.verticalScrollers.push(scroller);
+            }
+        }, 100);
+    }
+
+    updateScrollers() {
+        let that = this;
+        setTimeout(function() {
+            that.horizontalScroll.refresh();
+            for (var scroll of that.verticalScrollers) {
+                scroll.refresh();
+            }
+        }, 100);
     }
 
     addNewTask(index: number) {
@@ -71,10 +108,10 @@ export class BoardView {
         var taskArray = (<Object[]> this.tagsWithTasks[index]['tasks']);
         taskArray.push(newTask);
         this.closeTaskFormTextAreaAtIndex(index);
+        this.updateScrollers();
 
         let tagId = this.tagsWithTasks[index]['tag'].id;
 
-        // Now post it and then edit newTask
         this.taskServices.addTask(tagId, taskText)
             .then(response => {
                 newTask.id = response.id,
@@ -151,16 +188,15 @@ export class BoardView {
 
         this.tagsWithTasks.push(tagWithTasksObject);
         this.closeTagForm();
-
-        console.log(this.tagsWithTasks);
+        this.updateScrollers();
 
         this.boardServices.addNewTag(this.boardId, newTag)
-        .then(response => {
-            newTag.id = response.id,
-            newTag.created = response.created
-        })
-        .catch(error => {
-            console.log("What error");
-        });
+            .then(response => {
+                newTag.id = response.id,
+                newTag.created = response.created
+            })
+            .catch(error => {
+                console.log("What error");
+            });
     }
 }

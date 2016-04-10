@@ -1,191 +1,205 @@
 @import "compass";
 
-#trv-tags-wrap-view {
+#trv-tags-wrap {
+    padding-top: 20px;
+
     ul {
         list-style: none;
-        padding: 0;
-        margin: 0;
+    	padding: 0;
+    	margin: 0;
+    }
+}
+
+// Tags list
+.trv-tags-list {
+    position: absolute;
+    white-space: nowrap;
+    overflow-x: auto;
+    overflow-y: hidden;
+    height: 100%;
+
+    .trv-tag-wrap {
+        list-style-type:none;
+        display:inline-block;
+        height: 100%;
+        width: 250px;
+        margin: 0 10px;
     }
 
-    .trv-tags {
-        position: absolute;
-        top: 40px; right: 0; bottom: 0; left: 0;
-        padding: 20px 0;
-
-        overflow-x: scroll;
-        overflow-y: hidden;
-        white-space: nowrap;
-
-        .trv-tag-wrap {
-            display: inline-block;
-            height: 100%;
-            vertical-align: top;
+    .trv-tag {
+        h3 {
+            background-color: #FFF;
+            margin: 0;
+            line-height: 40px;
+            font-weight: 600;
+            font-size: 14px;
+            color: #404649;
+            text-align: center;
+            text-transform: uppercase;
+            border-bottom: 1px solid #e5e8ea;
         }
+    }
 
-        .trv-tag {
-            width: 250px;
-            background-color: #f7f8f8;
+    #trv-add-tag {
+        display: inline-block;
+        width: 250px;
+        margin: 0 10px;
+        vertical-align: top;
+
+        button {
+            width: 100%;
+            height: 40px;
+            background-color: rgba(0, 0, 0, 0.12);
+            border: none;
             border-radius: 3px;
-            margin: 0 10px;
+            text-align: left;
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.5);
+            font-weight: 600;
 
-            @include box-shadow(0px 1px 3px 0px rgba(0, 0, 0, 0.15));
-
-            h3 {
-                font-family: 'Open Sans', sans-serif;
-                line-height: 40px;
-                text-align: center;
-                background: #FFF;
-                border-radius: 3px 3px 0 0;
-                text-transform: uppercase;
-                font-weight: 500;
-                font-size: 14px;
-                margin: 0;
-                color: #404649;
-                border-bottom: 1px solid #e5e8ea;
-                margin-bottom: 5px;
-            }
-        }
-
-        .trv-add-tag {
-            display: inline-block;
-            width: 250px;
-            margin: 0 20px;
-
-            button {
-                width: 100%;
-                height: 40px;
-                background-color: rgba(0, 0, 0, 0.12);
-                border: none;
-                border-radius: 3px;
-                text-align: left;
-                font-size: 14px;
-                color: rgba(255, 255, 255, 0.5);
-                font-weight: 600;
-
-                &:hover {
-                    cursor: pointer;
-                    background-color: rgba(0, 0, 0, 0.14);
-                }
+            &:hover {
+                cursor: pointer;
+                background-color: rgba(0, 0, 0, 0.14);
             }
         }
     }
+}
 
-    .trv-task {
-        white-space: normal;
-        width: 240px;
-        margin: 0 5px 5px 5px;
-        background-color: #FFF;
-        padding: 10px;
-        border-radius: 2px;
-        border: 1px solid #e5e8ea;
-        box-sizing: border-box;
+// Tasks list
+.trv-tasks-wrap {
+    overflow: hidden;
+    position: absolute;
+    height: calc(100% - 140px);
+    border-radius: 0 0 3px 3px;
+}
+
+.trv-tasks-inner-wrap {
+    padding: 5px 0 0 0;
+    background-color: #f7f8f8;
+    border-radius: 0 0 3px 3px;
+    box-sizing: border-box;
+}
+
+.trv-tasks-list {
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.trv-task {
+    white-space: normal;
+    width: 240px;
+    margin: 0 5px 5px 5px;
+    background-color: #FFF;
+    padding: 10px;
+    border-radius: 2px;
+    border: 1px solid #e5e8ea;
+    box-sizing: border-box;
+
+    &:hover {
+        cursor: pointer;
+        background-color: rgba(255, 255, 255, 0.8);
+    }
+
+    &.trv-ct-btn {
+        margin-top: 0;
+        background-color: #f7f8f8;
+        text-align: center;
+        font-weight: 600;
+        font-size: 14px;
+        line-height: 50px;
+        height: 50px;
+        padding: 0;
+        color: #c6ccd0;
+
+        &:hover {
+            background-color: rgba(255, 255, 255, 0.6);
+        }
+    }
+
+    &.trv-save-pending {
+        background-color: #f7f8f8;
+
+        &:hover {
+            cursor: default;
+        }
+    }
+}
+
+// Task and tag forms common
+.trv-ct-form, #trv-ctag-form {
+    .trv-add-btn {
+        text-align: center;
+        display: inline-block;
+        color: #FFF;
+        font-size: 14px;
+        font-weight: 600;
+        background-color: #5DBF69;
+        height: 28px;
+        line-height: 28px;
+        width: 80px;
+        border: none;
+        border-radius: 3px;
+
+        @include box-shadow(0px 1px 0px 0px rgba(0, 0, 0, 0.45));
+        @include transition(all 0.2s ease-in-out);
 
         &:hover {
             cursor: pointer;
-            background-color: rgba(255, 255, 255, 0.8);
-        }
-
-        &.trv-ct-btn {
-            margin-top: 0;
-            background-color: #f7f8f8;
-            text-align: center;
-            font-weight: 600;
-            font-size: 14px;
-            line-height: 50px;
-            height: 50px;
-            padding: 0;
-            color: #c6ccd0;
-
-            &:hover {
-                background-color: rgba(255, 255, 255, 0.6);
-            }
-        }
-
-        &.trv-save-pending {
-            background-color: #f7f8f8;
-
-            &:hover {
-                cursor: default;
-            }
+            background-color: #69c474;
         }
     }
 
-    // Task and tag forms common
-    .trv-ct-form, #trv-ctag-form {
-        .trv-add-btn {
-            text-align: center;
-            display: inline-block;
-            color: #FFF;
-            font-size: 14px;
-            font-weight: 600;
-            background-color: #5DBF69;
-            height: 28px;
-            line-height: 28px;
-            width: 80px;
-            border: none;
-            border-radius: 3px;
+    .trv-cancel-btn {
+        display: inline-block;
+        line-height: 28px;
+        font-size: 18px;
+        margin-left: 4px;
+        padding: 0 9px 0 9px;
+        border-radius: 3px;
+        color: #999;
 
-            @include box-shadow(0px 1px 0px 0px rgba(0, 0, 0, 0.45));
-            @include transition(all 0.2s ease-in-out);
+        @include transition(all 0.2s ease-in-out);
 
-            &:hover {
-                cursor: pointer;
-                background-color: #69c474;
-            }
-        }
-
-        .trv-cancel-btn {
-            display: inline-block;
-            line-height: 28px;
-            font-size: 18px;
-            margin-left: 4px;
-            padding: 0 9px 0 9px;
-            border-radius: 3px;
-            color: #999;
-
-            @include transition(all 0.2s ease-in-out);
-
-            &:hover {
-                cursor: pointer;
-                background-color: rgba(0, 0, 0, 0.1);
-            }
+        &:hover {
+            cursor: pointer;
+            background-color: rgba(0, 0, 0, 0.1);
         }
     }
+}
 
-    // Add task form
-    .trv-ct-form {
-        padding: 5px;
+// Add task form
+.trv-ct-form {
+    padding: 5px;
 
-        textarea {
-            width: 240px;
-            border: 1px solid #e5e8ea;
-            box-sizing: border-box;
-            resize: none;
-            display: block;
-            margin-bottom: 5px;
-        }
+    textarea {
+        width: 240px;
+        border: 1px solid #e5e8ea;
+        box-sizing: border-box;
+        resize: none;
+        display: block;
+        margin-bottom: 5px;
     }
+}
 
-    // Add tag form
-    #trv-ctag-btn {
-        font-weight: 600;
-    }
+// Add tag form
+#trv-ctag-btn {
+    font-weight: 600;
+}
 
-    #trv-ctag-form {
-        padding: 5px;
-        background-color: #f7f8f8;
-        border-radius: 2px;
+#trv-ctag-form {
+    padding: 5px;
+    background-color: #f7f8f8;
+    border-radius: 2px;
 
-        input {
-            margin-bottom: 5px;
-            display: block;
-            width: 100%;
-            height: 30px;
-            line-height: 30px;
-            font-size: 14px;
-            padding: 0 5px 0 5px;
-            border: 1px solid #e5e8ea;
-            box-sizing: border-box;
-        }
+    input {
+        margin-bottom: 5px;
+        display: block;
+        width: 100%;
+        height: 30px;
+        line-height: 30px;
+        font-size: 14px;
+        padding: 0 5px 0 5px;
+        border: 1px solid #e5e8ea;
+        box-sizing: border-box;
     }
 }
