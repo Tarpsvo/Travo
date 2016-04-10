@@ -7,5 +7,6 @@ namespace Travo.DAL.Interfaces
     public interface ITeamRepository
     {
         List<Team> GetUserTeams(string userId);
+        void AddBoardToTeam(int boardId, int teamId);
     }
 }

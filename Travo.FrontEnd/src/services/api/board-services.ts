@@ -16,4 +16,8 @@ export default class BoardServices {
     addNewTag(boardId: number, tag: Object) {
         return this.rest.post(Router.AddNewTag(boardId), tag);
     }
+
+    createNewBoard(teamId: number, board: Object) {
+        return this.rest.post(Router.CreateNewBoard(teamId), board);
+    }
 }

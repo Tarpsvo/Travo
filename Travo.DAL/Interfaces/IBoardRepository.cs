@@ -7,7 +7,7 @@ using Travo.Domain.Models;
 
 namespace Travo.DAL.Interfaces
 {
-    public interface IBoardRepository
+    public interface IBoardRepository : IEFRepository<Board>
     {
         List<Board> GetTeamBoards(int teamId);
     }

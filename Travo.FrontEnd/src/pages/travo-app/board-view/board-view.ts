@@ -107,7 +107,7 @@ export class BoardView {
 
         var taskArray = (<Object[]> this.tagsWithTasks[index]['tasks']);
         taskArray.push(newTask);
-        this.closeTaskFormTextAreaAtIndex(index);
+        this.closeTaskFormAtIndex(index);
         this.updateScrollers();
 
         let tagId = this.tagsWithTasks[index]['tag'].id;
@@ -122,7 +122,7 @@ export class BoardView {
             });
     }
 
-    closeTaskFormTextAreaAtIndex(index: number) {
+    closeTaskFormAtIndex(index: number) {
         let wrapperId = 'trv-ct-form-' + index;
         let closeAnchor = document.getElementById(wrapperId).getElementsByClassName('trv-cancel-btn')[0];
         var evt = document.createEvent("HTMLEvents");

@@ -10,6 +10,17 @@ namespace Travo.DAL.Repositories
     {
         public TeamRepository(TravoDbContext dbContext) : base(dbContext) { }
 
+        public void AddBoardToTeam(int boardId, int teamId)
+        {
+            var boardInTeam = new BoardInTeam
+            {
+                BoardId = boardId,
+                TeamId = teamId
+            };
+            DbContext.BoardInTeams.Add(boardInTeam);
+            DbContext.SaveChanges();
+        }
+
         public List<Team> GetUserTeams(string userId)
         {
             var teams =

@@ -1,8 +1,12 @@
 <template>
     <div id="trv-boards-view-wrap">
+
+        <!-- Teams list -->
         <ul class="trv-teams">
             <li repeat.for="teamWithBoards of teamsWithBoards" class="trv-team">
                 <h3>${teamWithBoards.team.name}</h3>
+
+                <!-- Boards list -->
                 <ul class="trv-boards uk-grid uk-grid-small">
                     <li repeat.for="board of teamWithBoards.boards" class="uk-width-1-4">
                         <a  class="trv-board"
@@ -11,9 +15,16 @@
                         </a>
                     </li>
 
+                    <!-- Add board item -->
                     <li class="uk-width-1-4">
-                        <div class="trv-board trv-create-board">
-                            <p>Create a new board</p>
+                        <div class="trv-board trv-cb-btn ${'trv-cb-toggle-'+$index}"
+                                data-uk-toggle="{target:'${'.trv-cb-toggle-'+$index}'}"
+                                click.delegate="userOpenedBoardForm($index)">Create a new board</div>
+
+                        <div id="${'trv-cb-form-'+$index}" class="trv-cb-form ${'trv-cb-toggle-'+$index} uk-hidden">
+                            <input type="text" maxlength="30" />
+                            <button class="trv-add-btn" click.delegate="createNewBoard($index)">Add</button>
+                            <i class="trv-cancel-btn uk-icon-times" data-uk-toggle="{target:'${'.trv-cb-toggle-'+$index}'}"></i>
                         </div>
                     </li>
                 </ul>
