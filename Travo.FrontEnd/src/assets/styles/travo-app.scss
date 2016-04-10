@@ -16,3 +16,43 @@ html, body {
 p, a, span, h1, h2, h3, h4, h5 {
     font-family: 'Open Sans', sans-serif;
 }
+
+// Common
+.trv-add-btn {
+    text-align: center;
+    display: inline-block;
+    color: #FFF;
+    font-size: 14px;
+    font-weight: 600;
+    background-color: #5DBF69;
+    height: 28px;
+    line-height: 28px;
+    width: 80px;
+    border: none;
+    border-radius: 3px;
+
+    @include box-shadow(0px 1px 0px 0px rgba(0, 0, 0, 0.45));
+    @include transition(all 0.2s ease-in-out);
+
+    &:hover {
+        cursor: pointer;
+        background-color: #69c474;
+    }
+}
+
+.trv-cancel-btn {
+    display: inline-block;
+    line-height: 28px;
+    font-size: 18px;
+    margin-left: 4px;
+    padding: 0 9px 0 9px;
+    border-radius: 3px;
+    color: #999;
+
+    @include transition(all 0.2s ease-in-out);
+
+    &:hover {
+        cursor: pointer;
+        background-color: rgba(0, 0, 0, 0.1);
+    }
+}
