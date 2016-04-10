@@ -16,7 +16,7 @@
     white-space: nowrap;
     overflow-x: auto;
     overflow-y: hidden;
-    height: 100%;
+    height: calc(100% - 60px);
 
     .trv-tag-wrap {
         list-style-type:none;

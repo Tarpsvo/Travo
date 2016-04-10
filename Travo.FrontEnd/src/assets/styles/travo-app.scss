@@ -10,6 +10,7 @@ html, body {
     margin: 0;
     padding: 0;
     @include background(radial-gradient(bottom center, #3c496c, #2d2d37 100%));
+    overflow-x: hidden;
 }
 
 p, a, span, h1, h2, h3, h4, h5 {
