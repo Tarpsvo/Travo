@@ -13,7 +13,7 @@ namespace Travo.Domain.Models
         public DateTime Created { get; set; }
         public string CreatedByUserId { get; set; }
         public virtual User CreatedByUser { get; set; }
-        public bool isDefault { get; set; }
+        public bool Default { get; set; }
 
         public Team()
         {

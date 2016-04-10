@@ -6,7 +6,7 @@ namespace Travo.BLL.Factories
 {
     public static class UserFactory
     {
-        public static UserDTO createBasicDTO(User user)
+        public static UserDTO createReturnDTO(User user)
         {
             return new UserDTO
             {
@@ -15,7 +15,7 @@ namespace Travo.BLL.Factories
             };
         }
 
-        public static UserDTO createDTO(User user)
+        public static UserDTO createReturnAllDTO(User user)
         {
             return new UserDTO
             {

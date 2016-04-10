@@ -40,7 +40,7 @@ namespace Travo.DAL.Repositories
             {
                 CreatedByUserId = registeredUser.Id,
                 Description = "",
-                isDefault = true,
+                Default = true,
                 Name = "My Boards"
             };
             var team = _dbContext.Teams.Add(defaultTeam);

@@ -8,31 +8,31 @@ namespace Travo.BLL.Factories
 {
     public static class TaskFactory
     {
-        public static TaskDTO createBasicDTO(Task task)
+        public static TaskDTO createReturnDTO(Task task)
         {
             return new TaskDTO
             {
-                Created = DateTimeConverter.ConvertToUnixTimestamp(task.Created),
+                Id = task.Id,
                 Description = task.Description,
-                CreatedByUser = UserFactory.createBasicDTO(task.CreatedByUser),
-                Tag = TagFactory.createReturnDTO(task.Tag),
-                Id = task.Id
+                Created = DateTimeConverter.ConvertToUnixTimestamp(task.Created),
+                CreatedByUser = (task.CreatedByUser != null) ? UserFactory.createReturnDTO(task.CreatedByUser) : null,
+                Tag = (task.Tag != null) ? TagFactory.createReturnDTO(task.Tag) : null
             };
         }
 
-        public static TaskDTO createMinimalDTO(Task task)
+        public static TaskDTO createReturnMinimalDTO(Task task)
         {
             return new TaskDTO
             {
-                Created = DateTimeConverter.ConvertToUnixTimestamp(task.Created),
+                Id = task.Id,
                 Description = task.Description,
-                Id = task.Id
+                Created = DateTimeConverter.ConvertToUnixTimestamp(task.Created)
             };
         }
 
-        public static List<TaskDTO> createBasicDTOList(List<Task> taskList)
+        public static List<TaskDTO> createReturnDTOList(List<Task> taskList)
         {
-            return taskList.Select(t => createBasicDTO(t)).ToList();
+            return taskList.Select(t => createReturnDTO(t)).ToList();
         }
 
         public static Task createTaskFromDTO(TaskDTO taskDTO)

@@ -34,7 +34,7 @@ namespace Travo.BLL.Services
             task.CreatedByUserId = userId;
             var savedTask = _taskRepository.Add(task);
             _taskRepository.Save();
-            return Factories.TaskFactory.createMinimalDTO(savedTask);
+            return Factories.TaskFactory.createReturnMinimalDTO(savedTask);
         }
     }
 }
