@@ -124,6 +124,7 @@
     <Compile Include="Repositories\EFRepository.cs" />
     <Compile Include="Repositories\TeamRepository.cs" />
     <Compile Include="TravoDbContext.cs" />
+    <Compile Include="TravoUserManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

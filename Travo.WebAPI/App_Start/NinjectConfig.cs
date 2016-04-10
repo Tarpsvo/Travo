@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
+using Microsoft.AspNet.Identity.Owin;
 using Ninject;
 using Ninject.Web.Common;
 using Travo.BLL.Services;
@@ -20,7 +21,7 @@ namespace Travo
                 .To<UserStore<User>>()
                 .InRequestScope()
                 .WithConstructorArgument("context", context => kernel.Get<TravoDbContext>());
-            kernel.Bind<UserManager<User>>().ToSelf().InRequestScope();
+            kernel.Bind<TravoUserManager>().ToSelf();
 
             // Repositories
             kernel.Bind<IUserRepository>().To<UserRepository>();

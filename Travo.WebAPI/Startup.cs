@@ -8,7 +8,6 @@ using Owin;
 using System;
 using System.Reflection;
 using System.Web.Http;
-using Travo.App_Start;
 using Travo.BLL.Services;
 using Travo.DAL;
 using Travo.Domain.Models;

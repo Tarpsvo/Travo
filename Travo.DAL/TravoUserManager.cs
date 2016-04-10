@@ -5,7 +5,7 @@ using Microsoft.Owin;
 using Travo.DAL;
 using Travo.Domain.Models;
 
-namespace Travo.App_Start
+namespace Travo.DAL
 {
     public class TravoUserManager : UserManager<User>
     {

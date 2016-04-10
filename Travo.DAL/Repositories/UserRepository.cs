@@ -10,9 +10,9 @@ namespace Travo.DAL.Repositories
     public class UserRepository : IUserRepository
     {
         private TravoDbContext _dbContext;
-        private UserManager<User> _userManager;
+        private TravoUserManager _userManager;
 
-        public UserRepository(TravoDbContext dbContext, UserManager<User> userManager)
+        public UserRepository(TravoDbContext dbContext, TravoUserManager userManager)
         {
             _dbContext = dbContext;
             _userManager = userManager;
