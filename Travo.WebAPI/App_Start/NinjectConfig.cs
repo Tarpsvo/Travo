@@ -17,14 +17,11 @@ namespace Travo
         {
             // General
             kernel.Bind<TravoDbContext>().ToSelf().InRequestScope();
-            kernel.Bind<IUserStore<User>>()
-                .To<UserStore<User>>()
-                .InRequestScope()
-                .WithConstructorArgument("context", context => kernel.Get<TravoDbContext>());
-            kernel.Bind<TravoUserManager>().ToSelf().InRequestScope();
 
             // Repositories
-            kernel.Bind<IUserRepository>().To<UserRepository>();
+            kernel.Bind<IUserRepository>()
+                .To<UserRepository>()
+                .WithConstructorArgument("userManager", TravoUserManager.Create()); ;
             kernel.Bind<ITeamRepository>().To<TeamRepository>();
             kernel.Bind<IBoardRepository>().To<BoardRepository>();
             kernel.Bind<ITagRepository>().To<TagRepository>();

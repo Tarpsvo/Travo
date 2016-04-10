@@ -11,9 +11,9 @@ namespace Travo.DAL
     {
         public TravoUserManager(IUserStore<User> store) : base(store) {}
 
-        public static TravoUserManager Create(IdentityFactoryOptions<TravoUserManager> options, IOwinContext context)
+        public static TravoUserManager Create()
         {
-            var manager = new TravoUserManager(new UserStore<User>(context.Get<TravoDbContext>()));
+            var manager = new TravoUserManager(new UserStore<User>(new TravoDbContext()));
 
             // Configure validation logic for usernames
             // NB! Username == Email
@@ -32,12 +32,6 @@ namespace Travo.DAL
                 RequireLowercase = false,
                 RequireUppercase = false
             };
-
-            var dataProtectionProvider = options.DataProtectionProvider;
-            if (dataProtectionProvider != null)
-            {
-                manager.UserTokenProvider = new DataProtectorTokenProvider<User>(dataProtectionProvider.Create("ASP.NET Identity"));
-            }
 
             return manager;
         }
