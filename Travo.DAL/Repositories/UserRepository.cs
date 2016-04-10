@@ -146,22 +146,35 @@ namespace Travo.DAL.Repositories
                 from ut in _dbContext.UserInTeams
                 where
                     bt.BoardId == boardId &&
-                    ut.TeamId == bt.BoardId &&
+                    ut.TeamId == bt.TeamId &&
                     ut.UserId == userId
                 select ut.Id).Count();
             return (count == 1);
         }
-
-        public bool UserHasReadAccessToTeam(string userId, int teamId)
+        
+        public bool UserHasAccessToTeam(string userId, int teamId)
         {
-            // TODO
-            throw new NotImplementedException();
+            var count =
+                (from ut in _dbContext.UserInTeams
+                 where
+                    ut.UserId == userId &&
+                    ut.TeamId == teamId
+                 select ut.Id).Count();
+            return (count == 1);
         }
 
-        public bool UserHasWriteAccessToTeam(string userId, int teamId)
+        public bool UserCanEditTeam(string userId, int teamId)
         {
-            // TODO
-            throw new NotImplementedException();
+            var count =
+                (from ut in _dbContext.UserInTeams
+                from t in _dbContext.Teams
+                where
+                    ut.UserId == userId &&
+                    ut.TeamId == teamId &&
+                    t.Id == ut.TeamId &&
+                    t.Default == false
+                 select ut.Id).Count();
+            return (count == 1);
         }
 
         public Task<User> GetUser(string userId)

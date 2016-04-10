@@ -15,7 +15,7 @@ namespace Travo.DAL.Interfaces
         bool UserHasAccessToTask(string userId, int taskId);
         bool UserHasAccessToTag(string userId, int tagId);
         bool UserHasAccessToBoard(string userId, int boardId);
-        bool UserHasReadAccessToTeam(string userId, int teamId);
-        bool UserHasWriteAccessToTeam(string userId, int teamId);
+        bool UserHasAccessToTeam(string userId, int teamId);
+        bool UserCanEditTeam(string userId, int teamId);
     }
 }
