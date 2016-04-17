@@ -11,6 +11,8 @@ namespace Travo.Domain.Models
         public string CreatedByUserId { get; set; }
         public virtual User CreatedByUser { get; set; }
         public DateTime Created { get; set; }
+        [StringLength(60, MinimumLength = 1)]
+        public string Title { get; set; }
         [StringLength(3000, MinimumLength = 1)]
         public string Description { get; set; }
 

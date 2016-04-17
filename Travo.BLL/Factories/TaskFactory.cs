@@ -13,6 +13,7 @@ namespace Travo.BLL.Factories
             return new TaskDTO
             {
                 Id = task.Id,
+                Title = task.Title,
                 Description = task.Description,
                 Created = DateTimeConverter.ConvertToUnixTimestamp(task.Created),
                 CreatedByUser = (task.CreatedByUser != null) ? UserFactory.createReturnDTO(task.CreatedByUser) : null,
@@ -25,9 +26,14 @@ namespace Travo.BLL.Factories
             return new TaskDTO
             {
                 Id = task.Id,
-                Description = task.Description,
+                Title = task.Title,
                 Created = DateTimeConverter.ConvertToUnixTimestamp(task.Created)
             };
+        }
+
+        public static List<TaskDTO> createReturnMinimalDTOList(List<Task> taskList)
+        {
+            return taskList.Select(t => createReturnMinimalDTO(t)).ToList();
         }
 
         public static List<TaskDTO> createReturnDTOList(List<Task> taskList)
@@ -40,6 +46,7 @@ namespace Travo.BLL.Factories
             return new Task
             {
                 Id = taskDTO.Id,
+                Title = taskDTO.Title,
                 Description = taskDTO.Description,
                 TagId = taskDTO.TagId ?? 0 // TODO proper error handling?
             };

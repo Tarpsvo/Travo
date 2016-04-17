@@ -8,6 +8,7 @@
         public UserDTO CreatedByUser { get; set; }
         public int? CreatedByUserId { get; set; }
         public long Created { get; set; }
+        public string Title { get; set; }
         public string Description { get; set; }
     }
 }

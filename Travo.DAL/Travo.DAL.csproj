@@ -115,6 +115,10 @@
     <Compile Include="Migrations\201604101041529_EditTeamDefault.Designer.cs">
       <DependentUpon>201604101041529_EditTeamDefault.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201604140641287_TaskTitle.cs" />
+    <Compile Include="Migrations\201604140641287_TaskTitle.Designer.cs">
+      <DependentUpon>201604140641287_TaskTitle.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\TagRepository.cs" />
@@ -151,6 +155,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201604101041529_EditTeamDefault.resx">
       <DependentUpon>201604101041529_EditTeamDefault.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201604140641287_TaskTitle.resx">
+      <DependentUpon>201604140641287_TaskTitle.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

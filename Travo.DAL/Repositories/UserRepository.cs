@@ -78,18 +78,20 @@ namespace Travo.DAL.Repositories
             var task1 = new Domain.Models.Task
             {
                 CreatedByUserId = registeredUser.Id,
-                Description = "Edit this board with tags that fit you",
+                Title = "Edit this board with tags that fit you",
+                Description = "Example description... blah blah...",
                 TagId = tag.Id
             };
             _dbContext.Tasks.Add(task1);
 
-            var task21 = new Domain.Models.Task
+            var task2 = new Domain.Models.Task
             {
                 CreatedByUserId = registeredUser.Id,
-                Description = "Create to-do tasks of tasks you need to get done",
+                Title = "Create to-do tasks of tasks you need to get done",
+                Description = "Example description... blah blah...",
                 TagId = tag.Id
             };
-            _dbContext.Tasks.Add(task21);
+            _dbContext.Tasks.Add(task2);
 
             _dbContext.SaveChanges();
 
