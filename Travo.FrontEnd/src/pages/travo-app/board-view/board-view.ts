@@ -110,7 +110,7 @@ export class BoardView {
         var newTask = {
             id: null,
             created: null,
-            description: taskText
+            title: taskText
         };
 
         var taskArray = (<Object[]> this.tagsWithTasks[index]['tasks']);
@@ -207,7 +207,7 @@ export class BoardView {
                 console.log("What error");
             });
     }
-    
+
     // Modal opening logic
     userDidClickOnTask(task: Object) {
         this.dialogService.open({ viewModel: TaskModal, model: task}).then(response => {
