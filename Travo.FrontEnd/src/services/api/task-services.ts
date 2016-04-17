@@ -9,10 +9,10 @@ export default class TaskServices {
         this.rest = restClient;
     }
 
-    addTask(tagId: number, taskDescription: string) {
+    addTask(tagId: number, taskTitle: string) {
         let task = {
             tagId: tagId,
-            description: taskDescription
+            title: taskTitle
         };
         return this.rest.post(Router.AddTask, task);
     }
