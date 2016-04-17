@@ -1,16 +1,20 @@
 /// <reference path="../../../lib/autosize/jquery.autosize.d.ts" />
 /// <reference path="../../../lib/iscroll/iscroll.d.ts" />
+/// <reference path="../../../lib/uikit/uikit.d.ts"/>
 
 import {inject} from 'aurelia-framework';
+import {DialogService} from 'aurelia-dialog';
+import TaskModal from './task-modal/task-modal';
 import Notify from 'services/notify-client';
 import BoardServices from 'services/api/board-services';
 import TaskServices from 'services/api/task-services';
 import config from 'travo-config';
 
-@inject(BoardServices, TaskServices)
+@inject(BoardServices, TaskServices, DialogService)
 export class BoardView {
     boardServices: BoardServices;
     taskServices: TaskServices;
+    dialogService: DialogService;
 
     // View values
     boardId: number;
@@ -20,9 +24,13 @@ export class BoardView {
     horizontalScroll: IScroll;
     verticalScrollers: Array<IScroll>;
 
-    constructor(boardServices: BoardServices, taskServices: TaskServices) {
+    // Modal helper
+    selectedTask: Object;
+
+    constructor(boardServices: BoardServices, taskServices: TaskServices, dialogService: DialogService) {
         this.boardServices = boardServices;
         this.taskServices = taskServices;
+        this.dialogService = dialogService;
         this.verticalScrollers = new Array<IScroll>();
     }
 
@@ -198,5 +206,17 @@ export class BoardView {
             .catch(error => {
                 console.log("What error");
             });
+    }
+    
+    // Modal opening logic
+    userDidClickOnTask(task: Object) {
+        this.dialogService.open({ viewModel: TaskModal, model: task}).then(response => {
+            if (!response.wasCancelled) {
+                console.log('good - ', response.output);
+            } else {
+                console.log('bad');
+            }
+            console.log(response.output);
+        });
     }
 }

@@ -1,0 +1,12 @@
+<template>
+    <ai-dialog>
+    <ai-dialog-body>
+        <h2>${task.title}</h2>
+    </ai-dialog-body>
+
+        <ai-dialog-footer>
+            <button click.trigger="dialogController.cancel()">Cancel</button>
+            <button click.trigger="dialogController.ok()">Ok</button>
+        </ai-dialog-footer>
+    </ai-dialog>
+</template>

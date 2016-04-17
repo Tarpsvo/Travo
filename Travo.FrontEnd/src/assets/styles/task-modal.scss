@@ -1,0 +1,22 @@
+@import "compass";
+
+// Aurelia fixes
+ai-dialog-overlay.active {
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+ai-dialog-overlay {
+    pointer-events: all !important;
+}
+
+ai-dialog-container {
+    pointer-events: none !important;
+}
+
+// Modal stylings
+.trv-task-modal-body {
+    background: #FFF;
+
+    height: 400px;
+    width: 400px;
+}
