@@ -1,5 +1,6 @@
-﻿using System;
-using System.Threading.Tasks;
+﻿using BLL;
+using System;
+using System.Web;
 using Travo.BLL.DTO;
 using Travo.DAL.Interfaces;
 
@@ -18,11 +19,7 @@ namespace Travo.BLL.Services
 
         public TaskDTO AddTask(string userId, TaskDTO taskDTO)
         {
-            if (taskDTO.TagId == 0)
-            {
-                // TODO Add proper exceptions
-                throw new IndexOutOfRangeException();
-            }
+            if (taskDTO.TagId == 0) throw TravoExceptions.NotFound();
 
             var access = _userRepository.UserHasAccessToTag(userId, taskDTO.TagId ?? 0); // TODO Proper error handling?
             if (!access)
