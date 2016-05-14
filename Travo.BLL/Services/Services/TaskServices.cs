@@ -33,5 +33,16 @@ namespace Travo.BLL.Services
             _taskRepository.Save();
             return Factories.TaskFactory.createReturnMinimalDTO(savedTask);
         }
+
+        public TaskDTO GetTask(string userId, int taskId)
+        {
+            var access = _userRepository.UserHasAccessToTask(userId, taskId); // TODO Proper error handling?
+            if (!access) throw TravoExceptions.Forbidden();
+
+            var task = _taskRepository.GetById(taskId);
+            if (task == null) throw TravoExceptions.NotFound();
+
+            return Factories.TaskFactory.createReturnDTO(task); 
+        }
     }
 }

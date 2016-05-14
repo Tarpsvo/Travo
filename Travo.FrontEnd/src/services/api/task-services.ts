@@ -16,4 +16,8 @@ export default class TaskServices {
         };
         return this.rest.post(Router.AddTask, task);
     }
+
+    getTask(taskId: number) {
+        return this.rest.get(Router.GetTask(taskId));
+    }
 }

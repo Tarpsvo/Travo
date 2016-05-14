@@ -100,4 +100,5 @@ export class Router {
     public static AddNewTag(boardId: number) { return 'boards/' + boardId + '/tags'; }
     public static Status = 'status';
     public static CreateNewBoard(teamId: number) { return 'teams/' + teamId + '/boards'; }
+    public static GetTask(taskId: number) { return 'tasks/' + taskId }
 }

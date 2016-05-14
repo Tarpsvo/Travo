@@ -21,5 +21,11 @@ namespace Travo.Controllers
         {
             return TravoOk(_taskServices.AddTask(UserId, taskDTO));
         }
+
+        [Route("{taskId:int}"), HttpGet]
+        public HttpResponseMessage GetTask(int taskId)
+        {
+            return TravoOk(_taskServices.GetTask(UserId, taskId));
+        }
     }
 }
