@@ -1,11 +1,10 @@
 ﻿using System.Collections.Generic;
-using System.Threading.Tasks;
 using Travo.Domain.Models;
 
 namespace Travo.DAL.Interfaces
 {
-    public interface ITaskRepository : IEFRepository<Domain.Models.Task>
+    public interface ITaskRepository : IEFRepository<Task>
     {
-        List<Domain.Models.Task> GetTasksForTag(int tagId);
+        List<Task> GetTasksForTag(int tagId);
     }
 }

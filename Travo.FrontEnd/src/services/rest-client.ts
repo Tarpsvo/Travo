@@ -31,6 +31,10 @@ export class RestClient {
         return this.request('POST', path, body);
     }
 
+    patch(path: string, body: Object) {
+        return this.request('PATCH', path, body);
+    }
+
     request(method: string, path: string, body?: Object) {
         let requestOptions = {
             method: method,
@@ -101,4 +105,5 @@ export class Router {
     public static Status = 'status';
     public static CreateNewBoard(teamId: number) { return 'teams/' + teamId + '/boards'; }
     public static GetTask(taskId: number) { return 'tasks/' + taskId }
+    public static UpdateTask(taskId: number) { return 'tasks/' + taskId }
 }

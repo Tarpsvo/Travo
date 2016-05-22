@@ -20,4 +20,8 @@ export default class TaskServices {
     getTask(taskId: number) {
         return this.rest.get(Router.GetTask(taskId));
     }
+
+    patchTask(task: Object) {
+        return this.rest.patch(Router.UpdateTask(task['id']), task);
+    }
 }

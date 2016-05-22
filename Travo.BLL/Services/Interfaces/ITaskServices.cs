@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Threading.Tasks;
-using Travo.BLL.DTO;
+﻿using Travo.BLL.DTO;
 
 namespace Travo.BLL.Services
 {
@@ -8,5 +6,6 @@ namespace Travo.BLL.Services
     {
         TaskDTO AddTask(string userId, TaskDTO taskDTO);
         TaskDTO GetTask(string userId, int taskId);
+        void UpdateTask(string userId, TaskDTO taskDTO);
     }
 }

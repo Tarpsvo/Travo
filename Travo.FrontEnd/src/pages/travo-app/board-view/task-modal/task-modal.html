@@ -1,12 +1,17 @@
 <template>
     <ai-dialog>
-    <ai-dialog-body>
-        <h2>${task.title}</h2>
-    </ai-dialog-body>
-
-        <ai-dialog-footer>
-            <button click.trigger="dialogController.cancel()">Cancel</button>
-            <button click.trigger="dialogController.ok()">Ok</button>
-        </ai-dialog-footer>
+        <ai-dialog-body>
+            <h2>${task.title}</h2>
+            <button id="trv-add-dsc-btn"
+                    class="trv-dsc-toggle"
+                    data-uk-toggle="{target: '.trv-dsc-toggle'}"
+                    click.delegate="userOpenedDescriptionForm()">Add a description...</button>
+            <p>${task.description}</p>
+            <div id="trv-dsc-form" class="uk-hidden trv-dsc-toggle">
+                <textarea cols="50" rows="4"></textarea>
+                <button class="trv-add-btn" click.delegate="updateTask()">Save</button>
+                <i class="trv-cancel-btn uk-icon-times" data-uk-toggle="{target: '.trv-dsc-toggle'}"></i>
+            </div>
+        </ai-dialog-body>
     </ai-dialog>
 </template>

@@ -1,7 +1,7 @@
 ﻿using BLL;
 using System;
-using System.Web;
 using Travo.BLL.DTO;
+using Travo.BLL.Factories;
 using Travo.DAL.Interfaces;
 
 namespace Travo.BLL.Services
@@ -22,16 +22,13 @@ namespace Travo.BLL.Services
             if (taskDTO.TagId == 0) throw TravoExceptions.NotFound();
 
             var access = _userRepository.UserHasAccessToTag(userId, taskDTO.TagId ?? 0); // TODO Proper error handling?
-            if (!access)
-            {
-                throw new UnauthorizedAccessException();
-            }
+            if (!access) throw new UnauthorizedAccessException();
 
             var task = Factories.TaskFactory.createTaskFromDTO(taskDTO);
             task.CreatedByUserId = userId;
             var savedTask = _taskRepository.Add(task);
             _taskRepository.Save();
-            return Factories.TaskFactory.createReturnMinimalDTO(savedTask);
+            return TaskFactory.createReturnMinimalDTO(savedTask);
         }
 
         public TaskDTO GetTask(string userId, int taskId)
@@ -42,7 +39,18 @@ namespace Travo.BLL.Services
             var task = _taskRepository.GetById(taskId);
             if (task == null) throw TravoExceptions.NotFound();
 
-            return Factories.TaskFactory.createReturnDTO(task); 
+            return TaskFactory.createReturnDTO(task); 
+        }
+
+        public void UpdateTask(string userId, TaskDTO taskDTO)
+        {
+            var access = _userRepository.UserHasAccessToTask(userId, taskDTO.Id); // TODO Proper error handling?
+            if (!access) throw TravoExceptions.Forbidden();
+
+            var task = _taskRepository.GetById(taskDTO.Id);
+            if (taskDTO.Title != null) task.Title = taskDTO.Title;
+            if (taskDTO.Description != null) task.Description = taskDTO.Description;
+            _taskRepository.Save();
         }
     }
 }
