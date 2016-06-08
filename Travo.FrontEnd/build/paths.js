@@ -8,7 +8,7 @@ module.exports = {
     lib: 'src/lib/**/*.*',
     output: 'dist/',
     dtsSrc: [
-        './typings/browser/**/*.d.ts',
+        './typings/globals/**/*.d.ts',
         './jspm_packages/**/*.d.ts'
     ]
 };
